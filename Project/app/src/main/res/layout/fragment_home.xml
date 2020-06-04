@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Seat"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:text="200"
+            android:id="@+id/text_totalSeat"
+            android:textColor="#E53935"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booked Seat"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/text_totalSeat"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:id="@+id/text_bookedSeat"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:textColor="#E53935"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reserved Seat"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/text_bookedSeat"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:id="@+id/text_reservedSeat"
+            android:textColor="#E53935"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:id="@+id/relativeWhole">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_title"
+        android:text="When to go"
+        android:textSize="30sp"
+        android:textColor="#D81B60"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_title"
+        android:id="@+id/reltiveLayout">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:id="@+id/linearLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Enter Date"
+        android:textSize="20sp"
+        android:id="@+id/text_date"
+        android:layout_marginStart="20dp" />
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_date"
+            android:layout_marginLeft="40dp"/>
+
+    </LinearLayout>
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/timeLayout"
+         android:layout_marginTop="20dp"
+         android:layout_below="@+id/linearLayout"
+         android:layout_marginLeft="20dp"
+         android:orientation="horizontal">
+
+         <EditText
+             android:layout_width="100dp"
+             android:layout_height="wrap_content"
+             android:hint="Check In"
+             android:id="@+id/edit_checkInTime"/>
+
+         <EditText
+             android:layout_width="100dp"
+             android:layout_height="wrap_content"
+             android:hint="Check Out"
+             android:layout_marginLeft="30dp"
+             android:id="@+id/edit_checkOutTime"/>
+     </LinearLayout>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_below="@+id/timeLayout"
+            android:id="@+id/spinner"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_save"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Save"
+        android:layout_below="@+id/spinner"/>
+
+    </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
