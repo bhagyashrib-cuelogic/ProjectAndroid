@@ -4,20 +4,22 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.Layout
+import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.RequiresApi
-import com.google.android.gms.common.config.GservicesValue.value
+import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Integer.parseInt
 import java.lang.Integer.valueOf
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,12 +35,14 @@ class HomeFragment : Fragment() {
     private lateinit var spinnerDataList: ArrayList<String>
     private lateinit var reasonReference: DatabaseReference
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
+    private lateinit var homeFragment:FrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        homeFragment = view.findViewById(R.id.homeFragmentLayout)
 
         var context = container?.context!!
         spinner = view.findViewById(R.id.spinner)
@@ -49,41 +53,51 @@ class HomeFragment : Fragment() {
             spinnerDataList
         )
         reasonReference = FirebaseDatabase.getInstance().getReference("ReasonTable")
+        var editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
+      //  checkBookedSeatForParticularDateByUser()
 
         //Spinner
         spinner.adapter = adapter
         getReasonData()
 
 
+        //Current date show data
+        val c = Calendar.getInstance().time
+        val df = SimpleDateFormat("d-M-yyyy")
+        val currentDate = df.format(c)
+        Log.i("currentdate","$currentDate")
+        showSeatDateWise(currentDate,0,editTextBookedSeat)
+
         //DatePicker
         var date = view?.findViewById<EditText>(R.id.edit_date)!!
         date.setOnClickListener {
-            var cal: Calendar = Calendar.getInstance()
-            var year = cal.get(Calendar.YEAR)
-            var month = cal.get(Calendar.MONTH)
-            var date = cal.get(Calendar.DATE)
-
-            var dialog = DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener,
-                year, month, date)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.datePicker.minDate = System.currentTimeMillis() - 1000 - 1000 - 1000 - 1000
-            dialog.show()
+            datePicker(context,date)
         }
+        //Onchange date show data
+        date.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                val dateToCome = date.text.toString()
+                if(dateToCome==currentDate){
+                    Snackbar.make(homeFragment,"You can not book seat for today's date",Snackbar.LENGTH_LONG).show()
+                }
+                var  flag=0
+                    showSeatDateWise(dateToCome, flag,editTextBookedSeat)
 
-        mDateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, day ->
-            val month = month + 1
-            var dateSet: String = "$day-$month-$year"
-            Log.i("date", "$date")
-            date.setText(dateSet)
-            val dateToCome = date.toString()
-            var flag=1
-            showSeatDateWise(dateToCome,flag)
-        }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
+        //Firebase get current user
         auth = FirebaseAuth.getInstance()
         val saveBtn = view.findViewById<Button>(R.id.button_save)!!
         saveBtn.setOnClickListener {
-            saveDate()
+            val dateToCome = date.text.toString()
+            if(dateToCome==currentDate) {
+              Toast.makeText(activity,"You can not book seat for today's date",Toast.LENGTH_LONG).show()
+           }else {
+                saveDate()
+            }
         }
         return view
     }
@@ -94,12 +108,13 @@ class HomeFragment : Fragment() {
         val checkInTime = view?.findViewById<EditText>(R.id.edit_checkInTime)!!
         val checkOutTime = view?.findViewById<EditText>(R.id.edit_checkOutTime)!!
         val reason = view?.findViewById<Spinner>(R.id.spinner)!!
-
+        val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
 
         val dateToCome = date.text.toString()
         val checkTime = checkInTime.text.toString()
         val checkOut = checkOutTime.text.toString()
         val reasonDescription = reason.toString()
+        val status:String= "Booked"
 
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
@@ -108,18 +123,11 @@ class HomeFragment : Fragment() {
             val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
             val uidKey = firebaseReference.push().key!!
 
-            firebaseReference.child(uidKey).setValue(
-                BookingData(
-                    currentUserUid,
-                    dateToCome,
-                    checkTime,
-                    checkOut,
-                    reasonDescription
-                )
+            firebaseReference.child(uidKey).setValue(BookingData(currentUserUid, dateToCome, checkTime, checkOut,reasonDescription,status)
             ).addOnCompleteListener {
                 Toast.makeText(activity, "Added successfully", Toast.LENGTH_LONG).show()
                 var flag = 1
-                showSeatDateWise(dateToCome,flag)
+                showSeatDateWise(dateToCome,flag,editTextBookedSeat)
             }
         } else {
             date.error = "Please fill date"
@@ -131,6 +139,7 @@ class HomeFragment : Fragment() {
         checkOutTime.text.clear()
     }
 
+    //spinner date result
     private fun getReasonData() {
         listener = reasonReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -148,14 +157,14 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun showSeatDateWise(dateToCome: String,flag:Int) {
+    //show seat data
+    private fun showSeatDateWise(dateToCome: String,flag:Int,editTextBookedSeat:TextView) {
         var flag1 = flag
-        var editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
 
         var firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
     //    firebaseReference.
 
-                firebaseReference.addValueEventListener(object : ValueEventListener{
+         firebaseReference.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -197,5 +206,57 @@ class HomeFragment : Fragment() {
             })
         }
 
+    //datepicker method
+    fun datePicker(context: Context, date:EditText  ){
+        date.setOnClickListener {
+            var cal: Calendar = Calendar.getInstance()
+            var year = cal.get(Calendar.YEAR)
+            var month = cal.get(Calendar.MONTH)
+            var date = cal.get(Calendar.DATE)
 
+            var dialog = DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, date)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.datePicker.minDate = System.currentTimeMillis() - 1000 - 1000 - 1000 - 1000
+            dialog.show()
+        }
+        mDateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            val month =month+1
+            var dateSet: String = "$day-$month-$year"
+            Log.i("currentdate","$dateSet")
+            date.setText(dateSet)
+        }
+    }
+
+    fun checkBookedSeatForParticularDateByUser(){
+          var firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
+          auth = FirebaseAuth.getInstance()
+          var currentUser = auth.currentUser!!
+          var currentUserId = currentUser.uid
+          val date = view?.findViewById<EditText>(R.id.edit_date)!!
+          val dateToCome = date.text.toString()
+
+          firebaseReference.addValueEventListener(object :ValueEventListener{
+              override fun onCancelled(snapshot: DatabaseError) {
+                  TODO("Not yet implemented")
+              }
+
+              override fun onDataChange(snapshot: DataSnapshot) {
+                     for(item in snapshot.children){
+                           val snapshotBookedDate = item.child("date")
+                           val bookedDate = snapshotBookedDate.value.toString()
+
+                           val snapshotBookedUSerId = item.child("id")
+                           val bookedUserId = snapshotBookedUSerId.value.toString()
+
+                           if(currentUserId==bookedUserId && dateToCome==bookedDate){
+                                //Toast.makeText(activity,"You have booked seat for $dateToCome",Toast.LENGTH_LONG).show()
+                           }
+                           else{
+                               saveDate()
+                           }
+                 }
+              }
+          })
+    }
 }
+
