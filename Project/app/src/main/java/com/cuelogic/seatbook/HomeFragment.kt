@@ -255,7 +255,11 @@
                                val snapshotBookedUSerId = item.child("id")
                                val bookedUserId = snapshotBookedUSerId.value.toString()
 
-                               if(dateToCome==bookedDate && bookedUserId==currentUserId){
+                             val snapshotBooked = item.child("booked")
+                             val is_deleted = snapshotBooked.value.toString()
+
+
+                             if(dateToCome==bookedDate && bookedUserId==currentUserId && parseInt(is_deleted)==0){
                                   Log.i("id","$currentUserId and $bookedUserId")
                                    Toast.makeText(activity,"You have booked seat for $bookedDate $dateToCome",Toast.LENGTH_LONG).show()
                                    is_selected=false
