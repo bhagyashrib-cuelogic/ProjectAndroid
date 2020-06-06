@@ -86,24 +86,25 @@ class MainActivity : AppCompatActivity() {
                 Snackbar.make(layout,"${account.email}",Snackbar.LENGTH_LONG).show()
                 Log.i("Name","${account.email}")
 
-                auth.fetchProvidersForEmail(account.email!!).addOnCompleteListener(this, OnCompleteListener() {task ->
-                    if(task.isComplete)
-                    {
-                        var check:Boolean = !task.result!!.providers!!.isEmpty()
-                        if(!check)
-                        {
-                            firebaseAuthWithGoogle(account.idToken!!)
-                        }
-                        else{
-                            firebaseWithSecondTime(account.idToken!!)
-                        }
-                    }
-                })
 
-                //  firebaseAuthWithGoogle(account.idToken!!)
+//               this.auth.fetchProvidersForEmail(account.email!!).addOnCompleteListener(this, OnCompleteListener() {task ->
+//                    if(task.isComplete)
+//                    {
+//                        var check:Boolean = !task.result!!.providers!!.isEmpty()
+//                        if(!check)
+//                        {
+//                            firebaseAuthWithGoogle(account.idToken!!)
+//                        }
+//                        else{
+//                            firebaseWithSecondTime(account.idToken!!)
+//                        }
+//                    }
+//                })
+
+//                firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Something went to wrong", Toast.LENGTH_LONG).show()                // ...
+                Toast.makeText(this, "Something went to wrong"+e, Toast.LENGTH_LONG).show()                // ...
             }
         }
     }
@@ -121,7 +122,6 @@ class MainActivity : AppCompatActivity() {
                         //Store UID into sharedpreferences
                         session.setUId(uid.toString())
 
-
                         emailAddress = user?.email
                         employeeName = user?.displayName
                         var firebaseReference =
@@ -132,13 +132,10 @@ class MainActivity : AppCompatActivity() {
                                 .setValue(EmployeeData(uid!!, employeeName!!, emailAddress!!)).addOnCompleteListener() {
                                     Toast.makeText(applicationContext,"successFulladdddddddddd",Toast.LENGTH_LONG).show()
                                 }
-
                         var intent:Intent = Intent(applicationContext,SeatBookActivity::class.java)
                         startActivity(intent)
                     } else {
-
-                    }
-                    // ...
+                    } // ...
                 }
     }
 

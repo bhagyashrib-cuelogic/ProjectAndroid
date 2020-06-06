@@ -1,4 +1,4 @@
 package com.cuelogic.seatbook
 
-data class SeatData(var bookedseat:Int,var totalseat:Int,var reservedseat:Int,var date:String) {
+data class SeatData(var booked:Int,var total:Int,var available:Int,var date:String) {
 }

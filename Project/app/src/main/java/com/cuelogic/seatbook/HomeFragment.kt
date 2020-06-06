@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         )
         reasonReference = FirebaseDatabase.getInstance().getReference("ReasonTable")
         var editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
+        val editTextAvaibleSeat=view?.findViewById<TextView>(R.id.text_reservedSeat)!!
       //  checkBookedSeatForParticularDateByUser()
 
         //Spinner
@@ -65,8 +66,7 @@ class HomeFragment : Fragment() {
         val c = Calendar.getInstance().time
         val df = SimpleDateFormat("d-M-yyyy")
         val currentDate = df.format(c)
-        Log.i("currentdate","$currentDate")
-        showSeatDateWise(currentDate,0,editTextBookedSeat)
+        showSeatDateWise(currentDate,0,editTextBookedSeat,editTextAvaibleSeat)
 
         //DatePicker
         var date = view?.findViewById<EditText>(R.id.edit_date)!!
@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
                     Snackbar.make(homeFragment,"You can not book seat for today's date",Snackbar.LENGTH_LONG).show()
                 }
                 var  flag=0
-                    showSeatDateWise(dateToCome, flag,editTextBookedSeat)
+                    showSeatDateWise(dateToCome, flag,editTextBookedSeat,editTextAvaibleSeat)
 
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -109,12 +109,14 @@ class HomeFragment : Fragment() {
         val checkOutTime = view?.findViewById<EditText>(R.id.edit_checkOutTime)!!
         val reason = view?.findViewById<Spinner>(R.id.spinner)!!
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
+        val editTextAvaibleSeat=view?.findViewById<TextView>(R.id.text_reservedSeat)!!
 
         val dateToCome = date.text.toString()
         val checkTime = checkInTime.text.toString()
         val checkOut = checkOutTime.text.toString()
         val reasonDescription = reason.toString()
         val status:String= "Booked"
+        val isBooked :Int =0
 
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
@@ -123,11 +125,11 @@ class HomeFragment : Fragment() {
             val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
             val uidKey = firebaseReference.push().key!!
 
-            firebaseReference.child(uidKey).setValue(BookingData(currentUserUid, dateToCome, checkTime, checkOut,reasonDescription,status)
+            firebaseReference.child(uidKey).setValue(BookingData(currentUserUid, dateToCome, checkTime, checkOut,reasonDescription,status,isBooked)
             ).addOnCompleteListener {
                 Toast.makeText(activity, "Added successfully", Toast.LENGTH_LONG).show()
                 var flag = 1
-                showSeatDateWise(dateToCome,flag,editTextBookedSeat)
+                showSeatDateWise(dateToCome,flag,editTextBookedSeat,editTextAvaibleSeat)
             }
         } else {
             date.error = "Please fill date"
@@ -158,7 +160,7 @@ class HomeFragment : Fragment() {
     }
 
     //show seat data
-    private fun showSeatDateWise(dateToCome: String,flag:Int,editTextBookedSeat:TextView) {
+    private fun showSeatDateWise(dateToCome: String,flag:Int,editTextBookedSeat:TextView,editTextAvailble:TextView) {
         var flag1 = flag
 
         var firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
@@ -179,25 +181,29 @@ class HomeFragment : Fragment() {
 
                                 if (date == dateToCome) {
 
-                                    val bookseat = item.child("bookedseat")
+                                    val bookseat = item.child("booked")
                                     var Bookedseat = bookseat.value.toString()
 
-                                    val r = item.child("reservedseat")
-                                    val r1 = r.value.toString()
+                                    val availableSeat = item.child("available")
+                                    var availablebook = availableSeat.value.toString()
 
-                                    val totalS = item.child("totalseat")
+                                    val totalS = item.child("total")
                                     val totalseat = totalS.value.toString()
 
                                     if(flag1==1) {
                                       flag1=0
                                         var bookedseat = parseInt(Bookedseat) + 1
-                                        Log.i("bookedseat", "$bookedseat")
+                                        var available  = parseInt(availablebook)-1
 
                                         firebaseReference.child(item.key.toString()).setValue(SeatData(bookedseat,
-                                            parseInt(totalseat), parseInt(r1), date))
+                                            parseInt(totalseat),available, date))
                                         editTextBookedSeat.text = valueOf(bookedseat).toString()
+                                        editTextAvailble.text = valueOf(available).toString()
+                                        break
                                     }else {
                                         editTextBookedSeat.text = valueOf(Bookedseat).toString()
+                                        editTextAvailble.text = valueOf(availablebook).toString()
+                                        break
                                     }
                                 }
                         }
