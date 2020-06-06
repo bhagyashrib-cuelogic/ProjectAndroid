@@ -48,9 +48,9 @@ class HistoryFragment : Fragment() {
                     if(userUid==currentUser){
                         var infoUser  = item.getValue(BookingData::class.java)!!
                         userList.add(infoUser)
-                        val adapter = UserBookingHistory(context!!,R.layout.history_list,userList)
+                        val adapter:UserBookingHistory? = UserBookingHistory(context!!,R.layout.history_list,userList)
                         listView.adapter = adapter
-                        adapter.notifyDataSetChanged()
+                        adapter?.notifyDataSetChanged()
                     }
                 }
             }

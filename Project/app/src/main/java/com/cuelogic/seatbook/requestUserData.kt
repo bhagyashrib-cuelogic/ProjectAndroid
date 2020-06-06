@@ -86,7 +86,9 @@ class requestUserData(private val contex: Context, private val layoutResId:Int, 
                                         userUid, bookedDate,
                                         checkInTime, checkOutTime, reason, status, falg
                                     )
-                                )
+                                ).addOnCompleteListener(){
+                                          cancelBooking(bookedDate,1)
+                                }
                             }
                         }
                     }
@@ -102,9 +104,55 @@ class requestUserData(private val contex: Context, private val layoutResId:Int, 
 
 
 
-    private fun cancelBooking(){
+    private fun cancelBooking(dateToCome:String,flag:Int){
+        var flag1 = flag
 
+        var firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
+        //    firebaseReference.
+
+        firebaseReference.addValueEventListener(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(snapshot : DataSnapshot) {
+                Log.i("date","snapshot")
+                if (snapshot.exists()) {
+                    Log.i("date","")
+                    for (item in snapshot.children) {
+                        val dateChoose = item.child("date")
+                        val date = dateChoose.value.toString()
+
+                        if (date == dateToCome) {
+
+                            val bookseat = item.child("booked")
+                            var Bookedseat = bookseat.value.toString()
+
+                            val availableSeat = item.child("available")
+                            var availablebook = availableSeat.value.toString()
+
+                            val totalS = item.child("total")
+                            val totalseat = totalS.value.toString()
+
+                            if(flag1==1) {
+                                flag1=0
+                                var bookedseat = parseInt(Bookedseat) - 1
+                                var available  = parseInt(availablebook)+1
+
+                                firebaseReference.child(item.key.toString()).setValue(SeatData(bookedseat,
+                                    parseInt(totalseat),available, date))
+
+                                break
+                            }else {
+
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
 
     }
 
-}

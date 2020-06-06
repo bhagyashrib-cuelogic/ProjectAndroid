@@ -27,7 +27,6 @@ class RequestFragment : Fragment() {
     private lateinit var dataReference : DatabaseReference
     private lateinit var userList : MutableList<BookingData>
     private lateinit var listView : ListView
-    private lateinit var listShow : LayoutInflater
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
@@ -36,8 +35,6 @@ class RequestFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_request, container, false)
-
-
 
         dataReference = FirebaseDatabase.getInstance().getReference("Booking")
         userList = mutableListOf()
@@ -63,7 +60,7 @@ class RequestFragment : Fragment() {
                     if(userUid==currentUser && falg==0){
                         val infoUser = item.getValue(BookingData::class.java)!!
                         userList.add(infoUser)
-                        var adapter = requestUserData(context!!,R.layout.user_request_list,userList)
+                        val adapter = requestUserData(context!!,R.layout.user_request_list,userList)!!
                         listView.adapter = adapter
                         adapter.notifyDataSetChanged()
                     }

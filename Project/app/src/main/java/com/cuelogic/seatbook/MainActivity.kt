@@ -87,19 +87,19 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Name","${account.email}")
 
 
-//               this.auth.fetchProvidersForEmail(account.email!!).addOnCompleteListener(this, OnCompleteListener() {task ->
-//                    if(task.isComplete)
-//                    {
-//                        var check:Boolean = !task.result!!.providers!!.isEmpty()
-//                        if(!check)
-//                        {
-//                            firebaseAuthWithGoogle(account.idToken!!)
-//                        }
-//                        else{
-//                            firebaseWithSecondTime(account.idToken!!)
-//                        }
-//                    }
-//                })
+               this.auth.fetchProvidersForEmail(account.email!!).addOnCompleteListener(this, OnCompleteListener() {task ->
+                    if(task.isComplete)
+                    {
+                        var check:Boolean = !task.result!!.providers!!.isEmpty()
+                        if(!check)
+                        {
+                            firebaseAuthWithGoogle(account.idToken!!)
+                        }
+                        else{
+                            firebaseWithSecondTime(account.idToken!!)
+                        }
+                    }
+                })
 
 //                firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
@@ -129,10 +129,10 @@ class MainActivity : AppCompatActivity() {
                         var uidKey = firebaseReference.push().key
 
                         firebaseReference!!.child(uidKey!!)
-                                .setValue(EmployeeData(uid!!, employeeName!!, emailAddress!!)).addOnCompleteListener() {
+                                .setValue(EmployeeData(uid!!, employeeName!!, emailAddress!!)).addOnCompleteListener {
                                     Toast.makeText(applicationContext,"successFulladdddddddddd",Toast.LENGTH_LONG).show()
                                 }
-                        var intent:Intent = Intent(applicationContext,SeatBookActivity::class.java)
+                        var intent = Intent(applicationContext,SeatBookActivity::class.java)
                         startActivity(intent)
                     } else {
                     } // ...
@@ -155,8 +155,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
 
-                    }
-                    // ...
+                    } // ...
                 }
     }
 
