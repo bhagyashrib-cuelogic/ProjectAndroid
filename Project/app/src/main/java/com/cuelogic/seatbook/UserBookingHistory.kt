@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class UserBookingHistory(private val contex: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
     ArrayAdapter<BookingData>(contex,layoutResId,infoList) {

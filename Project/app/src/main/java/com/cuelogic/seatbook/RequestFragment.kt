@@ -1,17 +1,9 @@
 package com.cuelogic.seatbook
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.system.Os.remove
-import android.util.Log
-import android.util.SparseBooleanArray
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -40,35 +32,28 @@ class RequestFragment : Fragment() {
         userList = mutableListOf()
         listView = view.findViewById(R.id.listViewItem)
         auth = FirebaseAuth.getInstance()
-        var user = auth.currentUser!!
-        var currentUser = user.uid!!
+        val currentUser = auth.currentUser!!.uid
 
         dataReference.addValueEventListener(object :ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+            override fun onCancelled(p0: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                for(item in snapshot.children){
-                    var uid = item.child("id")
-                    var userUid = uid.value.toString()
-
-                    var isBooked = item.child("booked")
-                    var isEmpty = isBooked.value.toString()
-                    var falg = parseInt(isEmpty)
-
-                    if(userUid==currentUser && falg==0){
-                        val infoUser = item.getValue(BookingData::class.java)!!
-                        userList.add(infoUser)
-                        val adapter = requestUserData(context!!,R.layout.user_request_list,userList)!!
-                        listView.adapter = adapter
-                        adapter.notifyDataSetChanged()
+                if(snapshot.exists()){
+                    var adapter: requestUserData?
+                    for (item in snapshot.children) {
+                        val userUid = item.child("id").value.toString()
+                        val isBooked = parseInt(item.child("booked").value.toString())
+                        if (userUid == currentUser && isBooked == 0) {
+                            val infoUser = item.getValue(BookingData::class.java)!!
+                            userList.add(infoUser)
+                            adapter = requestUserData(context!!, R.layout.user_request_list, userList)
+                            listView.adapter = adapter
+                            adapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
         })
-            return view
-        }
-
-
+    return view
     }
+}
