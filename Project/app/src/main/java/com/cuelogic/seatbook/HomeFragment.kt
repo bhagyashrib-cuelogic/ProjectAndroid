@@ -2,6 +2,7 @@ package com.cuelogic.seatbook
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -49,12 +50,24 @@ class HomeFragment : Fragment() {
         val editTextAvailableSeat= view.findViewById<TextView>(R.id.text_reservedSeat)!!
         val buttonBookingDataSave = view.findViewById<Button>(R.id.button_save)!!
         val date = view.findViewById<EditText>(R.id.edit_date)!!
+        val chooseTimeCheckIn = view.findViewById<EditText>(R.id.edit_checkInTime)
+        val chooseTimeCheckOut = view.findViewById<EditText>(R.id.edit_checkOutTime)
+
 
         //Current date show data
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("d-M-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
         showSeatDateWise(currentDate,0,editTextBookedSeat,editTextAvailableSeat,date)
+
+        //get Time
+        chooseTimeCheckIn.setOnClickListener{
+            selectTimePicker(chooseTimeCheckIn)
+        }
+        chooseTimeCheckOut.setOnClickListener{
+            selectTimePicker(chooseTimeCheckOut)
+        }
+
 
         auth = FirebaseAuth.getInstance()
         reasonSpinner = view.findViewById(R.id.spinner)
@@ -115,7 +128,7 @@ class HomeFragment : Fragment() {
         val dateToCome = date.text.toString()
         val checkTime = checkInTime.text.toString()
         val checkOut = checkOutTime.text.toString()
-        val reasonDescription = reason.toString()
+        val reasonDescription = reason.selectedItem.toString()
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
             val currentUserUid = auth.currentUser!!.uid
@@ -243,6 +256,22 @@ class HomeFragment : Fragment() {
                 if(isSelected) saveDate()
             }
         })
+    }
+
+    private fun selectTimePicker(chooseTime:EditText){
+        val mTimePicker: TimePickerDialog
+        val mcurrentTime = Calendar.getInstance()
+        val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
+        val minute = mcurrentTime.get(Calendar.MINUTE)
+
+        mTimePicker = TimePickerDialog(activity,
+            TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute -> chooseTime.setText(String
+                .format("%d : %d", hourOfDay, minute)) },
+                hour, minute, false)
+
+        chooseTime.setOnClickListener {
+            mTimePicker.show()
+        }
     }
 }
 
