@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".SeatBookActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:id="@+id/customeToolbar"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_account_circle_black_24dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/profile_icon"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <fragment
         android:id="@+id/fragment"
@@ -17,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customeToolbar"
         app:navGraph="@navigation/bottom_navigation" />
 
 
@@ -30,7 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="#FFFFFF"
         app:menu="@menu/bottom_menu" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

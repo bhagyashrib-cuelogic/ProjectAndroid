@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var RC_SIGN_IN: Int = 123
     private lateinit var auth:FirebaseAuth
-    lateinit var signIn: Button
     private lateinit var layout: RelativeLayout
-    private var userId:String?=null
     private var emailAddress:String?=null
     private var employeeName:String?=null
+    private var employeeDesignation :String?=null
+    private var employeeProfile:String?=null
 
 
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                this.auth.fetchProvidersForEmail(account.email!!).addOnCompleteListener(this, OnCompleteListener() {task ->
                     if(task.isComplete)
                     {
-                        var check:Boolean = !task.result!!.providers!!.isEmpty()
+                        val check:Boolean = !task.result!!.providers!!.isEmpty()
                         if(!check)
                         {
                             firebaseAuthWithGoogle(account.idToken!!)
@@ -115,24 +115,26 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 
-                        var session = User(MainActivity@ this)
+                        val session = User(MainActivity@ this)
                         val user = auth.currentUser
-                        var uid = user?.uid
-                        Log.i("Name", "udi is $uid")
+                        val uid = user?.uid
                         //Store UID into sharedpreferences
                         session.setUId(uid.toString())
 
                         emailAddress = user?.email
                         employeeName = user?.displayName
-                        var firebaseReference =
-                                FirebaseDatabase.getInstance().getReference("Employees")
-                        var uidKey = firebaseReference.push().key
+                        employeeDesignation =""
+                        employeeProfile =""
 
-                        firebaseReference!!.child(uidKey!!)
-                                .setValue(EmployeeData(uid!!, employeeName!!, emailAddress!!)).addOnCompleteListener {
-                                    Toast.makeText(applicationContext,"successFulladdddddddddd",Toast.LENGTH_LONG).show()
+                        val firebaseReference =
+                                FirebaseDatabase.getInstance().getReference("Employees")
+                        val uidKey = firebaseReference.push().key
+
+                        firebaseReference.child(uidKey!!)
+                                .setValue(EmployeeData(uid!!, employeeName!!, emailAddress!!,employeeDesignation,employeeProfile,"0")).addOnCompleteListener {
+                                    Toast.makeText(applicationContext,"successfully login",Toast.LENGTH_LONG).show()
                                 }
-                        var intent = Intent(applicationContext,SeatBookActivity::class.java)
+                        val intent = Intent(applicationContext,SeatBookActivity::class.java)
                         startActivity(intent)
                     } else {
                     } // ...
@@ -144,14 +146,14 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        var session = User(MainActivity@ this)
+                        val session = User(MainActivity@ this)
                         val user = auth.currentUser
-                        var uid = user?.uid
+                        val uid = user?.uid
                         Log.i("Name", "udi is $uid")
                         //Store UID into sharedpreferences
                         session.setUId(uid.toString())
 
-                        var intent:Intent = Intent(applicationContext,SeatBookActivity::class.java)
+                        val intent:Intent = Intent(applicationContext,SeatBookActivity::class.java)
                         startActivity(intent)
                     } else {
 
