@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-class UserBookingHistory(private val contex: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
-    ArrayAdapter<BookingData>(contex,layoutResId,infoList) {
+class UserBookingHistory( context: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
+    ArrayAdapter<BookingData>(context,layoutResId,infoList) {
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
         val view: View = layoutInflater.inflate(layoutResId, null)
 
-        val textViewdate: TextView? = view.findViewById<TextView>(R.id.datefirebase)
-        val textViewcheckintime: TextView? = view.findViewById<TextView>(R.id.checkintime)
-        val textViewcheckouttime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
+        val textViewDate: TextView? = view.findViewById<TextView>(R.id.datefirebase)
+        val textViewCheckInTime: TextView? = view.findViewById<TextView>(R.id.checkintime)
+        val textViewCheckOutTime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
 
         val info = infoList[position]
-        textViewdate?.text = info.date
-        textViewcheckintime?.text = info.CheckInTime
-        textViewcheckouttime?.text = info.CheckOutTime
+        textViewDate?.text = info.date
+        textViewCheckInTime?.text = info.CheckInTime
+        textViewCheckOutTime?.text = info.CheckOutTime
 
         return view
 

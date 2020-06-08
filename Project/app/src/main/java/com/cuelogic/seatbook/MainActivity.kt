@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 //                firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Something went to wrong"+e, Toast.LENGTH_LONG).show()                // ...
+                Toast.makeText(this, "Something went to wrong   $e.message", Toast.LENGTH_LONG).show()                // ...
             }
         }
     }

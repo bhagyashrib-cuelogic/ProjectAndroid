@@ -76,75 +76,81 @@
         android:textSize="30sp"
         android:textColor="#D81B60"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_title"
-        android:id="@+id/reltiveLayout">
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:id="@+id/linearLayout">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="Enter Date"
-        android:textSize="20sp"
-        android:id="@+id/text_date"
-        android:layout_marginStart="20dp" />
-
-        <EditText
-            android:layout_width="100dp"
+        <RelativeLayout
+            android:id="@+id/reltiveLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_date"
-            android:layout_marginLeft="40dp"/>
+            android:layout_below="@+id/text_title"
+            android:layout_marginTop="-13dp">
 
-    </LinearLayout>
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/timeLayout"
-         android:layout_marginTop="20dp"
-         android:layout_below="@+id/linearLayout"
-         android:layout_marginLeft="20dp"
-         android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-         <EditText
-             android:layout_width="100dp"
-             android:layout_height="wrap_content"
-             android:hint="Check In"
-             android:id="@+id/edit_checkInTime"/>
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="100dp"
+                    android:text="Enter Date"
+                    android:textSize="20sp" />
 
-         <EditText
-             android:layout_width="100dp"
-             android:layout_height="wrap_content"
-             android:hint="Check Out"
-             android:layout_marginLeft="30dp"
-             android:id="@+id/edit_checkOutTime"/>
-     </LinearLayout>
+                <EditText
+                    android:id="@+id/edit_date"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_below="@+id/timeLayout"
-            android:id="@+id/spinner"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_save"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Save"
-        android:layout_below="@+id/spinner"/>
+            <LinearLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <EditText
+                    android:id="@+id/edit_checkInTime"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Check In" />
+
+                <EditText
+                    android:id="@+id/edit_checkOutTime"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:hint="Check Out" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeLayout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="20dp" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/spinner"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Save"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="20dp" />
+
+        </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

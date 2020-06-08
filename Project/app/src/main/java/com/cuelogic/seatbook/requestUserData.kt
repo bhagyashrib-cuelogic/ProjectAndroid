@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,8 +17,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.lang.Integer.parseInt
 
-class requestUserData(private val contex: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
-           ArrayAdapter<BookingData>(contex,layoutResId,infoList){
+class requestUserData( context: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
+           ArrayAdapter<BookingData>(context,layoutResId,infoList){
+
 
     private lateinit var auth: FirebaseAuth
 
@@ -44,16 +46,16 @@ class requestUserData(private val contex: Context, private val layoutResId:Int, 
             builder.setTitle("AlertDialog")
             builder.setMessage("Confirm cancel booking")
             builder.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
-                dataReference.addValueEventListener(object : ValueEventListener{
+                dataReference.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onCancelled(p0: DatabaseError) {}
 
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for(item in snapshot.children){
                             val userUid = item.child("id").value.toString()
                             val bookedDate = item.child("date").value.toString()
+                            val isEmpty = parseInt(item.child("booked").value.toString())
 
-                            if(userUid==currentUser && bookedDate==info.date) {
-                                val isEmpty = parseInt(item.child("booked").value.toString())
+                            if(userUid==currentUser && bookedDate==info.date && isEmpty==0) {
                                 val checkInTime = item.child("checkInTime").value.toString()
                                 val checkOutTime = item.child("checkInTime").value.toString()
                                 val reason = item.child("reason").value.toString()
@@ -63,6 +65,7 @@ class requestUserData(private val contex: Context, private val layoutResId:Int, 
                                         userUid, bookedDate, checkInTime, checkOutTime, reason, "cancel", 1
                                     )
                                 ).addOnCompleteListener(){
+                                    Toast.makeText(context,"update data",Toast.LENGTH_SHORT).show()
                                     updateSeatDataOnCancel(bookedDate)
                                 }
                             }

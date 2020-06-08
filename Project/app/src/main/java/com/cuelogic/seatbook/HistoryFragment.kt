@@ -33,6 +33,7 @@ class HistoryFragment : Fragment() {
         var dataReference = FirebaseDatabase.getInstance().getReference("Booking")
         listView = view.findViewById(R.id.listViewItem)
         userList = mutableListOf()
+        var  context = activity
 
 
         dataReference.addValueEventListener(object : ValueEventListener{

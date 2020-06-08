@@ -1,6 +1,7 @@
 package com.cuelogic.seatbook
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class RequestFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser!!.uid
 
+
         dataReference.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
 
@@ -46,9 +48,13 @@ class RequestFragment : Fragment() {
                         if (userUid == currentUser && isBooked == 0) {
                             val infoUser = item.getValue(BookingData::class.java)!!
                             userList.add(infoUser)
-                            adapter = requestUserData(context!!, R.layout.user_request_list, userList)
+                            Log.i("log","userList $userList")
+                            Log.i("log","activityContext  $activity")
+                            adapter = activity?.let { requestUserData(it, R.layout.user_request_list, userList) }
+                            Log.i("log","userdata   $userList")
+                            Log.i("log","context $context")
                             listView.adapter = adapter
-                            adapter.notifyDataSetChanged()
+                            adapter?.notifyDataSetChanged()
                         }
                     }
                 }

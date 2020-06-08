@@ -125,7 +125,7 @@ class HomeFragment : Fragment() {
             firebaseReference.child(uidKey).setValue(
                 BookingData(currentUserUid, dateToCome, checkTime, checkOut,reasonDescription,"Booked",0)
             ).addOnCompleteListener {
-                Toast.makeText(activity, "Added successfully", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Added successfully", Toast.LENGTH_SHORT).show()
                 showSeatDateWise(dateToCome,1,editTextBookedSeat,editTextAvailableSeat,date)
             }
         } else {
@@ -172,7 +172,7 @@ class HomeFragment : Fragment() {
                         val  availableSeat = item.child("available").value.toString()
 
                         if(flag==1) {
-                            Toast.makeText(activity, "Added successfully", Toast.LENGTH_LONG).show()
+                            Toast.makeText(activity, "Show", Toast.LENGTH_SHORT).show()
                             firebaseReference.ref.child(item.key.toString())
                                 .setValue(
                                     SeatData(
@@ -187,11 +187,11 @@ class HomeFragment : Fragment() {
                         editTextAvailable.text = valueOf(availableSeat).toString()
                     }
                 }
-                else
-                {
-                    Toast.makeText(activity, "You can not book for $dateToCome", Toast.LENGTH_LONG).show()
-                    date.text.clear()
-                }
+//                else
+//                {
+//                    Toast.makeText(activity, "You can not book for $dateToCome", Toast.LENGTH_SHORT).show()
+//                    date.text.clear()
+//                }
             }
         })
     }
@@ -222,6 +222,7 @@ class HomeFragment : Fragment() {
         val currentUserId = auth.currentUser!!.uid
         val selectedDate = view?.findViewById<EditText>(R.id.edit_date)!!.text.toString()
         var isSelected  = true
+        val date = view?.findViewById<EditText>(R.id.edit_date)!!
 
         firebaseReference.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(snapshot: DatabaseError) {}
@@ -235,6 +236,7 @@ class HomeFragment : Fragment() {
                     if(selectedDate==bookedDate && bookedUserId==currentUserId && parseInt(isDeleted)==0){
                         Toast.makeText(activity,"You are already booked for this day",Toast.LENGTH_LONG).show()
                         isSelected=false
+                        date.text.clear()
                         break
                     }
                 }
