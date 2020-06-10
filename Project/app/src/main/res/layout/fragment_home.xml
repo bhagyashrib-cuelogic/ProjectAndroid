@@ -8,13 +8,14 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Seat"
+            android:id="@+id/text_textTotalSeat"
             android:textSize="20dp"/>
 
         <TextView
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
             android:text="200"
+            android:textSize="20sp"
             android:id="@+id/text_totalSeat"
             android:textColor="#E53935"/>
 
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Booked Seat"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/text_totalSeat"
+            android:layout_below="@+id/text_textTotalSeat"
             android:textSize="20dp"/>
 
         <TextView
@@ -38,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
             android:id="@+id/text_bookedSeat"
+            android:layout_below="@+id/text_totalSeat"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:textColor="#E53935"/>
@@ -46,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Available Seat"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/text_bookedSeat"
             android:textSize="20dp"/>
 
@@ -54,7 +57,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:layout_below="@+id/text_bookedSeat"
             android:id="@+id/text_reservedSeat"
             android:textColor="#E53935"/>
 
@@ -95,12 +100,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="100dp"
-                    android:text="Enter Date"
+                    android:text="Choose Date"
                     android:textSize="20sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_date"
                     android:layout_width="100dp"
+                    android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp" />
 
@@ -115,13 +121,13 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_checkInTime"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:hint="Check In" />
+                    android:text="Check In" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_checkOutTime"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -135,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/timeLayout"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp" />
 
             <Button
@@ -143,13 +149,10 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/spinner"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="20dp"
-                android:text="Save"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="20dp" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Save" />
 
         </RelativeLayout>
     </RelativeLayout>

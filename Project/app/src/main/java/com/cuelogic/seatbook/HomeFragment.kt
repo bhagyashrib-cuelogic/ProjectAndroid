@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import java.lang.Integer.valueOf
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 /**
  * A simple [Fragment] subclass.
@@ -37,7 +39,7 @@ class HomeFragment : Fragment() {
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var homeFragment:FrameLayout
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,24 +51,35 @@ class HomeFragment : Fragment() {
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
         val editTextAvailableSeat= view.findViewById<TextView>(R.id.text_reservedSeat)!!
         val buttonBookingDataSave = view.findViewById<Button>(R.id.button_save)!!
-        val date = view.findViewById<EditText>(R.id.edit_date)!!
-        val chooseTimeCheckIn = view.findViewById<EditText>(R.id.edit_checkInTime)
-        val chooseTimeCheckOut = view.findViewById<EditText>(R.id.edit_checkOutTime)
+        val date = view.findViewById<TextView>(R.id.edit_date)!!
+        val chooseTimeCheckIn = view.findViewById<TextView>(R.id.edit_checkInTime)
+        val chooseTimeCheckOut = view.findViewById<TextView>(R.id.edit_checkOutTime)
 
 
         //Current date show data
         val calendarInstance = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("d-M-yyyy")
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
         showSeatDateWise(currentDate,0,editTextBookedSeat,editTextAvailableSeat,date)
+        //DatePicker
+
+       date.setOnTouchListener(OnTouchListener { v, event ->
+        datePicker(context,date)
+           false
+       })
+
 
         //get Time
-        chooseTimeCheckIn.setOnClickListener{
+        chooseTimeCheckIn.setOnTouchListener { v, event->
             selectTimePicker(chooseTimeCheckIn)
+            false
         }
-        chooseTimeCheckOut.setOnClickListener{
+
+        chooseTimeCheckOut.setOnTouchListener { v, event->
             selectTimePicker(chooseTimeCheckOut)
+            false
         }
+
 
 
         auth = FirebaseAuth.getInstance()
@@ -87,12 +100,9 @@ class HomeFragment : Fragment() {
         reasonSpinner.adapter = adapter
         getReasonData()
 
-        //DatePicker
-        date.setOnClickListener {
-            datePicker(context,date)
-        }
 
         //Onchange date show data
+        date.text = currentDate
         date.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 val dateToCome = date.text.toString()
@@ -118,17 +128,21 @@ class HomeFragment : Fragment() {
 
 
     private fun saveDate() {
-        val date = view?.findViewById<EditText>(R.id.edit_date)!!
-        val checkInTime = view?.findViewById<EditText>(R.id.edit_checkInTime)!!
-        val checkOutTime = view?.findViewById<EditText>(R.id.edit_checkOutTime)!!
+        val date = view?.findViewById<TextView>(R.id.edit_date)!!
+        val checkInTime = view?.findViewById<TextView>(R.id.edit_checkInTime)!!
+        val checkOutTime = view?.findViewById<TextView>(R.id.edit_checkOutTime)!!
         val reason = view?.findViewById<Spinner>(R.id.spinner)!!
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
         val editTextAvailableSeat=view?.findViewById<TextView>(R.id.text_reservedSeat)!!
 
-        val dateToCome = date.text.toString()
+        val dateToCome = date?.text.toString()
         val checkTime = checkInTime.text.toString()
         val checkOut = checkOutTime.text.toString()
         val reasonDescription = reason.selectedItem.toString()
+
+        val calendarInstance = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
+        val currentDate = dateFormat.format(calendarInstance)
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
             val currentUserUid = auth.currentUser!!.uid
@@ -139,16 +153,17 @@ class HomeFragment : Fragment() {
                 BookingData(currentUserUid, dateToCome, checkTime, checkOut,reasonDescription,"Booked",0)
             ).addOnCompleteListener {
                 Toast.makeText(activity, "Added successfully", Toast.LENGTH_SHORT).show()
-                showSeatDateWise(dateToCome,1,editTextBookedSeat,editTextAvailableSeat,date)
+                showSeatDateWise(dateToCome,1,editTextBookedSeat,editTextAvailableSeat,date!!)
             }
         } else {
-            date.error = "Please fill date"
             checkInTime.error = "Please fill check in time "
             checkOutTime.error = "Please fill check out time"
         }
-        date.text.clear()
-        checkInTime.text.clear()
-        checkOutTime.text.clear()
+
+        checkInTime.text = "Check In"
+        checkOutTime.text = "Check Out"
+        date.text = currentDate
+
     }
 
     //Return reason.
@@ -170,7 +185,7 @@ class HomeFragment : Fragment() {
     }
 
     //show seat data
-    private fun showSeatDateWise(dateToCome: String,flag:Int,editTextBookedSeat:TextView,editTextAvailable:TextView,date:EditText) {
+    private fun showSeatDateWise(dateToCome: String,flag:Int,editTextBookedSeat:TextView,editTextAvailable:TextView,date:TextView) {
         val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
             .orderByChild("date")
             .equalTo(dateToCome)
@@ -210,8 +225,9 @@ class HomeFragment : Fragment() {
     }
 
     //datePicker method.
-    private fun datePicker(context: Context, date:EditText  ){
+    private fun datePicker(context: Context, date:TextView ){
         date.setOnClickListener {
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
             val cal: Calendar = Calendar.getInstance()
             val year = cal.get(Calendar.YEAR)
             val month = cal.get(Calendar.MONTH)
@@ -219,13 +235,21 @@ class HomeFragment : Fragment() {
 
             val dialog = DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, date)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.datePicker.minDate = System.currentTimeMillis() - 1000 - 1000 - 1000 - 1000
+            dialog.datePicker.minDate = System.currentTimeMillis() - 1000
             dialog.show()
         }
         mDateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, day ->
             val month =month+1
-            val dateSet: String = "$day-$month-$year"
-            date.setText(dateSet)
+            var fm = "" + month
+            var fd = "" + day
+            if(month<10){
+                fm = "0$month";
+            }
+            if (day<10){
+                fd= "0$day";
+            }
+            val dateSet: String = "$fd-$fm-$year"
+            date.text = dateSet
         }
     }
 
@@ -233,9 +257,9 @@ class HomeFragment : Fragment() {
     private fun checkBookedSeatForParticularDateByUser(){
         val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
         val currentUserId = auth.currentUser!!.uid
-        val selectedDate = view?.findViewById<EditText>(R.id.edit_date)!!.text.toString()
+        val selectedDate = view?.findViewById<TextView>(R.id.edit_date)!!.text.toString()
         var isSelected  = true
-        val date = view?.findViewById<EditText>(R.id.edit_date)!!
+        val date = view?.findViewById<TextView>(R.id.edit_date)!!
 
         firebaseReference.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(snapshot: DatabaseError) {}
@@ -249,7 +273,7 @@ class HomeFragment : Fragment() {
                     if(selectedDate==bookedDate && bookedUserId==currentUserId && parseInt(isDeleted)==0){
                         Toast.makeText(activity,"You are already booked for this day",Toast.LENGTH_LONG).show()
                         isSelected=false
-                        date.text.clear()
+                        //date.text.clear()
                         break
                     }
                 }
@@ -258,7 +282,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun selectTimePicker(chooseTime:EditText){
+    private fun selectTimePicker(chooseTime:TextView){
         val mTimePicker: TimePickerDialog
         val mcurrentTime = Calendar.getInstance()
         val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
@@ -272,6 +296,14 @@ class HomeFragment : Fragment() {
         chooseTime.setOnClickListener {
             mTimePicker.show()
         }
+    }
+
+    private fun getCurrentDate(){
+        val calendarInstance = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
+        val currentDate = dateFormat.format(calendarInstance)
+        val date = view?.findViewById<TextView>(R.id.edit_date)!!
+        date.text = currentDate
     }
 }
 

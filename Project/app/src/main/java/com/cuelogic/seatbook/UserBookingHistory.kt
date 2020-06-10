@@ -18,11 +18,13 @@ class UserBookingHistory( context: Context, private val layoutResId:Int, private
         val textViewDate: TextView? = view.findViewById<TextView>(R.id.datefirebase)
         val textViewCheckInTime: TextView? = view.findViewById<TextView>(R.id.checkintime)
         val textViewCheckOutTime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
+        val status :TextView?=view.findViewById(R.id.status)
 
         val info = infoList[position]
         textViewDate?.text = info.date
         textViewCheckInTime?.text = info.CheckInTime
         textViewCheckOutTime?.text = info.CheckOutTime
+        status?.text = info.status
 
         return view
 

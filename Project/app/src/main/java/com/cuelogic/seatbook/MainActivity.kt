@@ -152,7 +152,6 @@ class MainActivity : AppCompatActivity() {
                         Log.i("Name", "udi is $uid")
                         //Store UID into sharedpreferences
                         session.setUId(uid.toString())
-
                         val intent:Intent = Intent(applicationContext,SeatBookActivity::class.java)
                         startActivity(intent)
                     } else {

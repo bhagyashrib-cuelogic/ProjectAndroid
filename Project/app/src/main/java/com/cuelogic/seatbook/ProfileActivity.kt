@@ -74,8 +74,8 @@ class ProfileActivity : AppCompatActivity() {
 
              override fun onDataChange(snapshot: DataSnapshot) {
                 for(item in snapshot.children){
-                    val empName = item.child("empName").value.toString()
-                    val empEmail = item.child("emailAddress").value.toString()
+                    val empName = item.child("empName").value.toString().trim()
+                    val empEmail = item.child("emailAddress").value.toString().trim()
                     val empCue = item.child("employeeProfile").value.toString()
                     val empDesignation = item.child("employeeDesignation").value.toString()
                     val isActivity = parseInt(item.child("active").value.toString())

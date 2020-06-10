@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -34,12 +35,15 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
         val textViewdate:TextView? = view.findViewById<TextView>(R.id.datefirebase)
         val textViewcheckintime: TextView? = view.findViewById<TextView>(R.id.checkintime)
         val textViewcheckouttime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
+        val textStatus: TextView? = view.findViewById<TextView>(R.id.status)
         val buttonCancel = view.findViewById<Button>(R.id.cancel)!!
+
 
         val info = infoList[position]
         textViewdate?.text=info.date
         textViewcheckintime?.text = info.CheckInTime
         textViewcheckouttime?.text = info.CheckOutTime
+        textStatus?.text = info.status
 
         buttonCancel.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -65,7 +69,7 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
                                         userUid, bookedDate, checkInTime, checkOutTime, reason, "cancel", 1
                                     )
                                 ).addOnCompleteListener(){
-                                    Toast.makeText(context,"update data",Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context,"cancel booking",Toast.LENGTH_SHORT).show()
                                     updateSeatDataOnCancel(bookedDate)
                                 }
                             }
@@ -77,7 +81,7 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
             val dialog: AlertDialog = builder.create()
             dialog.show()
         }
-
+        this.notifyDataSetChanged()
         return view
     }
 
