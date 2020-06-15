@@ -4,156 +4,208 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/homeFragmentLayout"
+    android:background="#ffffff"
     tools:context=".HomeFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Seat"
-            android:id="@+id/text_textTotalSeat"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:text="200"
-            android:textSize="20sp"
-            android:id="@+id/text_totalSeat"
-            android:textColor="#E53935"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Booked Seat"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/text_textTotalSeat"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:id="@+id/text_bookedSeat"
-            android:layout_below="@+id/text_totalSeat"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:textColor="#E53935"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Available Seat"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/text_bookedSeat"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            android:layout_below="@+id/text_bookedSeat"
-            android:id="@+id/text_reservedSeat"
-            android:textColor="#E53935"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:id="@+id/relativeWhole">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/text_title"
-        android:text="When to go"
-        android:textSize="30sp"
-        android:textColor="#D81B60"/>
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/reltiveLayout"
-            android:layout_width="wrap_content"
+            android:id="@+id/calender_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_title"
-            android:layout_marginTop="-13dp">
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/gray_background_round"
+            android:padding="10dp">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+            <ImageView
+                android:id="@+id/backword_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:src="@drawable/forward_arrow"
+                android:contentDescription="@string/backword_button_icon" />
 
-                <TextView
-                    android:id="@+id/text_date"
+            <RelativeLayout
+                android:id="@+id/calender_edittext_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/date_range_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="100dp"
-                    android:text="Choose Date"
-                    android:textSize="20sp" />
+                    android:src="@drawable/calender_date"
+                    android:contentDescription="@string/calender_icon" />
 
                 <TextView
                     android:id="@+id/edit_date"
-                    android:layout_width="100dp"
-                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/date_range_icon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp" />
+                    android:text="13-05-2020"
+                    android:fontFamily="@font/verdana"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/date_range_icon" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/timeLayout"
+            <ImageView
+                android:id="@+id/forword_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linearLayout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:src="@drawable/background_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-                <TextView
-                    android:id="@+id/edit_checkInTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Check In" />
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_marginTop="6dp"
+            android:id="@id/available_seat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@drawable/layout_backgroud"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/calender_layout">
+
+            <TextView
+                android:id="@+id/text_reservedSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="40sp"
+                android:fontFamily="@font/futura_medium_bt"/>
+            <TextView
+                android:id="@+id/book_seat_text"
+                android:layout_below="@id/text_reservedSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:fontFamily="@font/verdana"
+                android:textStyle="bold"
+                android:text="Available Seats"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:id="@id/booked_seat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_backgroud"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="8dp"
+            android:layout_below="@id/available_seat_layout">
+
+            <TextView
+                android:id="@+id/text_bookedSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="5dp"
+                android:textSize="40sp"
+                android:fontFamily="@font/verdana"/>
+            <TextView
+                android:id="@+id/reserved_seat_text"
+                android:layout_below="@id/text_bookedSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:fontFamily="@font/verdana"
+                android:textStyle="bold"
+                android:text="Reserved Seats"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/booked_seat_layout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/time_layout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_linear_layout">
                 <TextView
-                    android:id="@+id/edit_checkOutTime"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:hint="Check Out" />
+                    android:text="Check In"
+                    android:fontFamily="@font/verdana_bold"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:id="@+id/text_signIn"/>
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check Out"
+                    android:fontFamily="@font/verdana_bold"
+                    android:textStyle="bold"
+                    android:textSize="15sp" />
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time_linear_layout">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/verdana"
+                    android:textSize="15sp"
+                    android:id="@+id/edit_checkInTime"/>
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_checkOutTime"
+                    android:fontFamily="@font/verdana"
+                    android:textSize="15sp"
+                    android:text="20dp"/>
+            </LinearLayout>
+        </RelativeLayout>
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/timeLayout"
+                android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/time_layout"
+                android:layout_marginTop="10dp"/>
 
-            <Button
-                android:id="@+id/button_save"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinner"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Save" />
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/button_border"
+            android:textSize="20sp"
+            android:fontFamily="@font/verdana_bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/spinner"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="10dp"
+            android:text="RESERVED MY SEAT" />
 
-        </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

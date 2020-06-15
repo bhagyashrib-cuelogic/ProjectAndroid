@@ -11,7 +11,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_seat_book.*
-import kotlinx.android.synthetic.main.custome_toolbar.*
+
 
 class SeatBookActivity : AppCompatActivity() {
 

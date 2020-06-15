@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,9 +17,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.lang.Integer.parseInt
 
-class requestUserData( context: Context, private val layoutResId:Int, private val infoList:List<BookingData>) :
+class requestUserData( context: Context, private var layoutResId:Int, var infoList:ArrayList<BookingData>) :
            ArrayAdapter<BookingData>(context,layoutResId,infoList){
-
 
     private lateinit var auth: FirebaseAuth
 
@@ -37,7 +35,6 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
         val textViewcheckouttime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
         val textStatus: TextView? = view.findViewById<TextView>(R.id.status)
         val buttonCancel = view.findViewById<Button>(R.id.cancel)!!
-
 
         val info = infoList[position]
         textViewdate?.text=info.date
@@ -71,6 +68,8 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
                                 ).addOnCompleteListener(){
                                     Toast.makeText(context,"cancel booking",Toast.LENGTH_SHORT).show()
                                     updateSeatDataOnCancel(bookedDate)
+                                    infoList.removeAt(position)
+                                    notifyDataSetChanged();
                                 }
                             }
                         }
@@ -81,7 +80,7 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
             val dialog: AlertDialog = builder.create()
             dialog.show()
         }
-        this.notifyDataSetChanged()
+
         return view
     }
 
@@ -100,14 +99,14 @@ class requestUserData( context: Context, private val layoutResId:Int, private va
                         val availableSeat = item.child("available").value.toString()
 
                         firebaseReference.ref.child(item.key.toString())
-                        .setValue(
-                            SeatData(
-                                parseInt(bookedSeat) - 1,
-                                200,
-                                parseInt(availableSeat) + 1,
-                                dateToCome
+                            .setValue(
+                                SeatData(
+                                    parseInt(bookedSeat) - 1,
+                                    200,
+                                    parseInt(availableSeat) + 1,
+                                    dateToCome
+                                )
                             )
-                        )
                     }
                 }
             }
