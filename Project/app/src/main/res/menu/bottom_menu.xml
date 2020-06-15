@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="BookSeat"
+        android:icon="@drawable/seat_icon"/>
+
+    <item
+        android:id="@+id/request"
+        android:title="Requests"
+        android:icon="@drawable/ic_request_icon" />
+
+    <item
+        android:id="@+id/history"
+        android:title="History"
+        android:icon="@drawable/ic_subject_black_24dp"/>
+</menu>
