@@ -1,13 +1,13 @@
 package com.cuelogic.seatbook
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.cuelogic.seatbook.adapter.RequestUserData
+import com.cuelogic.seatbook.model.BookingData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Integer.parseInt
@@ -47,7 +47,7 @@ class RequestFragment : Fragment() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    var adapter: requestUserData?
+                    var adapter: RequestUserData?
                     for (item in snapshot.children) {
                         val userUid = item.child("id").value.toString()
                         val isBooked = parseInt(item.child("booked").value.toString())
@@ -58,7 +58,7 @@ class RequestFragment : Fragment() {
                                 val infoUser = item.getValue(BookingData::class.java)!!
                                 userList.add(infoUser)
                                 adapter = activity?.let {
-                                    requestUserData(
+                                    RequestUserData(
                                         it,
                                         R.layout.user_request_list,
                                         userList

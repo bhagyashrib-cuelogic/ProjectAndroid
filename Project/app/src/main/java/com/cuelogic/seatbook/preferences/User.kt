@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.preferences
 
 import android.content.Context
 import android.content.SharedPreferences

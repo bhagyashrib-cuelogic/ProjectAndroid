@@ -21,20 +21,20 @@
                 android:layout_height="wrap_content"
                 android:text="BookMySeat"
                 android:layout_alignParentLeft="true"
-                android:textColor="#FD595E"
+                android:textColor="#E8FD595E"
                 android:fontFamily="@font/verdana_bold"
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:textSize="25sp"/>
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/profile_icon"
+                android:src="@drawable/ic_profile_icon"
                 android:id="@+id/profile_icon"/>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>

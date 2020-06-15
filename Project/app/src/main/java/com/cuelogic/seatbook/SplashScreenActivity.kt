@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cuelogic.seatbook.preferences.User
 
 
 class SplashScreenActivity : AppCompatActivity() {
 
-    private val splashTime :Long= 3000
+    private val splashTime: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
             if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
 
-                var session = User(MainActivity@ this)
+                var session =
+                    User(MainActivity@ this)
                 var value = session.getUId()
                 if (value != "") {
                     startActivity(
@@ -36,11 +38,10 @@ class SplashScreenActivity : AppCompatActivity() {
                     )
                     finish()
                 }
-            }else
-            {
-                Toast.makeText(this,"Please check your network connection",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Please check your network connection", Toast.LENGTH_LONG)
+                    .show()
             }
-        },splashTime)
-
+        }, splashTime)
     }
 }

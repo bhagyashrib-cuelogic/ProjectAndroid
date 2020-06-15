@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import com.cuelogic.seatbook.model.BookingData
+import com.cuelogic.seatbook.adapter.UserBookingHistory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Integer.parseInt
@@ -54,19 +56,17 @@ class HistoryFragment : Fragment() {
                     val userUid = item.child("id").value.toString()
                     val chooseDate = item.child("date").value.toString()
                     val isBooked = parseInt(item.child("booked").value.toString())
-                    if(currentDate > chooseDate){
-                        Log.i("date","true $currentDate")
-                    }else{
-                        Log.i("date","false $chooseDate")
-                    }
-
 
                     if(userUid==currentUser) {
                         if (chooseDate < currentDate || isBooked == 1) {
                             val infoUser = item.getValue(BookingData::class.java)!!
                             userList.add(infoUser)
                             val adapter: UserBookingHistory? =
-                                UserBookingHistory(context!!, R.layout.history_list, userList)
+                                UserBookingHistory(
+                                    context!!,
+                                    R.layout.history_list,
+                                    userList
+                                )
                             listView.adapter = adapter
                             adapter?.notifyDataSetChanged()
                         }
