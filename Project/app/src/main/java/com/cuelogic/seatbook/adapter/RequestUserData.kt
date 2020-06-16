@@ -30,7 +30,7 @@ class RequestUserData(
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
     private lateinit var auth: FirebaseAuth
-private  var firebaseOperation = FirebaseOperation()
+    private var firebaseOperation = FirebaseOperation()
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
         val view: View = layoutInflater.inflate(layoutResId, null)
@@ -53,15 +53,18 @@ private  var firebaseOperation = FirebaseOperation()
             builder.setTitle("Cancel Booking")
             builder.setMessage("Do you want cancel?")
             builder.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
-                firebaseOperation.cancelTicker(info.date, currentUser, object : IAddonCompleteListener {
-                    override fun addOnCompleteListener() {
-                        Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
-                            .show()
-                        infoList.removeAt(position)
-                        notifyDataSetChanged()
-                    }
+                firebaseOperation.cancelTicker(
+                    info.date,
+                    currentUser,
+                    object : IAddonCompleteListener {
+                        override fun addOnCompleteListener() {
+                            Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
+                                .show()
+                            infoList.removeAt(position)
+                            notifyDataSetChanged()
+                        }
 
-                })
+                    })
             }
             builder.setNegativeButton("Cancel", null)
             val dialog: AlertDialog = builder.create()
@@ -70,33 +73,6 @@ private  var firebaseOperation = FirebaseOperation()
         return view
     }
 
-    private fun updateSeatDataOnCancel(dateToCome: String) {
-        val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
-            .orderByChild("date")
-            .equalTo(dateToCome)
 
-        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (item in snapshot.children) {
-                        val bookedSeat = item.child("booked").value.toString()
-                        val availableSeat = item.child("available").value.toString()
-
-                        firebaseReference.ref.child(item.key.toString())
-                            .setValue(
-                                SeatData(
-                                    parseInt(bookedSeat) - 1,
-                                    200,
-                                    parseInt(availableSeat) + 1,
-                                    dateToCome
-                                )
-                            )
-                    }
-                }
-            }
-        })
-    }
 }
 
