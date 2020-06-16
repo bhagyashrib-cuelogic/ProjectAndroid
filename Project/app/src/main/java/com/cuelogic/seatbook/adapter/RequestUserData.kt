@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.cuelogic.seatbook.R
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.cuelogic.seatbook.firebaseManager.FirebaseOperation
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
@@ -28,11 +30,10 @@ class RequestUserData(
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
     private lateinit var auth: FirebaseAuth
-
+private  var firebaseOperation = FirebaseOperation()
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
         val view: View = layoutInflater.inflate(layoutResId, null)
-
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser!!
         val currentUser = user.uid!!
@@ -42,52 +43,24 @@ class RequestUserData(
         val textViewCheckOutTime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
         val textStatus: TextView? = view.findViewById<TextView>(R.id.status)
         val buttonCancel = view.findViewById<Button>(R.id.cancel)!!
-
         val info = infoList[position]
         textViewDate?.text = info.date
         textViewCheckInTime?.text = info.CheckInTime
         textViewCheckOutTime?.text = info.CheckOutTime
         textStatus?.text = info.status
-
         buttonCancel.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Cancel Booking")
             builder.setMessage("Do you want cancel?")
             builder.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
-                dataReference.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {}
-
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (item in snapshot.children) {
-                            val userUid = item.child("id").value.toString()
-                            val bookedDate = item.child("date").value.toString()
-                            val isEmpty = parseInt(item.child("booked").value.toString())
-
-                            if (userUid == currentUser && bookedDate == info.date && isEmpty == 0) {
-                                val checkInTime = item.child("checkInTime").value.toString()
-                                val checkOutTime = item.child("checkInTime").value.toString()
-                                val reason = item.child("reason").value.toString()
-
-                                dataReference.child(item.key.toString()).setValue(
-                                    BookingData(
-                                        userUid,
-                                        bookedDate,
-                                        checkInTime,
-                                        checkOutTime,
-                                        reason,
-                                        "cancel",
-                                        1
-                                    )
-                                ).addOnCompleteListener() {
-                                    Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
-                                        .show()
-                                    updateSeatDataOnCancel(bookedDate)
-                                    infoList.removeAt(position)
-                                    notifyDataSetChanged()
-                                }
-                            }
-                        }
+                firebaseOperation.cancelTicker(info.date, currentUser, object : IAddonCompleteListener {
+                    override fun addOnCompleteListener() {
+                        Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
+                            .show()
+                        infoList.removeAt(position)
+                        notifyDataSetChanged()
                     }
+
                 })
             }
             builder.setNegativeButton("Cancel", null)

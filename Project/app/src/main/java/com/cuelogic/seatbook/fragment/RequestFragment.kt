@@ -45,7 +45,6 @@ class RequestFragment : Fragment() {
 
         dataReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     var adapter: RequestUserData?
