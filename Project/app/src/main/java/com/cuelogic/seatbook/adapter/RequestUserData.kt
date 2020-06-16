@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.cuelogic.seatbook.R
+import com.cuelogic.seatbook.firebaseManager.FirebaseOperation
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +29,7 @@ class RequestUserData(
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
     private lateinit var auth: FirebaseAuth
+    var firebase= FirebaseOperation()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
@@ -81,7 +83,7 @@ class RequestUserData(
                                 ).addOnCompleteListener() {
                                     Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
                                         .show()
-                                    updateSeatDataOnCancel(bookedDate)
+                                    firebase.updateSeatDataOnCancel(bookedDate)
                                     infoList.removeAt(position)
                                     notifyDataSetChanged()
                                 }
@@ -97,33 +99,6 @@ class RequestUserData(
         return view
     }
 
-    private fun updateSeatDataOnCancel(dateToCome: String) {
-        val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
-            .orderByChild("date")
-            .equalTo(dateToCome)
 
-        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (item in snapshot.children) {
-                        val bookedSeat = item.child("booked").value.toString()
-                        val availableSeat = item.child("available").value.toString()
-
-                        firebaseReference.ref.child(item.key.toString())
-                            .setValue(
-                                SeatData(
-                                    parseInt(bookedSeat) - 1,
-                                    200,
-                                    parseInt(availableSeat) + 1,
-                                    dateToCome
-                                )
-                            )
-                    }
-                }
-            }
-        })
-    }
 }
 
