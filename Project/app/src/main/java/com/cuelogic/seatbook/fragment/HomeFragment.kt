@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.fragment
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,6 +15,7 @@ import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
@@ -60,7 +61,6 @@ class HomeFragment : Fragment() {
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
-        val c = Calendar.getInstance()
         val timeFormat = SimpleDateFormat("HH:mm a")
         val currentTime = timeFormat.format(calendarInstance)
         chooseTimeCheckIn.text = currentTime.toString()
@@ -69,10 +69,9 @@ class HomeFragment : Fragment() {
 
 
         val calendar = Calendar.getInstance()
-        calendar.time = dateFormat.parse(date.text.toString())!!
         calendar.set(
             calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH) + 1,
+            calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
         dateIncrease.setOnClickListener {
@@ -145,7 +144,8 @@ class HomeFragment : Fragment() {
 
         //Spinner set adapter values
         adapter =
-            ArrayAdapter<String>(context, R.layout.spinner_item, spinnerDataList)
+            ArrayAdapter<String>(context,
+                R.layout.spinner_item, spinnerDataList)
         reasonSpinner.adapter = adapter
 
         getReasonData()
@@ -193,7 +193,6 @@ class HomeFragment : Fragment() {
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
-        val c = Calendar.getInstance()
         val timeFormat = SimpleDateFormat("HH:mm a")
         val currentTime = timeFormat.format(calendarInstance)
 
@@ -214,7 +213,7 @@ class HomeFragment : Fragment() {
                     0
                 )
             ).addOnCompleteListener {
-                Toast.makeText(activity, "Added successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
                 showSeatDateWise(dateToCome, 1, editTextBookedSeat, editTextAvailableSeat, date!!)
             }
         }

@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.activies
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.Toast
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.EmployeeData
 import com.cuelogic.seatbook.preferences.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn

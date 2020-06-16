@@ -1,10 +1,11 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.activies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.EmployeeData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

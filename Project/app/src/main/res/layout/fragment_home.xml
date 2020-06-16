@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/homeFragmentLayout"
     android:background="#ffffff"
-    tools:context=".HomeFragment">
+    tools:context=".fragment.HomeFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -48,7 +48,6 @@
                     android:layout_toRightOf="@id/date_range_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="13-05-2020"
                     android:textColor="#585858"
                     android:fontFamily="@font/verdana_bold"
                     android:textSize="18sp"

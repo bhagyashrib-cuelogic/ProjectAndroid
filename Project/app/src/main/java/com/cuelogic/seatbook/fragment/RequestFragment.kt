@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.adapter.RequestUserData
 import com.cuelogic.seatbook.model.BookingData
 import com.google.firebase.auth.FirebaseAuth
