@@ -21,7 +21,20 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="windowNoTitle">false</item>
+        <item name="android:titleTextStyle">@font/verdana_bold</item>
+        <item name="titleTextColor">#E8FD595E</item>
+        <item name="android:textSize">25sp</item>
     </style>
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">25sp</item>
+        <item name="windowActionBar">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowNoTitle">false</item>
+        <item name="android:titleTextStyle">@font/verdana_bold</item>
+        <item name="titleTextColor">#E8FD595E</item>
+    </style>
+
 
     <style name="MyTimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
         <item name="android:timePickerMode">spinner</item>

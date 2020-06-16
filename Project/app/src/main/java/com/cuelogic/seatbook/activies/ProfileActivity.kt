@@ -1,10 +1,11 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.activies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.EmployeeData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -52,7 +53,7 @@ class ProfileActivity : AppCompatActivity() {
                 v.tag = 0
                 saveButton.text = "Save"
             } else {
-                saveButton.text = "Edit"
+                saveButton.text = "Update"
                 employeeName.isEnabled = false
                 cueId.isEnabled = false
                 designation.isEnabled = false
@@ -126,7 +127,7 @@ class ProfileActivity : AppCompatActivity() {
                     ).addOnCompleteListener() {
                         Toast.makeText(
                             applicationContext,
-                            "Updates Successfully",
+                            "Update Successfully",
                             Toast.LENGTH_SHORT
                         ).show()
                         name.setText(empName)

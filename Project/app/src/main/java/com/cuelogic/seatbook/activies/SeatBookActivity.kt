@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.activies
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import com.cuelogic.seatbook.R
 import kotlinx.android.synthetic.main.activity_seat_book.*
 
 class SeatBookActivity : AppCompatActivity() {
@@ -17,7 +18,9 @@ class SeatBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seat_book)
 
-        navController = Navigation.findNavController(this, R.id.fragment)
+        navController = Navigation.findNavController(this,
+            R.id.fragment
+        )
         //Setting the navigation controller to Bottom Nav
         bottomNav.setupWithNavController(navController)
 

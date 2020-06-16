@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.cuelogic.seatbook.HomeFragment"
+        android:name="com.cuelogic.seatbook.fragment.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/request"
-        android:name="com.cuelogic.seatbook.RequestFragment"
+        android:name="com.cuelogic.seatbook.fragment.RequestFragment"
         android:label="Request"
         tools:layout="@layout/fragment_request" />
     <fragment
         android:id="@+id/history"
-        android:name="com.cuelogic.seatbook.HistoryFragment"
+        android:name="com.cuelogic.seatbook.fragment.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.fragment
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,6 +15,7 @@ import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
@@ -145,7 +146,8 @@ class HomeFragment : Fragment() {
 
         //Spinner set adapter values
         adapter =
-            ArrayAdapter<String>(context, R.layout.spinner_item, spinnerDataList)
+            ArrayAdapter<String>(context,
+                R.layout.spinner_item, spinnerDataList)
         reasonSpinner.adapter = adapter
 
         getReasonData()

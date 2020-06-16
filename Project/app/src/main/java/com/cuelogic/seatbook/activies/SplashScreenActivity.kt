@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook
+package com.cuelogic.seatbook.activies
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.preferences.User
 
 
