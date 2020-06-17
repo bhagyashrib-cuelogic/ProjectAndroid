@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.adapter.RequestUserData
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.cuelogic.seatbook.firebaseManager.RequestFirebaseData
 import com.cuelogic.seatbook.model.BookingData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -33,46 +36,20 @@ class RequestFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_request, container, false)
 
-        dataReference = FirebaseDatabase.getInstance().getReference("Booking")
+
         userList = ArrayList()
         listView = view.findViewById(R.id.listViewItem)
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser!!.uid
+        val firebaseRequest = RequestFirebaseData()
 
-        val calendarInstance = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
-        val currentDate = dateFormat.format(calendarInstance)
-
-        dataReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var adapter: RequestUserData?
-                    for (item in snapshot.children) {
-                        val userUid = item.child("id").value.toString()
-                        val isBooked = parseInt(item.child("booked").value.toString())
-                        val chooseDate = item.child("date").value.toString()
-
-                        if (userUid == currentUser) {
-                            if (isBooked == 0 && chooseDate >= currentDate) {
-                                val infoUser = item.getValue(BookingData::class.java)!!
-                                userList.add(infoUser)
-                                adapter = activity?.let {
-                                    RequestUserData(
-                                        it,
-                                        R.layout.user_request_list,
-                                        userList
-                                    )
-                                }
-                                listView.adapter = adapter!!
-                                adapter.notifyDataSetChanged()
-                            }
-                        }
-                    }
+        activity?.let {
+            firebaseRequest.showUserCurrentBookingList(userList,listView, it,object :
+                IAddonCompleteListener {
+                override fun addOnCompleteListener() {
+                    Toast.makeText(activity,"Request", Toast.LENGTH_SHORT).show()
                 }
-            }
-        })
+            })
+        }
         return view
     }
 }
+
