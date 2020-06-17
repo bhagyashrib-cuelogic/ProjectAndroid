@@ -35,8 +35,6 @@ class RequestFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_request, container, false)
-
-
         userList = ArrayList()
         listView = view.findViewById(R.id.listViewItem)
         val firebaseRequest = RequestFirebaseData()

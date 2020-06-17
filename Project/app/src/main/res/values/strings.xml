@@ -6,4 +6,5 @@
     <string name="calender_icon" />
     <string name="backword_button_icon" />
     <string name="reserve_my_seat">RESERVE MY SEAT</string>
+    <string name="bookmyseat">BookMySeat</string>
 </resources>

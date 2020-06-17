@@ -6,17 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relativeOnes"
+    android:background="#ffffff"
     tools:context=".activies.MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffffff"
+        android:id="@+id/customeToolbar"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bookmyseat"
+                android:layout_alignParentLeft="true"
+                android:textColor="#E8FD595E"
+                android:fontFamily="@font/verdana_bold"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="200dp"
-        android:text="google sign in"
+        android:text="Google Sign In"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:id="@+id/button_googleSign"
-        android:textColor="#E53935"/>
+        android:fontFamily="@font/verdana_bold"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/button_border"/>
 
 </RelativeLayout>
