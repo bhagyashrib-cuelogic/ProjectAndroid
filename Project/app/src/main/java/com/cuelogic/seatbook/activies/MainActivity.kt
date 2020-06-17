@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         var session = User(MainActivity@ this)
         var value = session.getUId()
-        Log.d("Name", "$value")
+        Log.d("EmployeeName", "$value")
         if (value != "") {
             var intent: Intent = Intent(applicationContext, SeatBookActivity::class.java)
             startActivity(intent)
