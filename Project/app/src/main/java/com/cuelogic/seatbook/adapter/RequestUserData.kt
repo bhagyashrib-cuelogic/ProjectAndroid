@@ -11,10 +11,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.cuelogic.seatbook.R
-import com.cuelogic.seatbook.firebaseManager.firebaseOperation
+import com.cuelogic.seatbook.repository.firebaseManager.firebaseOperation
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
-import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -30,7 +29,8 @@ class RequestUserData(
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
     private lateinit var auth: FirebaseAuth
-    var firebaseReference = firebaseOperation()
+    var firebaseReference =
+        firebaseOperation()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)

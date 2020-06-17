@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook.firebaseManager
+package com.cuelogic.seatbook.repository.firebaseManager
 
 import android.widget.ListView
 import androidx.fragment.app.FragmentActivity

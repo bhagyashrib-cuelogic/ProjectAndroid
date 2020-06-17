@@ -1,4 +1,4 @@
-package com.cuelogic.seatbook.firebaseManager
+package com.cuelogic.seatbook.repository.firebaseManager
 
 import android.widget.TextView
 import android.widget.Toast

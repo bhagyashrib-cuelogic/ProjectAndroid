@@ -7,18 +7,13 @@ import android.widget.EditText
 import android.widget.Toast
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
-import com.cuelogic.seatbook.firebaseManager.ProfileFirebaseData
-import com.cuelogic.seatbook.model.EmployeeData
+import com.cuelogic.seatbook.callback.ProfileListener
+import com.cuelogic.seatbook.repository.firebaseManager.ProfileFirebaseData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_seat_book.*
-import java.lang.Integer.parseInt
 
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity(){
 
     private lateinit var saveButton: Button
     private lateinit var employeeName: EditText
@@ -27,6 +22,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var cueId: EditText
     private lateinit var designation: EditText
+    private lateinit var  viewModel : ProfileFirebaseData
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
         setSupportActionBar(customeToolbar)
+       // viewModel = ViewModelProvider(this).get(ProfileFirebaseData::class.java)
 
         employeeName = findViewById(R.id.name)
         saveButton = findViewById(R.id.saveButton)
@@ -42,7 +39,8 @@ class ProfileActivity : AppCompatActivity() {
         designation = findViewById(R.id.designation)
         email = findViewById(R.id.email)
         val currentUserUid = auth.currentUser!!.uid
-        val profileData = ProfileFirebaseData()
+        val profileData =
+            ProfileFirebaseData()
         profileData.showProfileInfo(currentUserUid,employeeName,email,cueId,designation)
 
         employeeName.isEnabled = false
@@ -87,4 +85,5 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
     }
+
 }

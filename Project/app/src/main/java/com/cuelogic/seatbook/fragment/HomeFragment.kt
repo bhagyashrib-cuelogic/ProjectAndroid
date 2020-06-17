@@ -16,13 +16,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.cuelogic.seatbook.R
-import com.cuelogic.seatbook.firebaseManager.HomeFirebaseData
-import com.cuelogic.seatbook.model.BookingData
-import com.cuelogic.seatbook.model.SeatData
+import com.cuelogic.seatbook.repository.firebaseManager.HomeFirebaseData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import java.lang.Integer.parseInt
-import java.lang.Integer.valueOf
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,7 +36,8 @@ class HomeFragment : Fragment() {
     private lateinit var reasonReference: DatabaseReference
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var homeFragment: FrameLayout
-    private var homeFirebaseData = HomeFirebaseData()
+    private var homeFirebaseData =
+        HomeFirebaseData()
 
     @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
     override fun onCreateView(
