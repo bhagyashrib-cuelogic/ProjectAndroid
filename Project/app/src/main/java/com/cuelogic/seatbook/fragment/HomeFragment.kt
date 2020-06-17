@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.cuelogic.seatbook.R
+import com.cuelogic.seatbook.firebaseManager.HomeFirebaseData
 import com.cuelogic.seatbook.model.BookingData
 import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
@@ -39,6 +40,7 @@ class HomeFragment : Fragment() {
     private lateinit var reasonReference: DatabaseReference
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var homeFragment: FrameLayout
+    private var homeFirebaseData = HomeFirebaseData()
 
     @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
     override fun onCreateView(
@@ -47,6 +49,8 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         homeFragment = view.findViewById(R.id.homeFragmentLayout)
+
+
 
         val context = container?.context!!
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
@@ -57,35 +61,34 @@ class HomeFragment : Fragment() {
         val chooseTimeCheckOut = view.findViewById<TextView>(R.id.edit_checkOutTime)
         val dateIncrease = view.findViewById<ImageView>(R.id.forword_button)
         val dateDecrease = view.findViewById<ImageView>(R.id.backword_button)
+        reasonSpinner = view.findViewById(R.id.spinner)
+
 
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
-        val c = Calendar.getInstance()
         val timeFormat = SimpleDateFormat("HH:mm a")
         val currentTime = timeFormat.format(calendarInstance)
         chooseTimeCheckIn.text = currentTime.toString()
         chooseTimeCheckOut.text = currentTime.toString()
-        showSeatDateWise(currentDate, 0, editTextBookedSeat, editTextAvailableSeat, date)
+        homeFirebaseData.showSeatDateWise(currentDate, 0, editTextBookedSeat, editTextAvailableSeat)
 
 
         val calendar = Calendar.getInstance()
-        calendar.time = dateFormat.parse(date.text.toString())!!
         calendar.set(
             calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH) + 1,
+            calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
         dateIncrease.setOnClickListener {
             calendar.add(Calendar.DAY_OF_MONTH, +1)
             val tomorrow = dateFormat.format(calendar.time)
             date.text = tomorrow.toString()
-            showSeatDateWise(
+            homeFirebaseData.showSeatDateWise(
                 tomorrow.toString(),
                 0,
                 editTextBookedSeat,
-                editTextAvailableSeat,
-                date
+                editTextAvailableSeat
             )
         }
         dateDecrease.setOnClickListener() {
@@ -94,12 +97,11 @@ class HomeFragment : Fragment() {
                 calendar.add(Calendar.DAY_OF_YEAR, -1)
                 val tomorrow = dateFormat.format(calendar.time)
                 date.text = tomorrow.toString()
-                showSeatDateWise(
+                homeFirebaseData.showSeatDateWise(
                     tomorrow.toString(),
                     0,
                     editTextBookedSeat,
-                    editTextAvailableSeat,
-                    date
+                    editTextAvailableSeat
                 )
             } else {
                 dateDecrease.isEnabled = false
@@ -125,11 +127,9 @@ class HomeFragment : Fragment() {
         }
 
         auth = FirebaseAuth.getInstance()
-        reasonSpinner = view.findViewById(R.id.spinner)
         spinnerDataList = ArrayList<String>()
         spinnerDataList.add(0, "Select the Reason")
         reasonReference = FirebaseDatabase.getInstance().getReference("ReasonTable")
-
         reasonSpinner.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -157,15 +157,20 @@ class HomeFragment : Fragment() {
         date.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val dateToCome = date.text.toString()
-                showSeatDateWise(dateToCome, 0, editTextBookedSeat, editTextAvailableSeat, date)
+                homeFirebaseData.showSeatDateWise(dateToCome, 0, editTextBookedSeat, editTextAvailableSeat)
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
         //Firebase get current user
         buttonBookingDataSave.setOnClickListener {
+            val currentUserId = auth.currentUser!!.uid
+            val dateToCome = date?.text.toString()
+            val checkTime =chooseTimeCheckIn.text.toString()
+            val checkOut = chooseTimeCheckOut.text.toString()
+            val reasonDescription = reasonSpinner.selectedItem.toString()
+            var isSelected :Boolean = true
             if (date.text.toString() == currentDate) {
                 Toast.makeText(
                     activity,
@@ -173,57 +178,19 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                checkBookedSeatForParticularDateByUser()
-            }
-        }
-        return view
-    }
-
-    private fun saveDate() {
-        val date = view?.findViewById<TextView>(R.id.edit_date)!!
-        val checkInTime = view?.findViewById<TextView>(R.id.edit_checkInTime)!!
-        val checkOutTime = view?.findViewById<TextView>(R.id.edit_checkOutTime)!!
-        val reason = view?.findViewById<Spinner>(R.id.spinner)!!
-        val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
-        val editTextAvailableSeat = view?.findViewById<TextView>(R.id.text_reservedSeat)!!
-
-        val dateToCome = date?.text.toString()
-        val checkTime = checkInTime.text.toString()
-        val checkOut = checkOutTime.text.toString()
-        val reasonDescription = reason.selectedItem.toString()
-
-        val calendarInstance = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
-        val currentDate = dateFormat.format(calendarInstance)
-        val c = Calendar.getInstance()
-        val timeFormat = SimpleDateFormat("HH:mm a")
-        val currentTime = timeFormat.format(calendarInstance)
-
-
-        if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
-            val currentUserUid = auth.currentUser!!.uid
-            val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
-            val uidKey = firebaseReference.push().key!!
-
-            firebaseReference.child(uidKey).setValue(
-                BookingData(
-                    currentUserUid,
+                homeFirebaseData.checkBookedSeatForParticularDateByUser(
+                    activity!!,
+                    currentUserId,
                     dateToCome,
                     checkTime,
                     checkOut,
                     reasonDescription,
-                    "Booked",
-                    0
-                )
-            ).addOnCompleteListener {
-                Toast.makeText(activity, "Added successfully", Toast.LENGTH_SHORT).show()
-                showSeatDateWise(dateToCome, 1, editTextBookedSeat, editTextAvailableSeat, date!!)
+                    editTextBookedSeat,
+                    editTextAvailableSeat,
+                    isSelected,date)
             }
         }
-        checkInTime.text = currentTime.toString()
-        checkOutTime.text = currentTime.toString()
-        date.text = currentDate
-
+        return view
     }
 
     //Return reason.
@@ -239,46 +206,6 @@ class HomeFragment : Fragment() {
                         spinnerDataList.add(item.value.toString())
                     }
                     adapter.notifyDataSetChanged()
-                }
-            }
-        })
-    }
-
-    //show seat data
-    private fun showSeatDateWise(
-        dateToCome: String,
-        flag: Int,
-        editTextBookedSeat: TextView,
-        editTextAvailable: TextView,
-        date: TextView
-    ) {
-        val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
-            .orderByChild("date")
-            .equalTo(dateToCome)
-
-        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (item in snapshot.children) {
-                        val bookedSeat = item.child("booked").value.toString()
-                        val availableSeat = item.child("available").value.toString()
-
-                        if (flag == 1) {
-                            firebaseReference.ref.child(item.key.toString())
-                                .setValue(
-                                    SeatData(
-                                        parseInt(bookedSeat) + 1,
-                                        200,
-                                        parseInt(availableSeat) - 1,
-                                        dateToCome
-                                    )
-                                )
-                        }
-                        editTextBookedSeat.text = valueOf(bookedSeat).toString()
-                        editTextAvailable.text = valueOf(availableSeat).toString()
-                    }
                 }
             }
         })
@@ -320,39 +247,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    //check seat already book or not.
-    private fun checkBookedSeatForParticularDateByUser() {
-        val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
-        val currentUserId = auth.currentUser!!.uid
-        val selectedDate = view?.findViewById<TextView>(R.id.edit_date)!!.text.toString()
-        var isSelected = true
 
-        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(snapshot: DatabaseError) {}
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (item in snapshot.children) {
-                    val bookedUserId = item.child("id").value.toString()
-                    val bookedDate = item.child("date").value.toString()
-                    val isDeleted = item.child("booked").value.toString()
-
-                    if (selectedDate == bookedDate && bookedUserId == currentUserId && parseInt(
-                            isDeleted
-                        ) == 0
-                    ) {
-                        Toast.makeText(
-                            activity,
-                            "You are already booked for this day",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        isSelected = false
-                        break
-                    }
-                }
-                if (isSelected) saveDate()
-            }
-        })
-    }
 
     private fun selectTimePicker(chooseTime: TextView) {
         val mTimePicker: TimePickerDialog

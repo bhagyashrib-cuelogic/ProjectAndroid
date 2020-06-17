@@ -7,7 +7,32 @@
     android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".activies.ProfileActivity">
-    
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffffff"
+        android:id="@+id/customeToolbar"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/LableProfile"
+                android:layout_alignParentLeft="true"
+                android:textColor="#E8FD595E"
+                android:fontFamily="@font/verdana_bold"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"

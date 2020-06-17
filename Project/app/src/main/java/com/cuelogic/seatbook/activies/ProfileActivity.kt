@@ -6,12 +6,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.cuelogic.seatbook.R
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.cuelogic.seatbook.firebaseManager.ProfileFirebaseData
 import com.cuelogic.seatbook.model.EmployeeData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_seat_book.*
 import java.lang.Integer.parseInt
 
 
@@ -30,6 +33,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        setSupportActionBar(customeToolbar)
 
         employeeName = findViewById(R.id.name)
         saveButton = findViewById(R.id.saveButton)
@@ -37,12 +41,14 @@ class ProfileActivity : AppCompatActivity() {
         cueId = findViewById(R.id.Cuid)
         designation = findViewById(R.id.designation)
         email = findViewById(R.id.email)
+        val currentUserUid = auth.currentUser!!.uid
+        val profileData = ProfileFirebaseData()
+        profileData.showProfileInfo(currentUserUid,employeeName,email,cueId,designation)
 
         employeeName.isEnabled = false
         cueId.isEnabled = false
         designation.isEnabled = false
         email.isEnabled = false
-        showProfileInfo()
 
         saveButton.tag = 1
         saveButton.setOnClickListener { v ->
@@ -58,89 +64,27 @@ class ProfileActivity : AppCompatActivity() {
                 cueId.isEnabled = false
                 designation.isEnabled = false
                 v.tag = 1
-                editProfileInfo()
+                var name = employeeName.text.toString()
+                var emailId = email.text.toString()
+                var cueIdEmp = cueId.text.toString()
+                var desig =designation.text.toString()
+                profileData.editProfileInfo(currentUserUid,name,desig,cueIdEmp,
+                    employeeName,email,cueId,designation,object : IAddonCompleteListener {
+                        override fun addOnCompleteListener() {
+                            Toast.makeText(
+                                applicationContext,
+                                "Updates Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            employeeName.isEnabled = false
+                            cueId.isEnabled = false
+                            designation.isEnabled = false
+                            email.isEnabled = false
+                        }
+
+
+                    })
             }
         }
-    }
-
-    private fun showProfileInfo() {
-        val currentUserUid = auth.currentUser!!.uid
-        val query = FirebaseDatabase.getInstance().getReference("Employees").orderByChild("uid")
-            .equalTo(currentUserUid)
-        name = findViewById(R.id.name)
-        email = findViewById(R.id.email)
-        cueId = findViewById(R.id.Cuid)
-        designation = findViewById(R.id.designation)
-
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(snapshot: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (item in snapshot.children) {
-                    val empName = item.child("empName").value.toString().trim()
-                    val empEmail = item.child("emailAddress").value.toString().trim()
-                    val empCue = item.child("employeeProfile").value.toString()
-                    val empDesignation = item.child("employeeDesignation").value.toString()
-                    val isActivity = parseInt(item.child("active").value.toString())
-
-                    if (isActivity == 0) {
-                        name.setText(empName)
-                        email.setText(empEmail)
-                    } else {
-                        name.setText(empName)
-                        email.setText(empEmail)
-                        cueId.setText(empCue)
-                        designation.setText(empDesignation)
-                    }
-                }
-            }
-        })
-    }
-
-    private fun editProfileInfo() {
-        val currentUserUid = auth.currentUser!!.uid
-        val query = FirebaseDatabase.getInstance().getReference("Employees").orderByChild("uid")
-            .equalTo(currentUserUid)
-        name = findViewById(R.id.name)
-        email = findViewById(R.id.email)
-        cueId = findViewById(R.id.Cuid)
-        designation = findViewById(R.id.designation)
-
-
-        var empName = name.text.toString()
-        var empCueId = cueId.text.toString()
-        var empDesignation = designation.text.toString()
-
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(snapshot: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (item in snapshot.children) {
-                    val empEmail = item.child("emailAddress").value.toString()
-                    val uid = item.child("uid").value.toString()
-
-                    query.ref.child(item.key.toString()).setValue(
-                        EmployeeData(
-                            uid, empName,
-                            empEmail, empDesignation, empCueId, "1"
-                        )
-                    ).addOnCompleteListener() {
-                        Toast.makeText(
-                            applicationContext,
-                            "Update Successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        name.setText(empName)
-                        email.setText(empEmail)
-                        cueId.setText(empCueId)
-                        designation.setText(empDesignation)
-                        employeeName.isEnabled = false
-                        cueId.isEnabled = false
-                        designation.isEnabled = false
-                        email.isEnabled = false
-                    }
-                }
-            }
-        })
     }
 }

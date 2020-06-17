@@ -18,17 +18,17 @@ class HomeFirebaseData {
     private val calendarInstance = Calendar.getInstance().time
     private val dateFormat = SimpleDateFormat("dd-MM-yyyy")
     private val currentDate: String = dateFormat.format(calendarInstance)
-    private val timeFormat = SimpleDateFormat("HH:mm a")
-    private val currentTime = timeFormat.format(calendarInstance)
     private val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
 
 
     private fun saveDate(checkTime: String,checkOut: String,reasonDescription: String,dateToCome: String,currentUserUid: String,
-                             editTextAvailableSeat: TextView,editTextBookedSeat: TextView,date: TextView,activity: FragmentActivity
-                         ) {
+                         editTextAvailableSeat: TextView,editTextBookedSeat: TextView,date: TextView,activity: FragmentActivity
+    ) {
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
+
             val uidKey = firebaseReference.push().key!!
+
             firebaseReference.child(uidKey).setValue(
                 BookingData(
                     currentUserUid,
@@ -37,8 +37,7 @@ class HomeFirebaseData {
                     checkOut,
                     reasonDescription,
                     "Booked",
-                    0,
-                    "Employee"
+                    0
                 )
             ).addOnCompleteListener {
                 Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
@@ -90,7 +89,7 @@ class HomeFirebaseData {
     }
 
 
-     fun showSeatDateWise(
+    fun showSeatDateWise(
         dateToCome: String,
         flag: Int,
         editTextBookedSeat: TextView,
