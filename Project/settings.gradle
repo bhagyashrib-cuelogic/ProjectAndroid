@@ -1,2 +1,3 @@
+include ':adminmodule'
 rootProject.name='SeatBook'
 include ':app'
