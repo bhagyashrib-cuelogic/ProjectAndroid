@@ -1,8 +1,11 @@
 package com.cuelogic.seatbook.repository.firebaseManager
 
+
 import android.widget.EditText
+import androidx.lifecycle.MutableLiveData
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.model.EmployeeData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -10,8 +13,12 @@ import com.google.firebase.database.ValueEventListener
 
 class ProfileFirebaseData {
 
-    fun showProfileInfo(currentUserUid:String,name:EditText,email:EditText,cueId:EditText,
-                        designation:EditText){
+    private lateinit var auth: FirebaseAuth
+    private val mutableLiveData: MutableLiveData<List<EmployeeData?>> = MutableLiveData<List<EmployeeData?>>()
+
+    fun showProfileInfo():MutableLiveData<List<EmployeeData?>>{
+        auth = FirebaseAuth.getInstance()
+        val currentUserUid = auth.currentUser!!.uid
             val query = FirebaseDatabase.getInstance().getReference("Employees").orderByChild("uid")
                 .equalTo(currentUserUid)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -19,25 +26,17 @@ class ProfileFirebaseData {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (item in snapshot.children) {
-                        val empName = item.child("empName").value.toString().trim()
-                        val empEmail = item.child("emailAddress").value.toString().trim()
-                        val empCue = item.child("employeeProfile").value.toString()
-                        val empDesignation = item.child("employeeDesignation").value.toString()
-                        val isActivity = Integer.parseInt(item.child("active").value.toString())
+                            var list:List<EmployeeData?> = listOf(item.getValue(EmployeeData::class.java))
+                             mutableLiveData.setValue(list)
 
-                        if (isActivity == 0) {
-                            name.setText(empName)
-                            email.setText(empEmail)
-                        } else {
-                            name.setText(empName)
-                            email.setText(empEmail)
-                            cueId.setText(empCue)
-                            designation.setText(empDesignation)
-                        }
                     }
                 }
             })
+        return mutableLiveData
         }
+
+
+
 
     fun editProfileInfo(currentUserUid: String,empName:String,empDesignation:String,empCueId:String,
                         employeeName:EditText,email:EditText,cueId:EditText,designation: EditText,
@@ -52,18 +51,18 @@ class ProfileFirebaseData {
                 for (item in snapshot.children) {
                     val empEmail = item.child("emailAddress").value.toString()
                     val uid = item.child("uid").value.toString()
-
                     query.ref.child(item.key.toString()).setValue(
                         EmployeeData(
                             uid, empName,
                             empEmail, empDesignation, empCueId, "1"
                         )
                     ).addOnCompleteListener(){
-                        employeeName.setText(empName)
-                        email.setText(empEmail)
-                        cueId.setText(empCueId)
-                        designation.setText(empDesignation)
-                        iAddonCompleteListener!!.addOnCompleteListener()
+//                        employeeName.setText(empName)
+//                        email.setText(empEmail)
+//                        cueId.setText(empCueId)
+//                        designation.setText(empDesignation)
+//                        iAddonCompleteListener!!.addOnCompleteListener()
+                        showProfileInfo()
                     }
                 }
             }

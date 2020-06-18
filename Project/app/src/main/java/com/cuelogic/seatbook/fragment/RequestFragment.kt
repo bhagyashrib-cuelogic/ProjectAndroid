@@ -49,7 +49,5 @@ class RequestFragment : Fragment() {
         }
         return view
     }
-
-
 }
 
