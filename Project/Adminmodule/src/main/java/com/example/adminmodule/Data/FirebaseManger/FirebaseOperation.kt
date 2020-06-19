@@ -1,15 +1,13 @@
-package com.cuelogic.seatbook.firebaseManager
+package com.example.adminmodule.Data.FirebaseManger
 
-import com.cuelogic.seatbook.model.SeatData
+import com.example.adminmodule.Models.SeatData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class FirebaseOperation {
-
-
-   fun updateSeatDataOnCancel(dateToCome: String) {
+    fun updateSeatDataOnCancel(dateToCome: String) {
         val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
             .orderByChild("date")
             .equalTo(dateToCome)
@@ -37,7 +35,4 @@ class FirebaseOperation {
             }
         })
     }
-
-
-
 }

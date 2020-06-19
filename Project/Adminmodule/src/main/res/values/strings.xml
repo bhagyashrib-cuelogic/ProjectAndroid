@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AdminModule</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="LableProfile">Profile</string>
+    <string name="calender_icon" />
+    <string name="backword_button_icon" />
 </resources>

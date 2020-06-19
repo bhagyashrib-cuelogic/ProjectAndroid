@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activies.SeatBookActivity">
+    tools:context=".UI.activities.HomeScreenActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customeToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#ffffff"
-        android:id="@+id/customeToolbar"
         tools:ignore="MissingConstraints">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -20,23 +20,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BookMySeat"
                 android:layout_alignParentLeft="true"
-                android:textColor="#E8FD595E"
+                android:layout_centerVertical="true"
                 android:fontFamily="@font/verdana_bold"
-                android:layout_centerVertical="true"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
+                android:text="BookMySeat"
+                android:textColor="#E8FD595E"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_profile_icon"
-                android:id="@+id/profile_icon"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/profile_icon"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:src="@drawable/ic_profile_icon" />-->
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -51,20 +51,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customeToolbar"
-        app:navGraph="@navigation/bottom_navigation" />
+        app:navGraph="@navigation/bottom_navigation"
+        />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        app:itemTextColor="@color/bottom_navigation_color"
-        app:itemIconTint="@color/bottom_navigation_color"
+        style="@style/NavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="@color/bottom_navigation_color"
+        app:itemTextColor="@color/bottom_navigation_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/NavigationView"
-        android:background="#FFFFFF"
         app:menu="@menu/bottom_menu" />
 
 

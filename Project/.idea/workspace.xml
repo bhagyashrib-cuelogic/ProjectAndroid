@@ -1,34 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/androidTest/java/com/example/adminmodule/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/java/com/example/adminmodule/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminmodule/src/test/java/com/example/adminmodule/ExampleUnitTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Data/FirebaseManger/FirebaseOperation.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/SeatData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/HomeScreenActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/ConfigFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/color/bottom_navigation_color.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/arrow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/button_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/calender_date.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/date_button_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/drop_arrow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/forward_arrow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/gray_background_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_account_circle_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_arrow_drop_down_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_arrow_upward_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_icon_ionic_ios_arrow_forward.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_icon_ionic_md_list.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_person_black_32dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_profile_icon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_request_icon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/ic_subject_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/layout_backgroud.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/seat_icon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/spinner_arrowicon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/spinner_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/spinner_dropdown_arrow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/time_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/font/futura_medium_bt.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/font/verdana.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/font/verdana_bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_home_screen.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_seats.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/menu/bottom_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/navigation/bottom_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/activies/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/activies/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/firebaseManager/FirebaseOperation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/firebaseManager/FirebaseOperation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_seat_book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_seat_book.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +89,16 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -79,7 +126,22 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.adminmodule.activities" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.adminmodule.UI.fragments" />
+      <recent name="com.example.adminmodule.UI.activities" />
+      <recent name="com.example.adminmodule.Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res" />
+    </key>
   </component>
   <component name="RunManager" selected="Android App.adminmodule">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -89,8 +151,8 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="adminmodule" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="Adminmodule" />
+    <configuration name="adminmodule" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="adminmodule" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -203,12 +265,68 @@
       <option name="presentableId" value="Default" />
       <updated>1592374837803</updated>
     </task>
+    <task id="LOCAL-00001" summary="Admin Module">
+      <created>1592377152142</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592377152142</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Admin Module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin Module" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="306" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592391026142">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="0" y="306" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1280.701@0.23.1280.701" timestamp="1592391026142" />
+    <state x="378" y="127" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592479517850">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="378" y="127" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.701@0.23.1280.701" timestamp="1592479517850" />
+    <state x="377" y="33" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1592390377431">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="377" y="33" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.23.1280.701@0.23.1280.701" timestamp="1592390377430" />
+    <state x="228" y="135" key="AndroidCreateResourceFileDialog" timestamp="1592476341069">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="228" y="135" key="AndroidCreateResourceFileDialog/0.23.1280.701@0.23.1280.701" timestamp="1592476341069" />
+    <state x="495" y="245" key="AndroidCreateXmlResourceDialog" timestamp="1592478619573">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="495" y="245" key="AndroidCreateXmlResourceDialog/0.23.1280.701@0.23.1280.701" timestamp="1592478619573" />
+    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1592377151831">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1592377151831" />
+    <state width="1238" height="341" key="GridCell.Tab.0.bottom" timestamp="1592479671492">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state width="1238" height="341" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1592479671492" />
+    <state width="1238" height="341" key="GridCell.Tab.0.center" timestamp="1592479671491">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state width="1238" height="341" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1592479671491" />
+    <state width="1238" height="341" key="GridCell.Tab.0.left" timestamp="1592479671491">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state width="1238" height="341" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1592479671491" />
+    <state width="1238" height="341" key="GridCell.Tab.0.right" timestamp="1592479671492">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state width="1238" height="341" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1592479671492" />
     <state x="228" y="123" key="IDE.errors.dialog" timestamp="1592377103539">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="228" y="123" key="IDE.errors.dialog/0.23.1280.701@0.23.1280.701" timestamp="1592377103539" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1592377155607">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1592377155607" />
   </component>
 </project>
