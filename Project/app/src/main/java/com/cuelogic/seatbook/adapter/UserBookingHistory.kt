@@ -1,6 +1,7 @@
 package com.cuelogic.seatbook.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +24,19 @@ class UserBookingHistory(
         val textViewCheckInTime: TextView? = view.findViewById(R.id.checkintime)
         val textViewCheckOutTime: TextView? = view.findViewById(R.id.checkouttime)
         val status: TextView? = view.findViewById(R.id.status)
+        val reason:TextView?=view.findViewById(R.id.textReason)
 
         val info = infoList[position]
         textViewDate?.text = info.date
         textViewCheckInTime?.text = info.CheckInTime
         textViewCheckOutTime?.text = info.CheckOutTime
         status?.text = info.status
+        reason?.text = info.Reason
+        if(info.status=="Cancelled")
+        {
+            val myColor = Color.parseColor("#FD676C")
+            status?.setTextColor(myColor)
+        }
         return view
 
     }

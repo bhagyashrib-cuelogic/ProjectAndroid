@@ -3,11 +3,6 @@
 <layout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    <data >-->
-<!--        <variable-->
-<!--            name="viewmodel"-->
-<!--            type="com.cuelogic.seatbook.ViewModel.viewModelClass.ProfileViewModel" />-->
-<!--    </data>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,69 +35,149 @@
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customeToolbar"
+            android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:id="@+id/text_emailName"
+            android:textSize="@dimen/text_size_20sp"
+            android:fontFamily="@font/verdana_bold"
+            android:textColor="@color/graydark"
+            android:text="Email Name"/>
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="20dp"
-            android:hint="Your Name"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_20dp"
             android:maxLength="40"
             android:singleLine="true"
-
-            android:layout_marginLeft="20dp"
+            android:textColor="@color/graydark"
+            android:textSize="@dimen/text_size_16sp"
+            android:fontFamily="@font/verdana"
+            android:layout_below="@+id/text_emailName"
+            android:layout_marginLeft="@dimen/margin_20dp"
             android:id="@+id/name"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:id="@+id/text_email"
+                android:layout_below="@+id/name"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:textSize="@dimen/text_size_20sp"
+                android:fontFamily="@font/verdana_bold"
+                android:textColor="@color/graydark"
+                android:text="Email Id"/>
+
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_below="@+id/name"
-
+            android:layout_below="@+id/text_email"
+            android:textColor="@color/graydark"
+            android:textSize="@dimen/text_size_16sp"
+            android:fontFamily="@font/verdana"
             android:id="@+id/email"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:singleLine="true"
-            android:layout_below="@+id/email"
-            android:hint="Update Your Cue Id"
-            android:maxLength="10"
 
-            android:id="@+id/Cuid"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:id="@+id/text_cueId"
+                android:layout_below="@+id/email"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:textSize="@dimen/text_size_20sp"
+                android:fontFamily="@font/verdana_bold"
+                android:textColor="@color/graydark"
+                android:text="Cue Id"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:singleLine="true"
-            android:maxLength="20"
-            android:layout_below="@+id/Cuid"
-            android:hint="Update your designation"
 
-            android:id="@+id/designation"/>
+            <EditText
+                android:id="@+id/Cuid"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/text_cueId"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/verdana"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/graydark"
+                android:textSize="@dimen/text_size_16sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:id="@+id/text_designation"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:textSize="@dimen/text_size_20sp"
+                android:fontFamily="@font/verdana_bold"
+                android:textColor="@color/graydark"
+                android:layout_below="@+id/Cuid"
+                android:text="Designation"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_below="@+id/text_designation"
+                android:background="@drawable/designation_spinner"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/spinner_layout">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+        </RelativeLayout>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update"
-            android:layout_below="@+id/designation"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/saveButton"
-            android:textSize="20sp"
-
-            android:fontFamily="@font/verdana_bold"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/button_border"
-            android:layout_marginTop="100dp"/>
+            android:textSize="20sp"
+            android:fontFamily="@font/verdana_bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="EDIT"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 

@@ -1,44 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#BFF7F7F7"
+    android:layout_marginTop="@dimen/margin_10dp"
+    android:layout_marginBottom="@dimen/margin_10dp"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/datefirebase"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:id="@+id/date_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/datefirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/verdana_bold"
+            android:textColor="@color/grar100a"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <Space
+            android:layout_width="@dimen/width_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/status"
+            android:fontFamily="@font/verdana"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/green" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkintime"
-        android:layout_below="@+id/datefirebase"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_below="@+id/date_layout"
+        android:layout_marginBottom="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:id="@+id/cancel_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkouttime"
-        android:layout_below="@+id/checkintime"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"/>
+        <RelativeLayout
+            android:id="@+id/timedate_layout"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/margin_0dp"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/checkintime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp"
+                android:fontFamily="@font/verdana"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/status"
-        android:layout_below="@+id/checkouttime"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/middel"
+                android:layout_toRightOf="@+id/checkintime"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp"
+                android:layout_marginLeft="@dimen/margin_3dp"
+                android:text="@string/text_hyphen"
+                android:fontFamily="@font/verdana"/>
 
+            <TextView
+                android:id="@+id/checkouttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/middel"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp"
+                android:layout_marginRight="@dimen/margin_3dp"
+                android:fontFamily="@font/verdana"
+                android:layout_marginEnd="@dimen/margin_3dp" />
 
+            <RelativeLayout
+                android:id="@+id/reason_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_25dp">
+                <TextView
+                    android:id="@+id/text_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/gray75a"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:text="@string/reason"
+                    android:fontFamily="@font/verdana"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/textReason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_6dp"
+                    android:layout_toRightOf="@+id/text_reason"
+                    android:textColor="@color/gray75a"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:fontFamily="@font/verdana" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

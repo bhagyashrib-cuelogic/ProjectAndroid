@@ -1,238 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/homeFragmentLayout"
-    android:background="#ffffff"
-    tools:context=".fragment.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/homeFragmentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        tools:context=".fragment.HomeFragment">
+
 
         <RelativeLayout
-            android:id="@+id/calender_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/gray_background_round"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/backword_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@drawable/arrow"
-                android:contentDescription="@string/backword_button_icon" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
 
             <RelativeLayout
-                android:id="@+id/calender_edittext_layout"
-                android:layout_width="wrap_content"
+                android:id="@+id/calender_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/gray_background_round"
+                android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/date_range_icon"
+                    android:id="@+id/backword_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/calender_date"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/calender_icon" />
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/backword_button_icon"
+                    android:src="@drawable/arrow" />
 
-                <TextView
-                    android:id="@+id/edit_date"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/date_range_icon"
+                <RelativeLayout
+                    android:id="@+id/calender_edittext_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="13-05-2020"
-                    android:textColor="#585858"
-                    android:fontFamily="@font/verdana_bold"
-                    android:textSize="18sp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/date_range_icon" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/date_range_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/calender_icon"
+                        android:src="@drawable/calender_date" />
+
+                    <TextView
+                        android:id="@+id/edit_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@id/date_range_icon"
+                        android:layout_toRightOf="@id/date_range_icon"
+                        android:fontFamily="@font/verdana_bold"
+                        android:text="13-05-2020"
+                        android:textColor="#585858"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/forword_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/drop_arrow" />
+
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/forword_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@drawable/drop_arrow"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="6dp"
-            android:id="@id/available_seat_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/layout_backgroud"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_below="@id/calender_layout">
-
-            <TextView
-                android:id="@+id/text_reservedSeat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginVertical="5dp"
-                android:textColor="#000000"
-                android:textSize="40sp"
-                android:fontFamily="@font/futura_medium_bt"/>
-            <TextView
-                android:id="@+id/book_seat_text"
-                android:layout_below="@id/text_reservedSeat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="20sp"
-                android:fontFamily="@font/verdana"
-                android:textColor="#000000"
-                android:text="Available Seats"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:id="@id/booked_seat_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layout_backgroud"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:padding="8dp"
-            android:layout_below="@id/available_seat_layout">
-
-            <TextView
-                android:id="@+id/text_bookedSeat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginVertical="5dp"
-                android:textSize="40sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/verdana"/>
-            <TextView
-                android:id="@+id/reserved_seat_text"
-                android:layout_below="@id/text_bookedSeat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="20sp"
-                android:fontFamily="@font/verdana"
-                android:textColor="#000000"
-                android:text="Reserved Seats"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/booked_seat_layout"
-            android:background="@drawable/time_layout"
-            android:id="@+id/time_layout">
-
-            <LinearLayout
+            <RelativeLayout
+                android:id="@id/available_seat_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/calender_layout"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginRight="20dp"
-                android:id="@+id/time_linear_layout">
+                android:background="@drawable/layout_backgroud"
+                android:padding="8dp">
+
                 <TextView
+                    android:id="@+id/text_reservedSeat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check In"
-                    android:fontFamily="@font/verdana_bold"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:id="@+id/text_signIn"/>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:textColor="#000000"
+                    android:textSize="40sp" />
+
                 <TextView
+                    android:id="@+id/book_seat_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Out"
-                    android:fontFamily="@font/verdana_bold"
-                    android:textStyle="bold"
-                    android:textSize="15sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_below="@+id/time_linear_layout">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_reservedSeat"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/verdana"
-                    android:textSize="15sp"
-                    android:id="@+id/edit_checkInTime"/>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_checkOutTime"
-                    android:fontFamily="@font/verdana"
-                    android:textSize="15sp"
-                    android:text="20dp"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:background="#63EAEAEA"
-            android:layout_below="@+id/time_layout"
-            android:id="@+id/spinner_layout">
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="5dp"
-                android:background="#FFFFFF"
-                android:layout_marginTop="10dp"/>
+                    android:text="Available Seats"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@id/booked_seat_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_below="@id/available_seat_layout"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginRight="20dp"
+                android:background="@drawable/layout_backgroud"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/text_bookedSeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/verdana"
+                    android:textColor="#000000"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/reserved_seat_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_bookedSeat"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/verdana"
+                    android:text="Reserved Seats"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/booked_seat_layout"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/time_layout">
+
+                <LinearLayout
+                    android:id="@+id/time_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+                    <TextView
+                        android:id="@+id/text_signIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/verdana_bold"
+                        android:text="Check In"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/verdana_bold"
+                        android:text="Check Out"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time_linear_layout"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+                    <TextView
+                        android:id="@+id/edit_checkInTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/verdana"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/edit_checkOutTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/verdana"
+                        android:text="20dp"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/spinner_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time_layout"
+                android:layout_marginTop="0dp"
+                android:background="#63EAEAEA">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_border"
+                android:fontFamily="@font/verdana_bold"
+                android:gravity="center"
+                android:text="@string/reserve_my_seat"
+                android:textSize="20sp" />
+
         </RelativeLayout>
-
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/button_border"
-            android:textSize="20sp"
-            android:fontFamily="@font/verdana_bold"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/reserve_my_seat" />
-
-    </RelativeLayout>
-</FrameLayout>
+    </FrameLayout>
+</layout>

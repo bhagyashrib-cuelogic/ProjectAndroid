@@ -35,6 +35,7 @@ class RequestFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_request, container, false)
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application()).create(RequestViewModel::class.java)
+        activity?.title = "My Requests"
 
         userList = ArrayList()
         listView = view.findViewById(R.id.listViewItem)
@@ -43,7 +44,7 @@ class RequestFragment : Fragment() {
            viewModel.requestShowList().showUserCurrentBookingList(userList,listView, it,object :
                 IAddonCompleteListener {
                 override fun addOnCompleteListener() {
-                    Toast.makeText(activity,"Request", Toast.LENGTH_SHORT).show()
+                   //Toast.makeText(activity,"Request", Toast.LENGTH_SHORT).show()
                 }
             })
         }

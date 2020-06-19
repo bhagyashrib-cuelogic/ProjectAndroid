@@ -3,8 +3,11 @@ package com.cuelogic.seatbook.repository.firebaseManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.MutableLiveData
 import com.cuelogic.seatbook.model.BookingData
+import com.cuelogic.seatbook.model.EmployeeData
 import com.cuelogic.seatbook.model.SeatData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,20 +18,20 @@ import java.util.*
 class HomeFirebaseData {
 
 
+    private lateinit var auth: FirebaseAuth
     private val calendarInstance = Calendar.getInstance().time
     private val dateFormat = SimpleDateFormat("dd-MM-yyyy")
     private val currentDate: String = dateFormat.format(calendarInstance)
     private val firebaseReference = FirebaseDatabase.getInstance().getReference("Booking")
 
 
-    private fun saveDate(checkTime: String,checkOut: String,reasonDescription: String,dateToCome: String,currentUserUid: String,
-                         editTextAvailableSeat: TextView,editTextBookedSeat: TextView,date: TextView,activity: FragmentActivity
-    ) {
+     fun saveDate(checkTime: String,checkOut: String,reasonDescription: String,dateToCome: String,activity: FragmentActivity) {
+
+         auth = FirebaseAuth.getInstance()
+         val currentUserUid = auth.currentUser!!.uid
 
         if (dateToCome.isNotEmpty() && reasonDescription.isNotEmpty()) {
-
             val uidKey = firebaseReference.push().key!!
-
             firebaseReference.child(uidKey).setValue(
                 BookingData(
                     currentUserUid,
@@ -41,12 +44,12 @@ class HomeFirebaseData {
                 )
             ).addOnCompleteListener {
                 Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
-                showSeatDateWise(dateToCome, 1, editTextBookedSeat, editTextAvailableSeat)
+                showSeatDateWise(dateToCome, 1)
             }
         }
 //        checkInTime.text = currentTime.toString()
 //        checkOutTime.text = currentTime.toString()
-        date.text = currentDate
+       // date.text = currentDate
 
     }
     fun checkBookedSeatForParticularDateByUser(
@@ -82,19 +85,14 @@ class HomeFirebaseData {
                         break
                     }
                 }
-                if (isBooked) saveDate(checkInTime,checkOutTime,reasonDescription,dateToCome,currentUserId,
-                    editTextAvailable,editTextBookedSeat,date,activity)
+                if (isBooked) saveDate(checkInTime,checkOutTime,reasonDescription,dateToCome,activity)
             }
         })
     }
 
+    fun showSeatDateWise(dateToCome: String, flag: Int):MutableLiveData<List<SeatData?>?> {
+        val mutableLiveData: MutableLiveData<List<SeatData?>?> = MutableLiveData<List<SeatData?>?>()
 
-    fun showSeatDateWise(
-        dateToCome: String,
-        flag: Int,
-        editTextBookedSeat: TextView,
-        editTextAvailable: TextView
-    ) {
         val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
             .orderByChild("date")
             .equalTo(dateToCome)
@@ -119,11 +117,13 @@ class HomeFirebaseData {
                                     )
                                 )
                         }
-                        editTextBookedSeat.text = Integer.valueOf(bookedSeat).toString()
-                        editTextAvailable.text = Integer.valueOf(availableSeat).toString()
+                        val list:List<SeatData?> = listOf(item.getValue(SeatData::class.java))
+                        mutableLiveData.setValue(list)
+
                     }
                 }
             }
         })
+        return mutableLiveData
     }
 }

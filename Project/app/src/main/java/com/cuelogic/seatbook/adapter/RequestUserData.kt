@@ -44,6 +44,7 @@ class RequestUserData(
         val textViewCheckInTime: TextView? = view.findViewById<TextView>(R.id.checkintime)
         val textViewCheckOutTime: TextView? = view.findViewById<TextView>(R.id.checkouttime)
         val textStatus: TextView? = view.findViewById<TextView>(R.id.status)
+        val textReason: TextView? = view.findViewById<TextView>(R.id.textReason)
         val buttonCancel = view.findViewById<Button>(R.id.cancel)!!
 
         val info = infoList[position]
@@ -51,6 +52,7 @@ class RequestUserData(
         textViewCheckInTime?.text = info.CheckInTime
         textViewCheckOutTime?.text = info.CheckOutTime
         textStatus?.text = info.status
+        textReason?.text = info.Reason
 
         buttonCancel.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -78,7 +80,7 @@ class RequestUserData(
                                         checkInTime,
                                         checkOutTime,
                                         reason,
-                                        "cancel",
+                                        "Cancelled",
                                         1
                                     )
                                 ).addOnCompleteListener() {
@@ -98,35 +100,6 @@ class RequestUserData(
             dialog.show()
         }
         return view
-    }
-
-    private fun updateSeatDataOnCancel(dateToCome: String) {
-        val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
-            .orderByChild("date")
-            .equalTo(dateToCome)
-
-        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (item in snapshot.children) {
-                        val bookedSeat = item.child("booked").value.toString()
-                        val availableSeat = item.child("available").value.toString()
-
-                        firebaseReference.ref.child(item.key.toString())
-                            .setValue(
-                                SeatData(
-                                    parseInt(bookedSeat) - 1,
-                                    200,
-                                    parseInt(availableSeat) + 1,
-                                    dateToCome
-                                )
-                            )
-                    }
-                }
-            }
-        })
     }
 }
 

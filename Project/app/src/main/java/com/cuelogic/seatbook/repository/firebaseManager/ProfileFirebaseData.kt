@@ -1,7 +1,6 @@
 package com.cuelogic.seatbook.repository.firebaseManager
 
 
-import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.model.EmployeeData
@@ -26,7 +25,7 @@ class ProfileFirebaseData {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (item in snapshot.children) {
-                            var list:List<EmployeeData?> = listOf(item.getValue(EmployeeData::class.java))
+                            val list:List<EmployeeData?> = listOf(item.getValue(EmployeeData::class.java))
                              mutableLiveData.setValue(list)
 
                     }
@@ -35,12 +34,12 @@ class ProfileFirebaseData {
         return mutableLiveData
         }
 
-
-
-
-    fun editProfileInfo(currentUserUid: String,empName:String,empDesignation:String,empCueId:String,
-                        employeeName:EditText,email:EditText,cueId:EditText,designation: EditText,
-                        iAddonCompleteListener: IAddonCompleteListener) {
+    fun editProfileInfo(
+        empName: String, empDesignation: String,
+        empCueId: String, iAddonCompleteListener: IAddonCompleteListener
+    ) {
+        auth = FirebaseAuth.getInstance()
+        val currentUserUid = auth.currentUser!!.uid
         val query = FirebaseDatabase.getInstance().getReference("Employees").orderByChild("uid")
             .equalTo(currentUserUid)
 
@@ -52,18 +51,11 @@ class ProfileFirebaseData {
                     val empEmail = item.child("emailAddress").value.toString()
                     val uid = item.child("uid").value.toString()
                     query.ref.child(item.key.toString()).setValue(
-                        EmployeeData(
-                            uid, empName,
-                            empEmail, empDesignation, empCueId, "1"
-                        )
-                    ).addOnCompleteListener(){
-//                        employeeName.setText(empName)
-//                        email.setText(empEmail)
-//                        cueId.setText(empCueId)
-//                        designation.setText(empDesignation)
-//                        iAddonCompleteListener!!.addOnCompleteListener()
-                        showProfileInfo()
-                    }
+                        EmployeeData(uid, empName, empEmail, empDesignation, empCueId, "1")
+                    )
+                        .addOnCompleteListener {
+                            iAddonCompleteListener.addOnCompleteListener()
+                        }
                 }
             }
         })

@@ -18,6 +18,10 @@ class SeatBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seat_book)
 
+
+
+
+
         navController = Navigation.findNavController(this,
             R.id.fragment
         )

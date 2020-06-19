@@ -2,9 +2,12 @@
     <string name="app_name">BookMySeat</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="LableProfile">Profile</string>
+    <string name="LableProfile">My Profile</string>
     <string name="calender_icon" />
     <string name="backword_button_icon" />
     <string name="reserve_my_seat">RESERVE MY SEAT</string>
     <string name="bookmyseat">BookMySeat</string>
+    <string name="text_hyphen">-</string>
+    <string name="reason">Reason :</string>
+    <string name="cancel">Cancel</string>
 </resources>

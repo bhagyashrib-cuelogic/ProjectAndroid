@@ -1,6 +1,7 @@
 package com.cuelogic.seatbook.fragment
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
@@ -15,7 +16,10 @@ import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.R
+import com.cuelogic.seatbook.ViewModel.viewModelClass.HomeViewModel
 import com.cuelogic.seatbook.repository.firebaseManager.HomeFirebaseData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -36,8 +40,8 @@ class HomeFragment : Fragment() {
     private lateinit var reasonReference: DatabaseReference
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var homeFragment: FrameLayout
-    private var homeFirebaseData =
-        HomeFirebaseData()
+    private var homeFirebaseData = HomeFirebaseData()
+    lateinit var viewModel: HomeViewModel
 
     @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
     override fun onCreateView(
@@ -45,10 +49,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application())
+            .create(HomeViewModel::class.java)
         homeFragment = view.findViewById(R.id.homeFragmentLayout)
-
-
-
         val context = container?.context!!
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
         val editTextAvailableSeat = view.findViewById<TextView>(R.id.text_reservedSeat)!!
@@ -68,8 +71,15 @@ class HomeFragment : Fragment() {
         val currentTime = timeFormat.format(calendarInstance)
         chooseTimeCheckIn.text = currentTime.toString()
         chooseTimeCheckOut.text = currentTime.toString()
-        homeFirebaseData.showSeatDateWise(currentDate, 0, editTextBookedSeat, editTextAvailableSeat)
 
+        viewModel.showDate(currentDate, 0).observe(activity!!, Observer {
+            for (i in it!!) {
+                if (i != null) {
+                    editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                    editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                }
+            }
+        })
 
         val calendar = Calendar.getInstance()
         calendar.set(
@@ -81,30 +91,35 @@ class HomeFragment : Fragment() {
             calendar.add(Calendar.DAY_OF_MONTH, +1)
             val tomorrow = dateFormat.format(calendar.time)
             date.text = tomorrow.toString()
-            homeFirebaseData.showSeatDateWise(
-                tomorrow.toString(),
-                0,
-                editTextBookedSeat,
-                editTextAvailableSeat
-            )
+            viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
+                for (i in it!!) {
+                    if (i != null) {
+                        editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                        editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                    }
+                }
+            })
         }
+
         dateDecrease.setOnClickListener() {
             dateDecrease.isEnabled = true
             if (date.text.toString() != currentDate) {
                 calendar.add(Calendar.DAY_OF_YEAR, -1)
                 val tomorrow = dateFormat.format(calendar.time)
                 date.text = tomorrow.toString()
-                homeFirebaseData.showSeatDateWise(
-                    tomorrow.toString(),
-                    0,
-                    editTextBookedSeat,
-                    editTextAvailableSeat
-                )
+                viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
+                    for (i in it!!) {
+                        if (i != null) {
+                            editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                            editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                        }
+                    }
+                })
+
             } else {
                 dateDecrease.isEnabled = false
             }
         }
-
 
         //DatePicker
         date.setOnTouchListener(OnTouchListener { v, event ->
@@ -142,11 +157,8 @@ class HomeFragment : Fragment() {
         }
 
         //Spinner set adapter values
-        adapter =
-            ArrayAdapter<String>(context,
-                R.layout.spinner_item, spinnerDataList)
+        adapter = ArrayAdapter<String>(context, R.layout.spinner_item, spinnerDataList)
         reasonSpinner.adapter = adapter
-
         getReasonData()
 
         //Onchange date show data
@@ -154,8 +166,16 @@ class HomeFragment : Fragment() {
         date.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val dateToCome = date.text.toString()
-                homeFirebaseData.showSeatDateWise(dateToCome, 0, editTextBookedSeat, editTextAvailableSeat)
+                viewModel.showDate(dateToCome, 0).observe(activity!!, Observer {
+                    for (i in it!!) {
+                        if (i != null) {
+                            editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                            editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                        }
+                    }
+                })
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -164,10 +184,10 @@ class HomeFragment : Fragment() {
         buttonBookingDataSave.setOnClickListener {
             val currentUserId = auth.currentUser!!.uid
             val dateToCome = date?.text.toString()
-            val checkTime =chooseTimeCheckIn.text.toString()
+            val checkTime = chooseTimeCheckIn.text.toString()
             val checkOut = chooseTimeCheckOut.text.toString()
             val reasonDescription = reasonSpinner.selectedItem.toString()
-            var isSelected :Boolean = true
+            var isSelected: Boolean = true
             if (date.text.toString() == currentDate) {
                 Toast.makeText(
                     activity,
@@ -175,16 +195,19 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                homeFirebaseData.checkBookedSeatForParticularDateByUser(
-                    activity!!,
-                    currentUserId,
-                    dateToCome,
-                    checkTime,
-                    checkOut,
-                    reasonDescription,
-                    editTextBookedSeat,
-                    editTextAvailableSeat,
-                    isSelected,date)
+                viewModel.saveBooking(checkTime,checkOut,reasonDescription,dateToCome,activity!!)
+
+//                homeFirebaseData.checkBookedSeatForParticularDateByUser(
+//                    activity!!,
+//                    currentUserId,
+//                    dateToCome,
+//                    checkTime,
+//                    checkOut,
+//                    reasonDescription,
+//                    editTextBookedSeat,
+//                    editTextAvailableSeat,
+//                    isSelected, date
+//                )
             }
         }
         return view
@@ -243,9 +266,6 @@ class HomeFragment : Fragment() {
             date.text = dateSet
         }
     }
-
-
-
 
     private fun selectTimePicker(chooseTime: TextView) {
         val mTimePicker: TimePickerDialog
