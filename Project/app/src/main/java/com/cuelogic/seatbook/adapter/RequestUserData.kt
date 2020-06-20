@@ -11,9 +11,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.cuelogic.seatbook.R
-import com.cuelogic.seatbook.repository.firebaseManager.firebaseOperation
+import com.cuelogic.seatbook.ViewModel.viewModelClass.CancelBookingViewModel
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.cuelogic.seatbook.repository.firebaseManager.FirebaseOperation
 import com.cuelogic.seatbook.model.BookingData
-import com.cuelogic.seatbook.model.SeatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -29,8 +30,8 @@ class RequestUserData(
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
     private lateinit var auth: FirebaseAuth
-    var firebaseReference =
-        firebaseOperation()
+    var firebaseReference = FirebaseOperation()
+    var viewModel = CancelBookingViewModel()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
@@ -59,39 +60,13 @@ class RequestUserData(
             builder.setTitle("Cancel Booking")
             builder.setMessage("Do you want cancel?")
             builder.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
-                dataReference.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {}
-
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (item in snapshot.children) {
-                            val userUid = item.child("id").value.toString()
-                            val bookedDate = item.child("date").value.toString()
-                            val isEmpty = parseInt(item.child("booked").value.toString())
-
-                            if (userUid == currentUser && bookedDate == info.date && isEmpty == 0) {
-                                val checkInTime = item.child("checkInTime").value.toString()
-                                val checkOutTime = item.child("checkInTime").value.toString()
-                                val reason = item.child("reason").value.toString()
-
-                                dataReference.child(item.key.toString()).setValue(
-                                    BookingData(
-                                        userUid,
-                                        bookedDate,
-                                        checkInTime,
-                                        checkOutTime,
-                                        reason,
-                                        "Cancelled",
-                                        1
-                                    )
-                                ).addOnCompleteListener() {
-                                    Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
-                                        .show()
-                                    firebaseReference.updateSeatDataOnCancel(bookedDate)
-                                    infoList.removeAt(position)
-                                    notifyDataSetChanged()
-                                }
-                            }
-                        }
+                viewModel.cancelBooking(info, object : IAddonCompleteListener {
+                    override fun addOnCompleteListener() {
+                        Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)
+                            .show()
+                       viewModel.updateSeatAfterCancelBooking(info.date)
+                        infoList.removeAt(position)
+                        notifyDataSetChanged()
                     }
                 })
             }

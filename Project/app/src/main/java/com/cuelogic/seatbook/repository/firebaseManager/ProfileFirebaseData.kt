@@ -1,6 +1,5 @@
 package com.cuelogic.seatbook.repository.firebaseManager
 
-
 import androidx.lifecycle.MutableLiveData
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.model.EmployeeData
@@ -27,7 +26,6 @@ class ProfileFirebaseData {
                     for (item in snapshot.children) {
                             val list:List<EmployeeData?> = listOf(item.getValue(EmployeeData::class.java))
                              mutableLiveData.setValue(list)
-
                     }
                 }
             })

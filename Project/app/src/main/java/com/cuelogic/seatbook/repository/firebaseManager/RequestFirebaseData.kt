@@ -21,6 +21,8 @@ class RequestFirebaseData {
     var dataReference = FirebaseDatabase.getInstance().getReference("Booking")
     private lateinit var auth: FirebaseAuth
 
+
+
     fun showUserCurrentBookingList(userList:ArrayList<BookingData>,
                                    listView:ListView,activity:FragmentActivity,iAddonCompleteListener: IAddonCompleteListener){
 
@@ -62,5 +64,4 @@ class RequestFirebaseData {
             }
         })
     }
-
 }

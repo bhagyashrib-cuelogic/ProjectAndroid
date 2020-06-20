@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.ViewModel.viewModelClass.HomeViewModel
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.repository.firebaseManager.HomeFirebaseData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -34,13 +35,10 @@ class HomeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var reasonSpinner: Spinner
-    private lateinit var listener: ValueEventListener
     private lateinit var adapter: ArrayAdapter<String>
     private lateinit var spinnerDataList: ArrayList<String>
-    private lateinit var reasonReference: DatabaseReference
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var homeFragment: FrameLayout
-    private var homeFirebaseData = HomeFirebaseData()
     lateinit var viewModel: HomeViewModel
 
     @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
@@ -63,7 +61,6 @@ class HomeFragment : Fragment() {
         val dateDecrease = view.findViewById<ImageView>(R.id.backword_button)
         reasonSpinner = view.findViewById(R.id.spinner)
 
-
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
@@ -80,46 +77,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-
-        val calendar = Calendar.getInstance()
-        calendar.set(
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
-        )
-        dateIncrease.setOnClickListener {
-            calendar.add(Calendar.DAY_OF_MONTH, +1)
-            val tomorrow = dateFormat.format(calendar.time)
-            date.text = tomorrow.toString()
-            viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
-                for (i in it!!) {
-                    if (i != null) {
-                        editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
-                        editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
-                    }
-                }
-            })
-        }
-
-        dateDecrease.setOnClickListener() {
-            dateDecrease.isEnabled = true
-            if (date.text.toString() != currentDate) {
-                calendar.add(Calendar.DAY_OF_YEAR, -1)
-                val tomorrow = dateFormat.format(calendar.time)
-                date.text = tomorrow.toString()
-                viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
-                    for (i in it!!) {
-                        if (i != null) {
-                            editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
-                            editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
-                        }
-                    }
-                })
-
-            } else {
-                dateDecrease.isEnabled = false
-            }
-        }
 
         //DatePicker
         date.setOnTouchListener(OnTouchListener { v, event ->
@@ -141,7 +98,6 @@ class HomeFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         spinnerDataList = ArrayList<String>()
         spinnerDataList.add(0, "Select the Reason")
-        reasonReference = FirebaseDatabase.getInstance().getReference("ReasonTable")
         reasonSpinner.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -159,7 +115,7 @@ class HomeFragment : Fragment() {
         //Spinner set adapter values
         adapter = ArrayAdapter<String>(context, R.layout.spinner_item, spinnerDataList)
         reasonSpinner.adapter = adapter
-        getReasonData()
+        viewModel.getReason(spinnerDataList, adapter)
 
         //Onchange date show data
         date.text = currentDate
@@ -182,12 +138,10 @@ class HomeFragment : Fragment() {
 
         //Firebase get current user
         buttonBookingDataSave.setOnClickListener {
-            val currentUserId = auth.currentUser!!.uid
             val dateToCome = date?.text.toString()
             val checkTime = chooseTimeCheckIn.text.toString()
             val checkOut = chooseTimeCheckOut.text.toString()
             val reasonDescription = reasonSpinner.selectedItem.toString()
-            var isSelected: Boolean = true
             if (date.text.toString() == currentDate) {
                 Toast.makeText(
                     activity,
@@ -195,46 +149,65 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                viewModel.saveBooking(checkTime,checkOut,reasonDescription,dateToCome,activity!!)
+                viewModel.saveBooking(
+                    activity!!,
+                    dateToCome,
+                    checkTime,
+                    checkOut,
+                    reasonDescription,
+                    object : IAddonCompleteListener {
+                        override fun addOnCompleteListener() {
+                            chooseTimeCheckIn.text = currentTime.toString()
+                            chooseTimeCheckOut.text = currentTime.toString()
+                        }
+                    })
+            }
+        }
 
-//                homeFirebaseData.checkBookedSeatForParticularDateByUser(
-//                    activity!!,
-//                    currentUserId,
-//                    dateToCome,
-//                    checkTime,
-//                    checkOut,
-//                    reasonDescription,
-//                    editTextBookedSeat,
-//                    editTextAvailableSeat,
-//                    isSelected, date
-//                )
+        val calendar = Calendar.getInstance()
+        calendar.set(
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        dateIncrease.setOnClickListener {
+            calendar.add(Calendar.DAY_OF_MONTH, +1)
+            val tomorrow = dateFormat.format(calendar.time)
+            date.text = tomorrow.toString()
+            viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
+                for (i in it!!) {
+                    if (i != null) {
+                        editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                        editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                    }
+                }
+            })
+        }
+        dateDecrease.setOnClickListener {
+            dateDecrease.isEnabled = true
+            if (date.text.toString() != currentDate) {
+                calendar.add(Calendar.DAY_OF_YEAR, -1)
+                val tomorrow = dateFormat.format(calendar.time)
+                date.text = tomorrow.toString()
+                viewModel.showDate(tomorrow.toString(), 0).observe(activity!!, Observer {
+                    for (i in it!!) {
+                        if (i != null) {
+                            editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
+                            editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+                        }
+                    }
+                })
+
+            } else {
+                dateDecrease.isEnabled = false
             }
         }
         return view
     }
 
-    //Return reason.
-    private fun getReasonData() {
-        listener = reasonReference.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (item in snapshot.children) {
-                        spinnerDataList.add(item.value.toString())
-                    }
-                    adapter.notifyDataSetChanged()
-                }
-            }
-        })
-    }
-
     //datePicker method.
     private fun datePicker(context: Context, date: TextView) {
         date.setOnClickListener {
-            val sdf = SimpleDateFormat("dd-MM-yyyy")
             val cal: Calendar = Calendar.getInstance()
             val year = cal.get(Calendar.YEAR)
             val month = cal.get(Calendar.MONTH)
