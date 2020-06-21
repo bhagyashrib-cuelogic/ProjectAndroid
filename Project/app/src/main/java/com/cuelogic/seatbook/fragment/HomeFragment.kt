@@ -5,6 +5,7 @@ import android.app.Application
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,15 +16,16 @@ import android.view.View
 import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.ViewModel.viewModelClass.HomeViewModel
+import com.cuelogic.seatbook.activies.ProfileActivity
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
-import com.cuelogic.seatbook.repository.firebaseManager.HomeFirebaseData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -50,6 +52,14 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application())
             .create(HomeViewModel::class.java)
         homeFragment = view.findViewById(R.id.homeFragmentLayout)
+
+        (activity as AppCompatActivity?)?.setSupportActionBar(customeToolbar)
+        val profile = view.findViewById<ImageView>(R.id.profile_icon)
+        profile.setOnClickListener {
+            var intent = Intent(activity, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         val context = container?.context!!
         val editTextBookedSeat = view?.findViewById<TextView>(R.id.text_bookedSeat)!!
         val editTextAvailableSeat = view.findViewById<TextView>(R.id.text_reservedSeat)!!

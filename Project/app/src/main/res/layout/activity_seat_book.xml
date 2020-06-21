@@ -7,38 +7,6 @@
     android:orientation="vertical"
     tools:context=".activies.SeatBookActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#ffffff"
-        android:id="@+id/customeToolbar"
-        tools:ignore="MissingConstraints">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BookMySeat"
-                android:layout_alignParentLeft="true"
-                android:textColor="#E8FD595E"
-                android:fontFamily="@font/verdana_bold"
-                android:layout_centerVertical="true"
-                android:textStyle="bold"
-                android:textSize="25sp"/>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_profile_icon"
-                android:id="@+id/profile_icon"/>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
 
     <fragment
         android:id="@+id/fragment"
@@ -49,22 +17,21 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customeToolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/bottom_navigation" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        app:itemTextColor="@color/bottom_navigation_color"
-        app:itemIconTint="@color/bottom_navigation_color"
+        style="@style/NavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/NavigationView"
         android:background="#FFFFFF"
+        app:itemIconTint="@color/bottom_navigation_color"
+        app:itemTextColor="@color/bottom_navigation_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />
 
 

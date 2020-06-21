@@ -29,18 +29,14 @@ class RequestUserData(
 ) :
     ArrayAdapter<BookingData>(context, layoutResId, infoList) {
 
-    private lateinit var auth: FirebaseAuth
-    var firebaseReference = FirebaseOperation()
+
     var viewModel = CancelBookingViewModel()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater = LayoutInflater.from(context)
         val view: View = layoutInflater.inflate(layoutResId, null)
 
-        auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser!!
-        val currentUser = user.uid!!
-        val dataReference = FirebaseDatabase.getInstance().getReference("Booking")
+
         val textViewDate: TextView? = view.findViewById<TextView>(R.id.datefirebase)
         val textViewCheckInTime: TextView? = view.findViewById<TextView>(R.id.checkintime)
         val textViewCheckOutTime: TextView? = view.findViewById<TextView>(R.id.checkouttime)

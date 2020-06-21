@@ -1,23 +1,28 @@
 package com.cuelogic.seatbook.fragment
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.ViewModel.viewModelClass.HistoryViewModel
 import com.cuelogic.seatbook.ViewModel.viewModelClass.RequestViewModel
+import com.cuelogic.seatbook.activies.ProfileActivity
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.callback.ProfileListener
 import com.cuelogic.seatbook.repository.firebaseManager.RequestFirebaseData
 import com.cuelogic.seatbook.model.BookingData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.collections.ArrayList
 
 /**
@@ -35,8 +40,13 @@ class RequestFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_request, container, false)
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application()).create(RequestViewModel::class.java)
-        activity?.title = "My Requests"
 
+        (activity as AppCompatActivity?)?.setSupportActionBar(customeToolbar)
+        val profile = view.findViewById<ImageView>(R.id.profile_icon)
+        profile.setOnClickListener {
+            var intent = Intent(activity, ProfileActivity::class.java)
+            startActivity(intent)
+        }
         userList = ArrayList()
         listView = view.findViewById(R.id.listViewItem)
 

@@ -1,11 +1,13 @@
 package com.cuelogic.seatbook.fragment
 
 import android.app.Application
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
 import android.widget.Toolbar
@@ -17,10 +19,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.ViewModel.viewModelClass.HistoryViewModel
 import com.cuelogic.seatbook.activies.MainActivity
+import com.cuelogic.seatbook.activies.ProfileActivity
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.callback.ProfileListener
 import com.cuelogic.seatbook.model.BookingData
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,9 +48,12 @@ class HistoryFragment : Fragment() ,ProfileListener,IAddonCompleteListener{
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_history, container,false)
 
-        var toolbar:Toolbar?= view?.findViewById(R.id.customeToolbar)
-        if(toolbar==null){
-        toolbar?.title = "FragmentTitle"}
+        (activity as AppCompatActivity?)?.setSupportActionBar(customeToolbar)
+        val profile = view.findViewById<ImageView>(R.id.profile_icon)
+        profile.setOnClickListener {
+            var intent = Intent(activity, ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application()).create(HistoryViewModel::class.java)
 
