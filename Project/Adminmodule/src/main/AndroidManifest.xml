@@ -21,6 +21,9 @@
         <activity
             android:name=".UI.activities.HomeScreenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.activities.ReasonActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

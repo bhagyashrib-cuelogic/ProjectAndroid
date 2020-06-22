@@ -5,4 +5,11 @@
     <string name="LableProfile">Profile</string>
     <string name="calender_icon" />
     <string name="backword_button_icon" />
+    <string name="config_office">Config Office</string>
+    <string name="config_reason">Config Reasons</string>
+    <string name="config_total_seats">Config Total Seats</string>
+    <string name="add_seats">Add Seats</string>
+    <string name="select_date">Select Date:</string>
+    <string name="enter_seats">Enter Seats:</string>
+    <string name="reasons">Reasons</string>
 </resources>
