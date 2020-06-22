@@ -33,7 +33,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/ic_profile_icon"
                 android:id="@+id/profile_icon"/>
         </RelativeLayout>
@@ -41,18 +41,21 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="@dimen/margin_20dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_20dp"
+    android:layout_marginTop="50dp">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="#00000000"
-        android:dividerHeight="@dimen/margin_0dp"
+        android:dividerHeight="10dp"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:scrollbars="none"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_20dp"
         android:id="@+id/listViewItem"/>
-    </RelativeLayout>
-
+</RelativeLayout>
 
 </FrameLayout>

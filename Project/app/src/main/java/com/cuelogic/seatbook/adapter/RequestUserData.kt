@@ -55,7 +55,7 @@ class RequestUserData(
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Cancel Booking")
             builder.setMessage("Do you want cancel?")
-            builder.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
+            builder.setPositiveButton("Ok") { _: DialogInterface, _: Int ->
                 viewModel.cancelBooking(info, object : IAddonCompleteListener {
                     override fun addOnCompleteListener() {
                         Toast.makeText(context, "cancel booking", Toast.LENGTH_SHORT)

@@ -38,7 +38,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="20dp"
                     android:src="@drawable/ic_profile_icon"
                     android:id="@+id/profile_icon"/>
             </RelativeLayout>
@@ -178,6 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/booked_seat_layout"
                 android:layout_marginTop="10dp"
+                android:padding="10dp"
                 android:background="@drawable/time_layout">
 
                 <LinearLayout
@@ -215,6 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/time_linear_layout"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="6dp"
                     android:layout_marginRight="20dp">
 
                     <TextView

@@ -4,13 +4,12 @@ import android.app.Application
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.Toast
-import android.widget.Toolbar
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -33,12 +32,10 @@ import java.util.*
  */
 class HistoryFragment : Fragment() ,ProfileListener,IAddonCompleteListener{
 
-
     private lateinit var userList : MutableList<BookingData>
     private lateinit var listView : ListView
     private lateinit var auth: FirebaseAuth
     lateinit var viewModel: HistoryViewModel
-
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
@@ -64,17 +61,22 @@ class HistoryFragment : Fragment() ,ProfileListener,IAddonCompleteListener{
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val currentDate = dateFormat.format(calendarInstance)
+      //  val noDataText = view.findViewById<TextView>(R.id.noText)
+
 
         listView = view.findViewById(R.id.listViewItem)
         userList = mutableListOf()
         val context: FragmentActivity? = activity
 
-        viewModel.fetchSampleList().showHistory(currentDate,currentUser,userList,context,listView)
-        addOnCompleteListener()
+            viewModel.fetchSampleList()
+                .showHistory(currentDate, currentUser, userList, context, listView,object :IAddonCompleteListener{
+                    override fun addOnCompleteListener() {
 
+                    }
+                })
+            addOnCompleteListener()
         return view
     }
-
     override fun onSuccess(v: String) {
         Toast.makeText(activity,"$v",Toast.LENGTH_SHORT).show()
 }

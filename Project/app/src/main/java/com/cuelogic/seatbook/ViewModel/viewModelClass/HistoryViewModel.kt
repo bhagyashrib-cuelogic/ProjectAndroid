@@ -12,10 +12,7 @@ import com.cuelogic.seatbook.repository.firebaseManager.HistoryFirebaseData
 
 class HistoryViewModel:ViewModel() {
 
-    var profileListener : ProfileListener?=null
-
     fun fetchSampleList():HistoryFirebaseData {
-        profileListener?.onSuccess("hhhh")
         return HistoryFirebaseData()
     }
 

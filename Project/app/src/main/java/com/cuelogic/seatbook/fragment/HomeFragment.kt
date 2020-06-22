@@ -24,6 +24,7 @@ import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.ViewModel.viewModelClass.HomeViewModel
 import com.cuelogic.seatbook.activies.ProfileActivity
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
@@ -159,18 +160,23 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                viewModel.saveBooking(
-                    activity!!,
-                    dateToCome,
-                    checkTime,
-                    checkOut,
-                    reasonDescription,
-                    object : IAddonCompleteListener {
-                        override fun addOnCompleteListener() {
-                            chooseTimeCheckIn.text = currentTime.toString()
-                            chooseTimeCheckOut.text = currentTime.toString()
-                        }
-                    })
+                if (reasonDescription == "" || reasonDescription == "Select the Reason") {
+                    Snackbar.make(homeFragment, "Please select proper reason", Snackbar.LENGTH_LONG)
+                        .show()
+                } else {
+                    viewModel.saveBooking(
+                        activity!!,
+                        dateToCome,
+                        checkTime,
+                        checkOut,
+                        reasonDescription,
+                        object : IAddonCompleteListener {
+                            override fun addOnCompleteListener() {
+                                chooseTimeCheckIn.text = currentTime.toString()
+                                chooseTimeCheckOut.text = currentTime.toString()
+                            }
+                        })
+                }
             }
         }
 
@@ -192,8 +198,24 @@ class HomeFragment : Fragment() {
                     }
                 }
             })
+            val c = Calendar.getInstance()
+            calendar.set(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+            c.add(Calendar.DAY_OF_MONTH, +60)
+            val next = dateFormat.format(c.time)
+            val nextDay = dateFormat.parse(next)
+            val tom = dateFormat.parse(tomorrow)
+            if (nextDay == tom) {
+                Toast.makeText(activity, "You can book seat up $tom", Toast.LENGTH_SHORT)
+                    .show()
+                dateIncrease.isEnabled = false
+            }
         }
         dateDecrease.setOnClickListener {
+            dateIncrease.isEnabled=true
             dateDecrease.isEnabled = true
             if (date.text.toString() != currentDate) {
                 calendar.add(Calendar.DAY_OF_YEAR, -1)
@@ -231,8 +253,12 @@ class HomeFragment : Fragment() {
                 month,
                 date
             )
+            cal.add(Calendar.DATE, 60)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.datePicker.minDate = System.currentTimeMillis() - 1000
+            dialog.datePicker.maxDate = cal.timeInMillis
+            Toast.makeText(activity, "You can book seat upto ${cal.time}", Toast.LENGTH_SHORT)
+                .show()
             dialog.show()
         }
         mDateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, day ->
