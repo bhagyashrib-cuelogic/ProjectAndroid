@@ -7,4 +7,9 @@
     <color name="green">#3EAD58</color>
     <color name="grar100a">#7E7E7E</color>
     <color name="graydark">#7E7E7E</color>
+    <color name="dark_black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="light_red">#E8FD595E</color>
+    <color name="gray">#585858</color>
+    <color name="light_gray">#63EAEAEA</color>
 </resources>

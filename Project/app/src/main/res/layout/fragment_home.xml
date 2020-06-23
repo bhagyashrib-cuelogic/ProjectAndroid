@@ -6,7 +6,7 @@
         android:id="@+id/homeFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context=".fragment.HomeFragment">
 
@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#ffffff"
+            android:background="@color/white"
             android:id="@+id/customeToolbar"
             tools:ignore="MissingConstraints">
             <RelativeLayout
@@ -24,21 +24,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BookMySeat"
+                    android:text="@string/bookmyseat"
                     android:layout_alignParentLeft="true"
-                    android:textColor="#E8FD595E"
+                    android:textColor="@color/light_red"
                     android:fontFamily="@font/verdana_bold"
                     android:layout_centerVertical="true"
                     android:textStyle="bold"
-                    android:textSize="25sp"/>
+                    android:textSize="@dimen/text_size_25sp"/>
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/width_30dp"
+                    android:layout_height="@dimen/height_30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="@dimen/margin_20dp"
                     android:src="@drawable/ic_profile_icon"
                     android:id="@+id/profile_icon"/>
             </RelativeLayout>
@@ -48,21 +48,21 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="70dp">
+            android:layout_marginTop="@dimen/height_50dp">
 
             <RelativeLayout
                 android:id="@+id/calender_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:layout_marginRight="@dimen/margin_20dp"
                 android:background="@drawable/gray_background_round"
-                android:padding="10dp">
+                android:padding="@dimen/padding_10dp">
 
                 <ImageView
                     android:id="@+id/backword_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/height_40dp"
                     android:contentDescription="@string/backword_button_icon"
                     android:src="@drawable/arrow" />
 
@@ -86,19 +86,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="@dimen/margin_5dp"
                         android:layout_toEndOf="@id/date_range_icon"
                         android:layout_toRightOf="@id/date_range_icon"
                         android:fontFamily="@font/verdana_bold"
-                        android:text="13-05-2020"
-                        android:textColor="#585858"
-                        android:textSize="18sp" />
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_size_18sp" />
                 </RelativeLayout>
 
                 <ImageView
                     android:id="@+id/forword_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/height_40dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/drop_arrow" />
@@ -110,11 +109,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/calender_layout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_6dp"
+                android:layout_marginRight="@dimen/margin_20dp"
                 android:background="@drawable/layout_backgroud"
-                android:padding="8dp">
+                android:padding="@dimen/padding_8dp">
 
                 <TextView
                     android:id="@+id/text_reservedSeat"
@@ -124,8 +123,8 @@
                     android:layout_marginVertical="5dp"
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/futura_medium_bt"
-                    android:textColor="#000000"
-                    android:textSize="40sp" />
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_40sp" />
 
                 <TextView
                     android:id="@+id/book_seat_text"
@@ -134,9 +133,9 @@
                     android:layout_below="@id/text_reservedSeat"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/verdana"
-                    android:text="Available Seats"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:text="@string/available_seats"
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_20sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -144,11 +143,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/available_seat_layout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginRight="@dimen/margin_20dp"
                 android:background="@drawable/layout_backgroud"
-                android:padding="8dp">
+                android:padding="@dimen/padding_8dp">
 
                 <TextView
                     android:id="@+id/text_bookedSeat"
@@ -157,8 +156,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="@font/verdana"
-                    android:textColor="#000000"
-                    android:textSize="40sp" />
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_40sp" />
 
                 <TextView
                     android:id="@+id/reserved_seat_text"
@@ -167,9 +166,9 @@
                     android:layout_below="@id/text_bookedSeat"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/verdana"
-                    android:text="Reserved Seats"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:text="@string/reserved_seats"
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_20sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -177,24 +176,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/booked_seat_layout"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:padding="@dimen/padding_10dp"
                 android:background="@drawable/time_layout">
 
                 <LinearLayout
                     android:id="@+id/time_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_marginRight="@dimen/margin_20dp">
 
                     <TextView
                         android:id="@+id/text_signIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/verdana_bold"
-                        android:text="Check In"
-                        android:textSize="15sp"
+                        android:text="@string/check_in"
+                        android:textSize="@dimen/text_size_15sp"
                         android:textStyle="bold" />
 
                     <Space
@@ -206,8 +205,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/verdana_bold"
-                        android:text="Check Out"
-                        android:textSize="15sp"
+                        android:text="@string/check_out"
+                        android:textSize="@dimen/text_size_15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -215,16 +214,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/time_linear_layout"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/margin_20dp">
 
                     <TextView
                         android:id="@+id/edit_checkInTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/verdana"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/text_size_15sp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -237,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/verdana"
                         android:text="20dp"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/text_size_15sp" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -247,25 +246,25 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/time_layout"
                 android:layout_marginTop="0dp"
-                android:background="#63EAEAEA">
+                android:background="@color/light_gray">
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="#FFFFFF" />
+                    android:layout_height="@dimen/height_40dp"
+                    android:layout_marginLeft="@dimen/margin_20dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:layout_marginRight="@dimen/margin_20dp"
+                    android:layout_marginBottom="@dimen/margin_5dp"
+                    android:background="@color/white" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:layout_marginRight="@dimen/margin_20dp"
                     android:src="@drawable/ic_arrow_drop_down_black_24dp" />
             </RelativeLayout>
 
@@ -275,15 +274,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/margin_20dp"
+                android:layout_marginRight="@dimen/margin_20dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
                 android:background="@drawable/button_border"
                 android:fontFamily="@font/verdana_bold"
                 android:gravity="center"
                 android:text="@string/reserve_my_seat"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_size_20sp" />
 
         </RelativeLayout>
     </FrameLayout>

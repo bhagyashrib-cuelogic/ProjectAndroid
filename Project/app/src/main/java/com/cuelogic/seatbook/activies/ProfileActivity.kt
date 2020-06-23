@@ -1,6 +1,5 @@
 package com.cuelogic.seatbook.activies
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -28,22 +27,19 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var adapter: ArrayAdapter<String>
     private lateinit var reasonSpinner: Spinner
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-
-        var toolbar:Toolbar = findViewById(R.id.customeToolbar)
+        val toolbar: Toolbar = findViewById(R.id.customeToolbar)
         setSupportActionBar(toolbar)
-        getSupportActionBar()!!.setDisplayShowHomeEnabled(true)
-        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
-
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
-
         reasonSpinner = findViewById(R.id.spinner)
-        val spinnerDataList: ArrayList<String> = arrayListOf("Intern", "Sr Soft Eng","Jr Soft Eng","Manager")
+        val spinnerDataList: ArrayList<String> =
+            arrayListOf("Intern", "Sr Soft Eng", "Jr Soft Eng", "Manager")
         employeeName = findViewById(R.id.name)
         saveButton = findViewById(R.id.saveButton)
         auth = FirebaseAuth.getInstance()
@@ -71,11 +67,16 @@ class ProfileActivity : AppCompatActivity() {
                                 ) {
                                     reasonSpinner.setSelection(position)
                                 }
+
                                 override fun onNothingSelected(parent: AdapterView<*>?) {}
                             }
                             //Spinner set adapter values
                             adapter =
-                                ArrayAdapter<String>(this, R.layout.spinner_designation, spinnerDataList)
+                                ArrayAdapter<String>(
+                                    this,
+                                    R.layout.spinner_designation,
+                                    spinnerDataList
+                                )
                             adapter.notifyDataSetChanged()
                             reasonSpinner.adapter = adapter
 
@@ -94,10 +95,15 @@ class ProfileActivity : AppCompatActivity() {
                                 ) {
                                     reasonSpinner.setSelection(position)
                                 }
+
                                 override fun onNothingSelected(parent: AdapterView<*>?) {}
                             }
                             adapter =
-                                ArrayAdapter<String>(this, R.layout.spinner_designation, spinnerDataList)
+                                ArrayAdapter<String>(
+                                    this,
+                                    R.layout.spinner_designation,
+                                    spinnerDataList
+                                )
                             reasonSpinner.adapter = adapter
                         }
                     }
@@ -128,21 +134,24 @@ class ProfileActivity : AppCompatActivity() {
                 val name = employeeName.text.toString()
                 val cueIdEmp = cueId.text.toString()
                 val designation = reasonSpinner.selectedItem.toString()
-                viewModel.editProfile( name,designation, cueIdEmp, object : IAddonCompleteListener {
-                        override fun addOnCompleteListener() {
-                            Toast.makeText(applicationContext, "Updated Successfully", Toast.LENGTH_SHORT).show()
-                            employeeName.isEnabled = false
-                            cueId.isEnabled = false
-                            email.isEnabled = false
-                        }
-                    })
+                viewModel.editProfile(name, designation, cueIdEmp, object : IAddonCompleteListener {
+                    override fun addOnCompleteListener() {
+                        Toast.makeText(
+                            applicationContext,
+                            "Updated Successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        employeeName.isEnabled = false
+                        cueId.isEnabled = false
+                        email.isEnabled = false
+                    }
+                })
             }
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId ==android.R.id.home)
-        {
+        if (item.itemId == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)

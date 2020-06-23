@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".activies.SplashScreenActivity">
 
@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:text="BookMySeat"
         android:textStyle="bold"
-        android:textSize="46sp"
+        android:textSize="@dimen/text_size_46sp"
         android:fontFamily="@font/verdana_bold"
-        android:textColor="#E8FF595E"/>
+        android:textColor="@color/light_red"/>
 </RelativeLayout>

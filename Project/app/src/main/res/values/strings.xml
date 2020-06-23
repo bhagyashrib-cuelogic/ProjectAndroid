@@ -10,4 +10,16 @@
     <string name="text_hyphen">-</string>
     <string name="reason">Reason :</string>
     <string name="cancel">Cancel</string>
+    <string name="google_sign_in">Google Sign In</string>
+    <string name="email_name">Email Name</string>
+    <string name="email_id">Email Id</string>
+    <string name="cue_id">Cue Id</string>
+    <string name="designation">Designation</string>
+    <string name="edit">EDIT</string>
+    <string name="history">History</string>
+    <string name="available_seats">Available Seats</string>
+    <string name="reserved_seats">Reserved Seats</string>
+    <string name="check_in">Check In</string>
+    <string name="check_out">Check Out</string>
+    <string name="my_requests">My Requests</string>
 </resources>
