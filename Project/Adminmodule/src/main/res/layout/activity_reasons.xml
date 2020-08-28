@@ -8,7 +8,6 @@
         android:id="@+id/calender_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
         android:padding="10dp">
 
         <ImageView
@@ -32,17 +31,16 @@
                 android:id="@+id/edit_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#BFFF3B3B"
                 android:fontFamily="@font/verdana"
                 android:textSize="22sp"
-
                 android:text="@string/reasons"
                 android:layout_centerVertical="true"
                  />
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/btnAdd"
+            android:id="@+id/imgAdd"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_plus"

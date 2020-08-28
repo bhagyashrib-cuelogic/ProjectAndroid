@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity
             android:name="com.example.adminmodule.UI.activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -24,6 +26,11 @@
         <activity
             android:name=".UI.activities.ReasonActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".UI.activities.ReservSeatActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
+
 
 </manifest>

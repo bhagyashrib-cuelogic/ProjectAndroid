@@ -5,10 +5,51 @@
     android:layout_height="match_parent"
     tools:context=".UI.fragments.SeatsFragment">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seatsListView"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/customeToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/verdana_bold"
+                    android:text="@string/booked_seats"
+                    android:textColor="@color/light_red"
+                    android:textSize="@dimen/text_size_25sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/addIcon"
+                    android:layout_width="@dimen/margin_25dp"
+                    android:layout_height="@dimen/margin_25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_20dp"
+                    android:src="@drawable/ic_plus" />
+            </RelativeLayout>
 
 
+        </androidx.appcompat.widget.Toolbar>
+
+        <ListView
+            android:id="@+id/seatsListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customeToolbar" />
+
+    </RelativeLayout>
 </FrameLayout>

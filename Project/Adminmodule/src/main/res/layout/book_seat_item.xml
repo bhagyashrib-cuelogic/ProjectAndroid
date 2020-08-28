@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/seatbooked_border"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/namelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/verdana_bold"
+            android:text="@string/emp_name"
+            android:textColor="@color/grar100a"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <TextView
+            android:id="@+id/nameHypen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_3dp"
+            android:layout_marginRight="@dimen/margin_3dp"
+            android:layout_toRightOf="@+id/checkintime"
+            android:fontFamily="@font/verdana"
+            android:text="@string/text_hyphen"
+            android:textColor="@color/gray75a"
+            android:textSize="@dimen/text_size_16sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/verdana_bold"
+            android:textColor="@color/grar100a"
+            android:textSize="@dimen/text_size_15sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namelayout"
+        android:layout_marginTop="@dimen/margin_10dp">
+
+        <TextView
+            android:id="@+id/datefirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/verdana_bold"
+            android:textColor="@color/grar100a"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <Space
+            android:layout_width="@dimen/width_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/bookingStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/verdana"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size_16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cancel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_layout"
+        android:layout_marginTop="@dimen/margin_10dp">
+
+        <RelativeLayout
+            android:id="@+id/timedate_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_0dp">
+
+            <TextView
+                android:id="@+id/checkintime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/verdana"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/middel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_3dp"
+                android:layout_marginRight="@dimen/margin_3dp"
+                android:layout_toRightOf="@+id/checkintime"
+                android:fontFamily="@font/verdana"
+                android:text="@string/text_hyphen"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <TextView
+                android:id="@+id/checkouttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_3dp"
+                android:layout_marginRight="@dimen/margin_3dp"
+                android:layout_toRightOf="@+id/middel"
+                android:fontFamily="@font/verdana"
+                android:textColor="@color/gray75a"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <RelativeLayout
+                android:id="@+id/reason_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_25dp">
+
+                <TextView
+                    android:id="@+id/text_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:fontFamily="@font/verdana"
+                    android:text="@string/reason"
+                    android:textColor="@color/gray75a"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/textReason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_6dp"
+                    android:layout_toRightOf="@+id/text_reason"
+                    android:fontFamily="@font/verdana"
+                    android:textColor="@color/gray75a"
+                    android:textSize="@dimen/text_size_16sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@drawable/button_border"
+            android:fontFamily="@font/verdana"
+            android:text="@string/cancel"
+            android:textSize="@dimen/text_size_14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

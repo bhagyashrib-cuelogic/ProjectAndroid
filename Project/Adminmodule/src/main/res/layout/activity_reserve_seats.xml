@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/backword_button_icon"
+            android:src="@drawable/ic_left_arrow" />
+
+        <RelativeLayout
+            android:id="@+id/calender_edittext_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+
+            <TextView
+                android:id="@+id/edit_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/verdana"
+                android:text="@string/reserve_seat"
+                android:textColor="#BFFF3B3B"
+                android:textSize="22sp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/employee_spinner_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarLayout"
+        android:layout_marginTop="0dp"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:id="@+id/tvSelectEmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/height_10dp"
+            android:fontFamily="@font/verdana_bold"
+            android:text="Select Employee:"
+            android:textSize="@dimen/text_size_18sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/employee_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_40dp"
+            android:layout_below="@+id/tvSelectEmp"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:background="@color/white" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/text_size_40sp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reason_spinner_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/employee_spinner_layout"
+        android:layout_marginTop="0dp"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:id="@+id/tvSelectReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/height_10dp"
+            android:fontFamily="@font/verdana_bold"
+            android:text="Select Reason:"
+            android:textSize="@dimen/text_size_18sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/reason_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_40dp"
+            android:layout_below="@+id/tvSelectReason"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:background="@color/white"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/text_size_40sp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/date_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reason_spinner_layout"
+        android:layout_marginTop="0dp"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:id="@+id/tvSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/height_10dp"
+            android:fontFamily="@font/verdana_bold"
+            android:text="Select Date:"
+            android:textSize="@dimen/text_size_18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/calender_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSelectDate"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/height_10dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:padding="10dp">
+
+
+            <RelativeLayout
+                android:id="@+id/date_edittext_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="25-8-2020"
+                    android:fontFamily="@font/verdana_bold"
+                    android:textColor="#585858"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_layout"
+        android:background="@drawable/time_layout"
+
+        android:padding="@dimen/padding_10dp">
+
+        <LinearLayout
+            android:id="@+id/time_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp">
+
+            <TextView
+                android:id="@+id/text_signIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/verdana_bold"
+                android:text="Check in"
+                android:textSize="@dimen/text_size_18sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/verdana_bold"
+                android:text="Check out"
+                android:textSize="@dimen/text_size_18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time_linear_layout"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_6dp"
+            android:layout_marginRight="@dimen/margin_20dp">
+
+            <TextView
+                android:id="@+id/edit_checkInTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/verdana"
+                android:text="15:16 PM"
+                android:textSize="@dimen/text_size_15sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/edit_checkOutTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/verdana"
+                android:text="15:16 PM"
+                android:textSize="@dimen/text_size_15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/verdana_bold"
+        android:gravity="center"
+        android:text="@string/reserve_seat"
+        android:textSize="@dimen/text_size_20sp" />
+</RelativeLayout>
