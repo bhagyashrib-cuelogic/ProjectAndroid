@@ -7,17 +7,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cuelogic.seatbook.model.BookingData
 import com.example.adminmodule.R
 import com.example.adminmodule.UI.Adapters.BookedSeatsAdapter
-import com.example.adminmodule.UI.Adapters.ReasonsAdapter
-import com.example.adminmodule.UI.activities.ReasonActivity
-import com.example.adminmodule.UI.activities.ReservSeatActivity
+import com.example.adminmodule.UI.activities.ReserveSeatActivity
 
 class SeatsFragment : Fragment() {
 
@@ -44,7 +40,7 @@ class SeatsFragment : Fragment() {
         bookingList.add(seat3)
 
         addImage.setOnClickListener {
-            var intent = Intent(activity, ReservSeatActivity::class.java)
+            var intent = Intent(activity, ReserveSeatActivity::class.java)
             startActivity(intent)
         }
 

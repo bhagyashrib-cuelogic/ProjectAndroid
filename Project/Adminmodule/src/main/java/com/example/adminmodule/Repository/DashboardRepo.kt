@@ -1,13 +1,20 @@
 package com.example.adminmodule.Repository
 
+import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import com.example.adminmodule.Models.SeatData
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class DashboardRepo {
 
-    fun showSeatDateWise(dateToCome: String): MutableLiveData<List<SeatData?>?> {
+    fun showSeatDateWise(
+        dateToCome: String,
+        activity: FragmentActivity
+    ): MutableLiveData<List<SeatData?>?> {
         val mutableLiveData: MutableLiveData<List<SeatData?>?> = MutableLiveData<List<SeatData?>?>()
 
         val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
@@ -23,8 +30,11 @@ class DashboardRepo {
                         val bookedSeat = item.child("booked").value.toString()
                         val availableSeat = item.child("available").value.toString()
                         val list: List<SeatData?> = listOf(item.getValue(SeatData::class.java))
-                        mutableLiveData.setValue(list)
+                        mutableLiveData.value = list
                     }
+                } else {
+                    mutableLiveData.value = emptyList()
+
                 }
             }
         })

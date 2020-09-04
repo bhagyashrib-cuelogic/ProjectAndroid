@@ -7,6 +7,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -168,13 +169,30 @@ class HomeFragment : Fragment() {
         editTextBookedSeat: TextView,
         currentDate: String
     ) {
-        dashboardViewModel.getSeatsDateWise(currentDate).observe(activity!!, Observer {
-            for (i in it!!) {
-                if (i != null) {
-                    editTextAvailableSeat.setText(Integer.valueOf(i.available).toString())
-                    editTextBookedSeat.setText(Integer.valueOf(i.booked).toString())
+        dashboardViewModel.getSeatsDateWise(currentDate, activity!!).observe(activity!!, Observer {
+            Log.d("Home Fragment", "SeatValue$it")
+            if (it != null) {
+                if (it.isNotEmpty()) {
+                    for (i in it!!) {
+                        if (i != null) {
+                            editTextAvailableSeat.text = Integer.valueOf(i.available).toString()
+                            editTextBookedSeat.text = Integer.valueOf(i.booked).toString()
+                        }
+                    }
+                } else {
+                    editTextAvailableSeat.text = "-"
+                    editTextBookedSeat.text = "-"
+                    Toast.makeText(
+                        activity,
+                        "No Seats Available for $currentDate",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
+
+
             }
+
+
         })
     }
 

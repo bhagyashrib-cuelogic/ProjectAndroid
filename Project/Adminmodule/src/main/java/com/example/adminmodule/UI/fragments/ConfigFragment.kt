@@ -2,11 +2,10 @@ package com.example.adminmodule.UI.fragments
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.Application
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,8 +16,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.example.adminmodule.R
 import com.example.adminmodule.UI.activities.ReasonActivity
+import com.example.adminmodule.ViewModels.ConfigViewModel
 import kotlinx.android.synthetic.main.add_seats_popup.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,6 +29,7 @@ import java.util.*
 class ConfigFragment : Fragment() {
     @SuppressLint("SimpleDateFormat", "ClickableViewAccessibility")
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
+    lateinit var configViewModel: ConfigViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,9 @@ class ConfigFragment : Fragment() {
         val context = container?.context!!
         val buttonConfigReason = view.findViewById<Button>(R.id.btnConfigReason)!!
         val buttonConfigSeats = view.findViewById<Button>(R.id.btnConfigSeats)!!
+
+        configViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application())
+            .create(ConfigViewModel::class.java)
 
         buttonConfigReason.setOnClickListener {
             var intent = Intent(activity, ReasonActivity::class.java)
@@ -69,25 +75,36 @@ class ConfigFragment : Fragment() {
         seatDate.text = currentDate
 
         seatDate.setOnClickListener {
-            datePicker(context,seatDate)
+            datePicker(context, seatDate)
         }
 
         mAlertDialog.btnAdd.setOnClickListener {
-            var seats = totalSeats.text.toString()
-            if(seats.isEmpty()){
+            var seatsTextView = totalSeats.text
+            if (seatsTextView.toString().isEmpty()) {
                 Toast.makeText(
                     activity,
                     "Please Enter Number Of Seats",
                     Toast.LENGTH_LONG
                 ).show()
-            }else{
-                Log.d("Total seats", seats)
+            } else {
+                var seats: Int = (seatsTextView.toString()).toInt()
+                var selectedDate = seatDate.text.toString()
+                addTotalSeats(seats, selectedDate)
                 mAlertDialog.dismiss()
             }
 
 
         }
 
+    }
+
+    private fun addTotalSeats(seats: Int, date: String) {
+        Log.d("Total seats", "$seats")
+        Log.d("Selected date", date)
+        configViewModel.addTotalSeats(date, seats, object : IAddonCompleteListener {
+            override fun addOnCompleteListener() {
+            }
+        }, activity!!)
     }
 
     private fun datePicker(context: Context, date: TextView) {

@@ -1,5 +1,6 @@
 package com.example.adminmodule.ViewModels
 
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.adminmodule.Models.SeatData
@@ -9,7 +10,7 @@ class DashboardViewModel : ViewModel() {
 
     private var dashboardRepo = DashboardRepo()
 
-    fun getSeatsDateWise(date: String): MutableLiveData<List<SeatData?>?> {
-        return dashboardRepo.showSeatDateWise(date)
+    fun getSeatsDateWise(date: String, activity: FragmentActivity): MutableLiveData<List<SeatData?>?> {
+        return dashboardRepo.showSeatDateWise(date,activity)
     }
 }

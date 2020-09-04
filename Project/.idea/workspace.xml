@@ -10,45 +10,23 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="Created config screen fragment and popup for add seats">
-      <change afterPath="$PROJECT_DIR$/Adminmodule/google-services.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/BookingData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/DashboardRepo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/BookedSeatsAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/ReasonsAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReservSeatActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/DashboardViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/ReasonsViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24/seatbooked_border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable/ic_delete.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_reserve_seats.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/add_reasons_popup.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/book_seat_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/reasons_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/dimens.xml" afterDir="false" />
+    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Interface/IAddonCompleteListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Interface/ProfileListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/ConfigViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Data/FirebaseManger/FirebaseOperation.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/SeatData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/SeatData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/DashboardRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/DashboardRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/ReasonsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/ReasonsAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReservSeatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/ConfigFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/ConfigFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable/ic_left_arrow.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable/ic_left_arrow.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable/ic_plus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/drawable/ic_plus.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_home_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_home_screen.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_reasons.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_reasons.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/add_seats_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/add_seats_popup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_seats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_seats.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/DashboardViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/DashboardViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/ReasonsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/ReasonsViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_reserve_seats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_reserve_seats.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,20 +93,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Adminmodule" />
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models" />
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24" />
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
-    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.example.adminmodule.activities" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/values" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.example.adminmodule.UI.Adapters" />
@@ -136,11 +115,11 @@
       <recent name="com.example.adminmodule.UI.activities" />
       <recent name="com.example.adminmodule.Models" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/values" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Adminmodule" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models" />
       <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/drawable-v24" />
-      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res" />
+      <recent name="$PROJECT_DIR$/Adminmodule/src/main/res/layout" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.adminmodule">
@@ -286,14 +265,22 @@
       <option name="project" value="LOCAL" />
       <updated>1592829300011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created seats listing page and book seat UI screen.">
+      <created>1598612036314</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598612036314</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Admin Module" />
     <MESSAGE value="Created Home screen fragment" />
     <MESSAGE value="Created config screen fragment and popup for add seats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created config screen fragment and popup for add seats" />
+    <MESSAGE value="Created seats listing page and book seat UI screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created seats listing page and book seat UI screen." />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="39" key="#Auto_Import" timestamp="1598589840363">
@@ -304,10 +291,10 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="165" y="112" key="#PSD/0.23.1280.701@0.23.1280.701" timestamp="1598505734722" />
-    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1598332564358">
+    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1599054035574">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser/0.23.1280.701@0.23.1280.701" timestamp="1598332564358" />
+    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser/0.23.1280.701@0.23.1280.701" timestamp="1599054035574" />
     <state x="0" y="306" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592391026142">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
@@ -332,58 +319,62 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="496" y="146" key="AndroidProcessChooserDialog/0.23.1280.701@0.23.1280.701" timestamp="1598509279213" />
-    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1595844476639">
+    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1598612035395">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1595844476639" />
-    <state width="1238" height="172" key="GridCell.Tab.0.bottom" timestamp="1598611752889">
+    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1598612035395" />
+    <state width="1238" height="180" key="GridCell.Tab.0.bottom" timestamp="1599196714183">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="172" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1598611752889" />
+    <state width="1238" height="180" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599196714183" />
     <state width="1238" height="310" key="GridCell.Tab.0.bottom/0.23.1280.703@0.23.1280.703" timestamp="1596607802012" />
-    <state width="1238" height="172" key="GridCell.Tab.0.center" timestamp="1598611752888">
+    <state width="1238" height="180" key="GridCell.Tab.0.center" timestamp="1599196714182">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="172" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1598611752888" />
+    <state width="1238" height="180" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1599196714182" />
     <state width="1238" height="310" key="GridCell.Tab.0.center/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="172" key="GridCell.Tab.0.left" timestamp="1598611752887">
+    <state width="1238" height="180" key="GridCell.Tab.0.left" timestamp="1599196714180">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="172" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1598611752887" />
+    <state width="1238" height="180" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1599196714180" />
     <state width="1238" height="310" key="GridCell.Tab.0.left/0.23.1280.703@0.23.1280.703" timestamp="1596607802010" />
-    <state width="1238" height="172" key="GridCell.Tab.0.right" timestamp="1598611752889">
+    <state width="1238" height="180" key="GridCell.Tab.0.right" timestamp="1599196714183">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="172" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1598611752889" />
+    <state width="1238" height="180" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1599196714183" />
     <state width="1238" height="310" key="GridCell.Tab.0.right/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="178" key="GridCell.Tab.1.bottom" timestamp="1598590586445">
+    <state width="1238" height="180" key="GridCell.Tab.1.bottom" timestamp="1599196714186">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="178" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1598590586445" />
-    <state width="1238" height="178" key="GridCell.Tab.1.center" timestamp="1598590586444">
+    <state width="1238" height="180" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599196714186" />
+    <state width="1238" height="180" key="GridCell.Tab.1.center" timestamp="1599196714185">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="178" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1598590586444" />
-    <state width="1238" height="178" key="GridCell.Tab.1.left" timestamp="1598590586444">
+    <state width="1238" height="180" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1599196714185" />
+    <state width="1238" height="180" key="GridCell.Tab.1.left" timestamp="1599196714184">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="178" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1598590586444" />
-    <state width="1238" height="178" key="GridCell.Tab.1.right" timestamp="1598590586445">
+    <state width="1238" height="180" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1599196714184" />
+    <state width="1238" height="180" key="GridCell.Tab.1.right" timestamp="1599196714185">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="178" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1598590586445" />
+    <state width="1238" height="180" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1599196714185" />
     <state x="228" y="123" key="IDE.errors.dialog" timestamp="1592377103539">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="228" y="123" key="IDE.errors.dialog/0.23.1280.701@0.23.1280.701" timestamp="1592377103539" />
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1592829301886">
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1598612043384">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1592829301886" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1598612043384" />
     <state x="204" y="116" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598508735142">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="204" y="116" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1280.701@0.23.1280.701" timestamp="1598508735142" />
+    <state x="387" y="224" key="edit.logcat.filter.dialog.dimensions" timestamp="1599052064728">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="387" y="224" key="edit.logcat.filter.dialog.dimensions/0.23.1280.701@0.23.1280.701" timestamp="1599052064728" />
     <state x="292" y="130" width="695" height="486" key="find.popup" timestamp="1598506609080">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
@@ -392,23 +383,23 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="368" y="107" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.23.1280.701@0.23.1280.701" timestamp="1598332542299" />
-    <state x="305" y="48" width="670" height="676" key="search.everywhere.popup" timestamp="1598332510986">
+    <state x="305" y="48" width="670" height="676" key="search.everywhere.popup" timestamp="1599200351852">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="305" y="48" width="670" height="676" key="search.everywhere.popup/0.23.1280.701@0.23.1280.701" timestamp="1598332510986" />
+    <state x="305" y="48" width="670" height="676" key="search.everywhere.popup/0.23.1280.701@0.23.1280.701" timestamp="1599200351852" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt</url>
-          <line>18</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt</url>
+          <line>59</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt</url>
-          <line>11</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt</url>
+          <line>57</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
