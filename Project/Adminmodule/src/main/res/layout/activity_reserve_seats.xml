@@ -230,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/verdana"
-                android:text="15:16 PM"
+                android:text="10:00 AM"
                 android:textSize="@dimen/text_size_15sp" />
 
             <Space
@@ -243,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/verdana"
-                android:text="15:16 PM"
+                android:text="07:00 PM"
                 android:textSize="@dimen/text_size_15sp" />
         </LinearLayout>
     </RelativeLayout>

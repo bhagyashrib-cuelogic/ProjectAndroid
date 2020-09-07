@@ -28,7 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".UI.activities.ReservSeatActivity"
+            android:name=".UI.activities.ReserveSeatActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
