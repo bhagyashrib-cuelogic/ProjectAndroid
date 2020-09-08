@@ -1,25 +1,23 @@
 package com.cuelogic.seatbook.model
 
-data class BookingData(
-    var empName:String,
-    var id: String,
-    var date: String,
+data class BookingData  (
+    val isBooked: Int,
     var CheckInTime: String,
     var CheckOutTime: String,
+    var date: String,
+    var id: String,
     var Reason: String,
-    val status: String,
-    val isBooked: Int
+    val status: String
 ) {
 
     constructor() : this(
-        empName = "",
-        id = "",
-        date = "",
+        isBooked = 0,
         CheckInTime = "",
         CheckOutTime = "",
+        date = "",
+        id = "",
         Reason = "",
-        status = "",
-        isBooked = 0
+        status = ""
 
     )
 }

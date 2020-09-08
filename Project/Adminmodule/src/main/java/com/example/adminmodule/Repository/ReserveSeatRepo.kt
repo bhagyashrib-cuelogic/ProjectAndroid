@@ -63,7 +63,6 @@ class ReserveSeatRepo {
         iAddonCompleteListener: IAddonCompleteListener
     ) {
 
-        var isBooked: Boolean = true
         auth = FirebaseAuth.getInstance()
         reasonReference = FirebaseDatabase.getInstance().getReference("Employees")
         reasonReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -127,11 +126,11 @@ class ReserveSeatRepo {
                     }
                 }
                 if (isBooked) {
-                    reserveSeatForEmp(
+                    checkSeatAvailability(
                         user,
-                        selectedDate,
                         checkTime,
                         checkOut,
+                        selectedDate,
                         reason,
                         activity,
                         iAddonCompleteListener
@@ -142,13 +141,67 @@ class ReserveSeatRepo {
         })
     }
 
+    private fun checkSeatAvailability(
+        user: String,
+        checkTime: String,
+        checkOut: String,
+        dateToCome: String,
+        reason: String,
+        activity: Activity,
+        iAddonCompleteListener: IAddonCompleteListener
+    ) {
+        val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
+            .orderByChild("date")
+            .equalTo(dateToCome)
+
+        firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var bookedSeat = ""
+                var totalSeats = ""
+                if (snapshot.exists()) {
+                    for (item in snapshot.children) {
+                        bookedSeat = item.child("booked").value.toString()
+                        totalSeats = item.child("total").value.toString()
+                    }
+                    if (totalSeats == bookedSeat) {
+                        Toast.makeText(
+                            activity,
+                            "All Seats are booked for date $dateToCome",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else {
+                        reserveSeatForEmp(
+                            user,
+                            checkTime,
+                            checkOut,
+                            dateToCome,
+                            reason,
+                            activity,
+                            iAddonCompleteListener
+                        )
+                    }
+
+                } else {
+                    Toast.makeText(
+                        activity,
+                        "No Seats available for $dateToCome",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        })
+
+    }
+
 
     private fun reserveSeatForEmp(
         user: String,
         checkTime: String,
         checkOut: String,
-        reason: String,
         dateToCome: String,
+        reason: String,
         activity: Activity,
         iAddonCompleteListener: IAddonCompleteListener
     ) {
@@ -158,18 +211,17 @@ class ReserveSeatRepo {
             val uidKey = firebaseReference.push().key!!
             firebaseReference.child(uidKey).setValue(
                 BookingData(
-                    "",
-                    user,
-                    dateToCome,
+                    0,
                     checkTime,
                     checkOut,
+                    dateToCome,
+                    user,
                     reason,
-                    "Booked",
-                    0
+                    status = "Booked"
                 )
             ).addOnCompleteListener {
-                Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
                 updateSeatTable(dateToCome)
+                Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
                 iAddonCompleteListener.addOnCompleteListener()
             }
         }
@@ -177,7 +229,7 @@ class ReserveSeatRepo {
 
     private fun updateSeatTable(dateToCome: String) {
         val firebaseReference = FirebaseDatabase.getInstance().getReference("SeatTable")
-            .orderByChild("dadatete")
+            .orderByChild("date")
             .equalTo(dateToCome)
 
         firebaseReference.addListenerForSingleValueEvent(object : ValueEventListener {

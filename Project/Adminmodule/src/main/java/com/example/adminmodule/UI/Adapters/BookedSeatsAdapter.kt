@@ -2,23 +2,26 @@ package com.example.adminmodule.UI.Adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.TextView
-import com.cuelogic.seatbook.model.BookingData
+import com.cuelogic.seatbook.model.BookingModel
 import com.example.adminmodule.R
 
 class BookedSeatsAdapter(
-    private val context: Activity, private val BookSeats: ArrayList<BookingData>
+    private val context: Activity,
+    private var layoutResId: Int,
+    val BookSeats: ArrayList<BookingModel>
+
 ) :
-    ArrayAdapter<BookingData>(context, R.layout.book_seat_item, BookSeats) {
+    ArrayAdapter<BookingModel>(context, layoutResId, BookSeats) {
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-        val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.book_seat_item, null, true)
+        val layoutInflater = LayoutInflater.from(context)
+        val rowView = layoutInflater.inflate(layoutResId,null)
 
         val empName = rowView.findViewById(R.id.tvName) as TextView
         val bookDate = rowView.findViewById(R.id.datefirebase) as TextView

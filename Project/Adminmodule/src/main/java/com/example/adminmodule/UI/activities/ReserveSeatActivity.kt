@@ -10,6 +10,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.cuelogic.seatbook.model.BookingModel
+import com.example.adminmodule.Observer.AddSeatsObservable
 import com.example.adminmodule.R
 import com.example.adminmodule.ViewModels.ReserveSeatViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +38,7 @@ class ReserveSeatActivity : AppCompatActivity() {
     private lateinit var activityView: View
     private lateinit var currentDate: String
     private lateinit var currentTime: String
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -125,13 +128,24 @@ class ReserveSeatActivity : AppCompatActivity() {
                 user,
                 object :
                     IAddonCompleteListener {
+                    @SuppressLint("SetTextI18n")
                     override fun addOnCompleteListener() {
-                        tvCheckInTime.text = currentTime
-                        tvCheckOutTime.text = currentTime
+                        tvCheckInTime.text = "10:00 AM"
+                        tvCheckOutTime.text = "07:00 PM"
+                        val bookingModel = BookingModel()
+                        bookingModel.empName = ""
+                        bookingModel.CheckInTime = checkInTime
+                        bookingModel.CheckOutTime = checkOutTime
+                        bookingModel.Reason = reason
+                        bookingModel.id = "r9DtaYLQoYUQwA38ZIaq0kxvc9S2"
+                        val addSeatsObservable = AddSeatsObservable()
+                        addSeatsObservable.notifyAddSeats(bookingModel)
+                        finish()
                     }
                 })
         }
     }
+
 
     private fun setReasonData(reserveSeatsViewModel: ReserveSeatViewModel) {
         auth = FirebaseAuth.getInstance()
