@@ -16,7 +16,7 @@
     <string name="reasons">Reasons</string>
     <string name="bookmyseat">BookMySeat</string>
     <string name="login">Login</string>
-    <string name="userid">UserName</string>
+    <string name="userid">Admin Email</string>
     <string name="password">Password</string>
     <string name="cancel">Cancel</string>
     <string name="reason">Reason :</string>

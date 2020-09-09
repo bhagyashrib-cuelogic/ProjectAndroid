@@ -29,9 +29,10 @@ class ReasonsRepo {
     }
 
     fun addReason(reason: String) {
-        var totalReasons = itemCount + 1
+        //var totalReasons = itemCount + 1
         if (reason.isNotEmpty()) {
-            reasonReference.child("Reason$totalReasons").setValue(
+            val uidKey = reasonReference.push().key!!
+            reasonReference.child(uidKey).setValue(
                 reason
             )
         }

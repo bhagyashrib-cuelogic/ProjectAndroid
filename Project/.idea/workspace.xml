@@ -11,19 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/BookingModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Observer/AddSeats.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Observer/AddSeatsObservable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Observer/Observabel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/BookedSeatsRepo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/BookedSeatsViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/LoginRepo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/LoginViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/BookingData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Models/BookingData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/BookedSeatsRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/BookedSeatsRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReasonsRepo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/BookedSeatsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/Adapters/BookedSeatsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_seats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/fragment_seats.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/BookedSeatsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/BookedSeatsViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/book_seat_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/book_seat_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +51,9 @@
       <list>
         <option value="Class" />
         <option value="layoutResourceFile" />
-        <option value="Kotlin File" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -284,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599485711640</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented reserve seat for selected employee and completed functionality.">
+      <created>1599573346525</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1599573346525</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -295,7 +300,8 @@
     <MESSAGE value="-Implemented dashboard Functionality&#10;-Implemented reasons functionality" />
     <MESSAGE value="-Implemented dashboard Functionality&#10;-Implemented reasons functionality&#10;-Implemented add total seats functionality" />
     <MESSAGE value="Implemented reserve seat for selected employee" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented reserve seat for selected employee" />
+    <MESSAGE value="Implemented reserve seat for selected employee and completed functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented reserve seat for selected employee and completed functionality." />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="39" key="#Auto_Import" timestamp="1598589840363">
@@ -334,54 +340,54 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="496" y="146" key="AndroidProcessChooserDialog/0.23.1280.701@0.23.1280.701" timestamp="1598509279213" />
-    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1599485711181">
+    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1599573346038">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1599485711181" />
-    <state width="1238" height="237" key="GridCell.Tab.0.bottom" timestamp="1599567641240">
+    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1599573346038" />
+    <state width="1238" height="180" key="GridCell.Tab.0.bottom" timestamp="1599647640020">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599567641240" />
+    <state width="1238" height="180" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599647640020" />
     <state width="1238" height="310" key="GridCell.Tab.0.bottom/0.23.1280.703@0.23.1280.703" timestamp="1596607802012" />
-    <state width="1238" height="237" key="GridCell.Tab.0.center" timestamp="1599567641239">
+    <state width="1238" height="180" key="GridCell.Tab.0.center" timestamp="1599647640019">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1599567641239" />
+    <state width="1238" height="180" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1599647640019" />
     <state width="1238" height="310" key="GridCell.Tab.0.center/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="237" key="GridCell.Tab.0.left" timestamp="1599567641239">
+    <state width="1238" height="180" key="GridCell.Tab.0.left" timestamp="1599647640019">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1599567641239" />
+    <state width="1238" height="180" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1599647640019" />
     <state width="1238" height="310" key="GridCell.Tab.0.left/0.23.1280.703@0.23.1280.703" timestamp="1596607802010" />
-    <state width="1238" height="237" key="GridCell.Tab.0.right" timestamp="1599567641239">
+    <state width="1238" height="180" key="GridCell.Tab.0.right" timestamp="1599647640020">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1599567641239" />
+    <state width="1238" height="180" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1599647640020" />
     <state width="1238" height="310" key="GridCell.Tab.0.right/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="180" key="GridCell.Tab.1.bottom" timestamp="1599542979197">
+    <state width="1238" height="180" key="GridCell.Tab.1.bottom" timestamp="1599647640024">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599542979197" />
-    <state width="1238" height="180" key="GridCell.Tab.1.center" timestamp="1599542979195">
+    <state width="1238" height="180" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1599647640024" />
+    <state width="1238" height="180" key="GridCell.Tab.1.center" timestamp="1599647640023">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1599542979195" />
-    <state width="1238" height="180" key="GridCell.Tab.1.left" timestamp="1599542979195">
+    <state width="1238" height="180" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1599647640023" />
+    <state width="1238" height="180" key="GridCell.Tab.1.left" timestamp="1599647640021">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1599542979195" />
-    <state width="1238" height="180" key="GridCell.Tab.1.right" timestamp="1599542979196">
+    <state width="1238" height="180" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1599647640021" />
+    <state width="1238" height="180" key="GridCell.Tab.1.right" timestamp="1599647640023">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1599542979196" />
+    <state width="1238" height="180" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1599647640023" />
     <state x="228" y="123" key="IDE.errors.dialog" timestamp="1592377103539">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="228" y="123" key="IDE.errors.dialog/0.23.1280.701@0.23.1280.701" timestamp="1592377103539" />
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1599485715770">
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1599573349990">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1599485715770" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1599573349990" />
     <state x="204" y="116" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598508735142">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
