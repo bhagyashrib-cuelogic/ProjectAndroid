@@ -13,6 +13,7 @@ import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.model.BookingModel
 import com.example.adminmodule.Observer.AddSeatsObservable
 import com.example.adminmodule.R
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.ReserveSeatViewModel
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
@@ -61,8 +62,12 @@ class ReserveSeatActivity : AppCompatActivity() {
             this.finish()
         }
 
-        setReasonData(reserveSeatsViewModel)
-        setUsersData(reserveSeatsViewModel)
+        val isConnected = Utils.isConnected(applicationContext)
+        if (isConnected) {
+            setReasonData(reserveSeatsViewModel)
+            setUsersData(reserveSeatsViewModel)
+        }
+
 
         val calendarInstance = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
@@ -87,7 +92,10 @@ class ReserveSeatActivity : AppCompatActivity() {
         }
 
         reserveSeat.setOnClickListener {
-            bookSeat(reserveSeatsViewModel)
+            val isConnected = Utils.isConnected(applicationContext)
+            if (isConnected) {
+                bookSeat(reserveSeatsViewModel)
+            }
         }
 
 

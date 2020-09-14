@@ -2,6 +2,7 @@ package com.example.adminmodule.UI.fragments
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.example.adminmodule.Observer.AddSeats
 import com.example.adminmodule.Observer.AddSeatsObservable
 import com.example.adminmodule.R
 import com.example.adminmodule.UI.activities.ReserveSeatActivity
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.BookedSeatsViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -46,7 +48,7 @@ class SeatsFragment : Fragment(), AddSeats {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_seats, container, false)
 
-
+        val context = container?.context!!
         bookingListView = view.findViewById(R.id.seatsListView)
         val addImage = view.findViewById<ImageView>(R.id.addIcon)!!
 
@@ -56,16 +58,19 @@ class SeatsFragment : Fragment(), AddSeats {
         (activity as AppCompatActivity?)?.setSupportActionBar(customeToolbar)
 
         bookingList = ArrayList()
-
-        activity?.let {
-            bookingList.clear()
-            bookedSeatsViewModel.requestShowList()
-                .showUserCurrentBookingList(bookingList, bookingListView, it, object :
-                    IAddonCompleteListener {
-                    override fun addOnCompleteListener() {
-                    }
-                })
+        val isConnected = Utils.isConnected(context)
+        if (isConnected) {
+            activity?.let {
+                bookingList.clear()
+                bookedSeatsViewModel.requestShowList()
+                    .showUserCurrentBookingList(bookingList, bookingListView, it, object :
+                        IAddonCompleteListener {
+                        override fun addOnCompleteListener() {
+                        }
+                    })
+            }
         }
+
 
         addImage.setOnClickListener {
             var intent = Intent(activity, ReserveSeatActivity::class.java)

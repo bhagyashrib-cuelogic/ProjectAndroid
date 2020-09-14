@@ -1,6 +1,5 @@
 package com.example.adminmodule.UI.activities
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -11,9 +10,9 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.example.adminmodule.R
 import com.example.adminmodule.UI.Adapters.ReasonsAdapter
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.ReasonsViewModel
 import kotlinx.android.synthetic.main.activity_reasons.*
 import kotlinx.android.synthetic.main.add_reasons_popup.*
@@ -32,8 +31,11 @@ class ReasonActivity : AppCompatActivity() {
 
         reasonslist = findViewById(R.id.reasonsListView)
         reasonDataList = ArrayList()
+        val isConnected = Utils.isConnected(applicationContext)
+        if (isConnected) {
+            getReasonsListing()
+        }
 
-        getReasonsListing()
 
         btnBack.setOnClickListener {
             this.finish()
@@ -76,7 +78,10 @@ class ReasonActivity : AppCompatActivity() {
                 ).show()
             } else {
                 Log.d("Entered Reason:", reason)
-                addReasons(reason)
+                val isConnected = Utils.isConnected(applicationContext)
+                if (isConnected) {
+                    addReasons(reason)
+                }
                 dialog.dismiss()
             }
         }

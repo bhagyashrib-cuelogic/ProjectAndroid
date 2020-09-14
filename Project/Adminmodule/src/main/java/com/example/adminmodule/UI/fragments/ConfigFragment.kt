@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.example.adminmodule.R
 import com.example.adminmodule.UI.activities.ReasonActivity
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.ConfigViewModel
 import kotlinx.android.synthetic.main.add_seats_popup.*
 import java.text.SimpleDateFormat
@@ -87,10 +88,14 @@ class ConfigFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                var seats: Int = (seatsTextView.toString()).toInt()
-                var selectedDate = seatDate.text.toString()
-                addTotalSeats(seats, selectedDate)
-                mAlertDialog.dismiss()
+                val isConnected = Utils.isConnected(context)
+                if (isConnected) {
+                    var seats: Int = (seatsTextView.toString()).toInt()
+                    var selectedDate = seatDate.text.toString()
+                    addTotalSeats(seats, selectedDate)
+                    mAlertDialog.dismiss()
+                }
+
             }
 
 

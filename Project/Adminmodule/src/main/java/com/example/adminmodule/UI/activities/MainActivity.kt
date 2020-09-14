@@ -5,16 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.cuelogic.seatbook.preferences.User
 import com.example.adminmodule.R
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.LoginViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.FirebaseApp
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.regex.Pattern
 
 
@@ -37,7 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         val adminLogin = findViewById<Button>(R.id.btnAdminLogin)
         adminLogin.setOnClickListener {
-            login()
+            val isConnected = Utils.isConnected(applicationContext)
+            if (isConnected) {
+                login()
+            } else {
+                Utils.showToast("No internet Connection", applicationContext)
+            }
+
         }
 
     }
@@ -45,26 +50,21 @@ class MainActivity : AppCompatActivity() {
     private fun login() {
         userEmail = etEmailEditText.text.toString().trim()
         if (userEmail == "") {
-            Toast.makeText(
-                this,
-                "Please enter email id",
-                Toast.LENGTH_LONG
-            ).show()
+            Utils.showDialogBox("Please enter email id", this)
+
         } else if (!validEmail(userEmail)) {
-            Toast.makeText(
-                this,
-                "Please enter valid email id",
-                Toast.LENGTH_LONG
-            ).show()
-        }else if (!userEmail.contains("cuelogic.com")) {
-            Toast.makeText(
-                this,
-                "Please enter your official mail id",
-                Toast.LENGTH_LONG
-            ).show()
+            Utils.showDialogBox("Please enter valid email id", applicationContext)
+
+        } else if (!userEmail.contains("cuelogic.com")) {
+            Utils.showDialogBox("Please enter official mail id",applicationContext)
+
         } else {
             val isAdmin = loginViewModel.authenticateEmail(userEmail, this)
             if (isAdmin) {
+                val session =
+                    User(this)
+                session.setUId(true)
+                Utils.showToast("Login Successfully...",applicationContext)
                 val intent: Intent = Intent(applicationContext, HomeScreenActivity::class.java)
                 startActivity(intent)
                 finish()

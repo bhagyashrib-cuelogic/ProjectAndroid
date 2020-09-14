@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.cuelogic.seatbook.R
 import com.cuelogic.seatbook.model.EmployeeData
 import com.cuelogic.seatbook.preferences.User
+import com.example.adminmodule.UI.activities.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -57,6 +58,13 @@ class MainActivity : AppCompatActivity() {
         createSign()
 
         var signIn = findViewById<Button>(R.id.button_googleSign)
+        var btnAdminLogin = findViewById<Button>(R.id.btnAdminLogin)
+
+        btnAdminLogin.setOnClickListener {
+            val intent: Intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         signIn.setOnClickListener() {
             signIn()
         }
@@ -86,17 +94,17 @@ class MainActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 Snackbar.make(layout, "${account.email}", Snackbar.LENGTH_LONG).show()
 
-                this.auth.fetchProvidersForEmail(account.email!!)
-                    .addOnCompleteListener(this, OnCompleteListener() { task ->
-                        if (task.isComplete) {
-                            val check: Boolean = !task.result!!.providers!!.isEmpty()
-                            if (!check) {
-                                firebaseAuthWithGoogle(account.idToken!!)
-                            } else {
-                                firebaseWithSecondTime(account.idToken!!)
-                            }
-                        }
-                    })
+//                this.auth.fetchProvidersForEmail(account.email!!)
+//                    .addOnCompleteListener(this, OnCompleteListener() { task ->
+//                        if (task.isComplete) {
+//                            val check: Boolean = !task.result!!.providers!!.isEmpty()
+//                            if (!check) {
+//                                firebaseAuthWithGoogle(account.idToken!!)
+//                            } else {
+//                                firebaseWithSecondTime(account.idToken!!)
+//                            }
+//                        }
+//                    })
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Toast.makeText(this, "Something went to wrong   $e.message", Toast.LENGTH_LONG).show()

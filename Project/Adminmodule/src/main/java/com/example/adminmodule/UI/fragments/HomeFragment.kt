@@ -14,11 +14,11 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.adminmodule.R
+import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.DashboardViewModel
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -53,12 +53,20 @@ class HomeFragment : Fragment() {
         val editTextAvailableSeat = view.findViewById<TextView>(R.id.text_reservedSeat)!!
         date.text = currentDate
 
-        getSeatData(editTextAvailableSeat, editTextBookedSeat, currentDate)
+        val isConnected = Utils.isConnected(context)
+        if (isConnected) {
+            getSeatData(editTextAvailableSeat, editTextBookedSeat, currentDate)
+        }
+
+
 
         date.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val dateToCome = date.text.toString()
-                getSeatData(editTextAvailableSeat, editTextBookedSeat, dateToCome)
+                val isConnected = Utils.isConnected(context)
+                if (isConnected) {
+                    getSeatData(editTextAvailableSeat, editTextBookedSeat, dateToCome)
+                }
             }
 
             override fun beforeTextChanged(
@@ -94,9 +102,10 @@ class HomeFragment : Fragment() {
             calendar.add(Calendar.DAY_OF_MONTH, +1)
             val tomorrow = dateFormat.format(calendar.time)
             date.text = tomorrow.toString()
-
-            getSeatData(editTextAvailableSeat, editTextBookedSeat, tomorrow.toString())
-
+            val isConnected = Utils.isConnected(context)
+            if (isConnected) {
+                getSeatData(editTextAvailableSeat, editTextBookedSeat, tomorrow.toString())
+            }
 
 
             nextDate.isEnabled = true
@@ -111,8 +120,6 @@ class HomeFragment : Fragment() {
             val nextDay = dateFormat.parse(next)
             val tom = dateFormat.parse(tomorrow)
             if (nextDay == tom) {
-                Toast.makeText(activity, "You can view seats up $tom", Toast.LENGTH_SHORT)
-                    .show()
                 nextDate.isEnabled = false
             }
 
@@ -122,8 +129,11 @@ class HomeFragment : Fragment() {
             calendar.add(Calendar.DAY_OF_YEAR, -1)
             val yesterday = dateFormat.format(calendar.time)
             date.text = yesterday.toString()
+            val isConnected = Utils.isConnected(context)
+            if (isConnected) {
+                getSeatData(editTextAvailableSeat, editTextBookedSeat, yesterday.toString())
 
-            getSeatData(editTextAvailableSeat, editTextBookedSeat, yesterday.toString())
+            }
         }
 
 
@@ -182,11 +192,7 @@ class HomeFragment : Fragment() {
                 } else {
                     editTextAvailableSeat.text = "-"
                     editTextBookedSeat.text = "-"
-                    Toast.makeText(
-                        activity,
-                        "No Seats Available for $currentDate",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Utils.showDialogBox("No Seats Available for $currentDate", activity!!)
                 }
 
 
