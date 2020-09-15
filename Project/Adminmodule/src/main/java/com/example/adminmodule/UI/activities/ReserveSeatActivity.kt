@@ -46,6 +46,8 @@ class ReserveSeatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserve_seats)
 
+        Utils.intiProgressDialog(this)
+
         backImage = findViewById(R.id.btnBack)
         reasonSpinner = findViewById(R.id.reason_spinner)
         userSpinner = findViewById(R.id.employee_spinner)
@@ -64,6 +66,7 @@ class ReserveSeatActivity : AppCompatActivity() {
 
         val isConnected = Utils.isConnected(applicationContext)
         if (isConnected) {
+            Utils.showProgressDialog()
             setReasonData(reserveSeatsViewModel)
             setUsersData(reserveSeatsViewModel)
         }
@@ -109,23 +112,14 @@ class ReserveSeatActivity : AppCompatActivity() {
         val dateToCome = selectedDate?.text.toString()
 
         if (user == "" || user == "Select the User") {
-            Toast.makeText(
-                this,
-                "Please select User",
-                Toast.LENGTH_LONG
-            ).show()
+            Utils.showDialogBox("Please select User", this)
+
         } else if (reason == "" || reason == "Select the Reason") {
-            Toast.makeText(
-                this,
-                "Please select Reason",
-                Toast.LENGTH_LONG
-            ).show()
+            Utils.showDialogBox("Please select Reason", this)
+
         } else if (selectedDate.text.toString() == currentDate) {
-            Toast.makeText(
-                this,
-                "You can not book seat for today's date",
-                Toast.LENGTH_LONG
-            ).show()
+            Utils.showDialogBox("You can not book seat for today's date", this)
+
         } else {
             reserveSeatsViewModel.reserveSeat(
                 this,
@@ -197,6 +191,7 @@ class ReserveSeatActivity : AppCompatActivity() {
         userAdapter = ArrayAdapter<String>(this, R.layout.spinner_item, spinnerUserList)
         userSpinner.adapter = userAdapter
         reserveSeatsViewModel.getUsers(spinnerUserList, userAdapter)
+        Utils.hideProgressDialog()
     }
 
     private fun selectTimePicker(chooseTime: TextView) {

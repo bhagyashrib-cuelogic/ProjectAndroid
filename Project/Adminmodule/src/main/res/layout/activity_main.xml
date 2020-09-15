@@ -9,6 +9,7 @@
     android:orientation="vertical"
     tools:context=".UI.activities.MainActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,23 +42,6 @@
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </com.google.android.material.textfield.TextInputLayout>
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/textInputLayoutPassword"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/etPassword"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="@string/password"-->
-<!--                android:inputType="textPassword"-->
-<!--                android:maxLines="1"-->
-<!--                android:textColor="@android:color/black" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
 
     </LinearLayout>
 

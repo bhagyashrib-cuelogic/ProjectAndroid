@@ -21,6 +21,7 @@ import com.example.adminmodule.R
 import com.example.adminmodule.UI.activities.ReserveSeatActivity
 import com.example.adminmodule.Utilities.Utils
 import com.example.adminmodule.ViewModels.BookedSeatsViewModel
+import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class SeatsFragment : Fragment(), AddSeats {
@@ -47,7 +48,7 @@ class SeatsFragment : Fragment(), AddSeats {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_seats, container, false)
-
+        Utils.intiProgressDialog(activity!!)
         val context = container?.context!!
         bookingListView = view.findViewById(R.id.seatsListView)
         val addImage = view.findViewById<ImageView>(R.id.addIcon)!!
@@ -60,12 +61,14 @@ class SeatsFragment : Fragment(), AddSeats {
         bookingList = ArrayList()
         val isConnected = Utils.isConnected(context)
         if (isConnected) {
+            Utils.showProgressDialog()
             activity?.let {
                 bookingList.clear()
                 bookedSeatsViewModel.requestShowList()
                     .showUserCurrentBookingList(bookingList, bookingListView, it, object :
                         IAddonCompleteListener {
                         override fun addOnCompleteListener() {
+                            Utils.hideProgressDialog()
                         }
                     })
             }

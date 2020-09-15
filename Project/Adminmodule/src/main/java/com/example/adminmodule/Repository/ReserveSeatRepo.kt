@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.cuelogic.seatbook.model.BookingData
 import com.example.adminmodule.Models.SeatData
+import com.example.adminmodule.Utilities.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*
@@ -116,11 +117,7 @@ class ReserveSeatRepo {
                             isDeleted
                         ) == 0
                     ) {
-                        Toast.makeText(
-                            activity,
-                            "You are already booked for this day",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Utils.showToast("You already booked a seat for this day", activity)
                         isBooked = false
                         break
                     }
@@ -166,11 +163,7 @@ class ReserveSeatRepo {
                         totalSeats = item.child("total").value.toString()
                     }
                     if (totalSeats == bookedSeat) {
-                        Toast.makeText(
-                            activity,
-                            "All Seats are booked for date $dateToCome",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Utils.showToast("All Seats are booked for date $dateToCome", activity)
                     } else {
                         reserveSeatForEmp(
                             user,
@@ -184,11 +177,7 @@ class ReserveSeatRepo {
                     }
 
                 } else {
-                    Toast.makeText(
-                        activity,
-                        "No Seats available for $dateToCome",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Utils.showToast("No Seats available for $dateToCome", activity)
                 }
             }
         })
@@ -221,7 +210,7 @@ class ReserveSeatRepo {
                 )
             ).addOnCompleteListener {
                 updateSeatTable(dateToCome)
-                Toast.makeText(activity, "Your seat is booked", Toast.LENGTH_SHORT).show()
+                Utils.showToast("Your seat is booked", activity)
                 iAddonCompleteListener.addOnCompleteListener()
             }
         }

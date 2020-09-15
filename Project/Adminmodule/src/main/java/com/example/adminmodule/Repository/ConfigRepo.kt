@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.cuelogic.seatbook.callback.IAddonCompleteListener
 import com.example.adminmodule.Models.SeatData
+import com.example.adminmodule.Utilities.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,7 +33,7 @@ class ConfigRepo {
                     dateToCome
                 )
             ).addOnCompleteListener {
-                Toast.makeText(activity, "Seats Added successfully", Toast.LENGTH_SHORT).show()
+                Utils.showToast("Seats Added successfully", activity)
                 iAddonCompleteListener.addOnCompleteListener()
             }
         }

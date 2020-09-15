@@ -29,10 +29,13 @@ class ReasonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reasons)
 
+        Utils.intiProgressDialog(this)
+
         reasonslist = findViewById(R.id.reasonsListView)
         reasonDataList = ArrayList()
         val isConnected = Utils.isConnected(applicationContext)
         if (isConnected) {
+            Utils.showProgressDialog()
             getReasonsListing()
         }
 
@@ -55,6 +58,7 @@ class ReasonActivity : AppCompatActivity() {
         reasonAdapter = ReasonsAdapter(this, reasonDataList)
         reasonslist.adapter = reasonAdapter
         reasonViewModel.getReason(reasonDataList, reasonAdapter)
+        Utils.hideProgressDialog()
     }
 
     private fun showPopupAddReasons(context: Context) {
@@ -71,13 +75,8 @@ class ReasonActivity : AppCompatActivity() {
         dialog.btnAddReasons.setOnClickListener {
             var reason = reasons.text.toString()
             if (reason.isEmpty()) {
-                Toast.makeText(
-                    this,
-                    "Please Enter Reason",
-                    Toast.LENGTH_LONG
-                ).show()
+                Utils.showDialogBox("Please Enter Reason", this)
             } else {
-                Log.d("Entered Reason:", reason)
                 val isConnected = Utils.isConnected(applicationContext)
                 if (isConnected) {
                     addReasons(reason)

@@ -183,7 +183,7 @@ class HomeFragment : Fragment() {
             Log.d("Home Fragment", "SeatValue$it")
             if (it != null) {
                 if (it.isNotEmpty()) {
-                    for (i in it!!) {
+                    for (i in it) {
                         if (i != null) {
                             editTextAvailableSeat.text = Integer.valueOf(i.available).toString()
                             editTextBookedSeat.text = Integer.valueOf(i.booked).toString()
@@ -197,7 +197,6 @@ class HomeFragment : Fragment() {
 
 
             }
-
 
         })
     }

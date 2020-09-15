@@ -1,7 +1,9 @@
 package com.example.adminmodule.Repository
 
 import android.app.Activity
-import android.widget.Toast
+import android.content.Context
+import com.cuelogic.seatbook.callback.IAddonCompleteListener
+import com.example.adminmodule.Utilities.Utils
 import com.google.firebase.database.*
 
 class LoginRepo {
@@ -9,9 +11,13 @@ class LoginRepo {
     private lateinit var reasonReference: DatabaseReference
     var isAdmin: Boolean = false
 
-    fun authenticateEmail(userEmail: String, activity: Activity): Boolean {
+    fun     authenticateEmail(
+        userEmail: String,
+        activity: Context,
+        iAddonCompleteListener: IAddonCompleteListener
+    ) {
         reasonReference = FirebaseDatabase.getInstance().getReference("Employees")
-        reasonReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        reasonReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
 
@@ -23,29 +29,26 @@ class LoginRepo {
                             val designation = item.child("employeeDesignation").value.toString()
                             if (designation == "") {
                                 isAdmin = false
-                                Toast.makeText(
-                                    activity,
-                                    "You are not authorize to login",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Utils.showToast("You are not authorize to login", activity)
+                                Utils.hideProgressDialog()
                                 break
-                            } else if(designation != "Admin" ) {
+                            } else if (designation != "Admin") {
                                 isAdmin = false
-                                Toast.makeText(
-                                    activity,
-                                    "You are not authorize to login",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Utils.showToast("You are not authorize to login", activity)
+                                Utils.hideProgressDialog()
                                 break
-                            }else{
+                            } else {
                                 isAdmin = true
+                                iAddonCompleteListener.addOnCompleteListener()
                                 break
                             }
                         }
                     }
                 }
             }
+
         })
-        return isAdmin
+//        Log.e("LoginCall", "isAdmin: $isAdmin")
+//        return isAdmin
     }
 }

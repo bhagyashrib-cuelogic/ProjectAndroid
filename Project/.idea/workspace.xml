@@ -6,54 +6,24 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="-Fetched all data from booked seats showed on list&#10;-Canceled booking implementation.">
-      <change afterPath="$PROJECT_DIR$/Adminmodule/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/SplashScreenActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Utilities/Utils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/preferences/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_splash_screen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/LoginRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/LoginRepo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/ConfigFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/ConfigFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/activies/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cuelogic/seatbook/activies/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Utilities/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Utilities/Utils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +101,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -336,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599661771809</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.">
+      <created>1600089437251</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1600089437251</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -349,7 +326,8 @@
     <MESSAGE value="Implemented reserve seat for selected employee" />
     <MESSAGE value="Implemented reserve seat for selected employee and completed functionality." />
     <MESSAGE value="-Fetched all data from booked seats showed on list&#10;-Canceled booking implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Fetched all data from booked seats showed on list&#10;-Canceled booking implementation." />
+    <MESSAGE value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state." />
+    <option name="LAST_COMMIT_MESSAGE" value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state." />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="39" key="#Auto_Import" timestamp="1598589840363">
@@ -364,10 +342,10 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="165" y="112" key="#PSD/0.23.1280.701@0.23.1280.701" timestamp="1598505734722" />
-    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1599569890864">
+    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1600159039032">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser/0.23.1280.701@0.23.1280.701" timestamp="1599569890864" />
+    <state x="453" y="96" key="#com.intellij.ide.util.MemberChooser/0.23.1280.701@0.23.1280.701" timestamp="1600159039032" />
     <state x="0" y="306" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592391026142">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
@@ -392,46 +370,46 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="496" y="146" key="AndroidProcessChooserDialog/0.23.1280.701@0.23.1280.701" timestamp="1598509279213" />
-    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1599732407887">
+    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1600163445213">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1599732407887" />
-    <state width="1238" height="237" key="GridCell.Tab.0.bottom" timestamp="1600088978225">
+    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1600163445213" />
+    <state width="1238" height="406" key="GridCell.Tab.0.bottom" timestamp="1600170421473">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600088978225" />
+    <state width="1238" height="406" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600170421473" />
     <state width="1238" height="310" key="GridCell.Tab.0.bottom/0.23.1280.703@0.23.1280.703" timestamp="1596607802012" />
-    <state width="1238" height="237" key="GridCell.Tab.0.center" timestamp="1600088978224">
+    <state width="1238" height="406" key="GridCell.Tab.0.center" timestamp="1600170421472">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1600088978224" />
+    <state width="1238" height="406" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
     <state width="1238" height="310" key="GridCell.Tab.0.center/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="237" key="GridCell.Tab.0.left" timestamp="1600088978224">
+    <state width="1238" height="406" key="GridCell.Tab.0.left" timestamp="1600170421472">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1600088978224" />
+    <state width="1238" height="406" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
     <state width="1238" height="310" key="GridCell.Tab.0.left/0.23.1280.703@0.23.1280.703" timestamp="1596607802010" />
-    <state width="1238" height="237" key="GridCell.Tab.0.right" timestamp="1600088978225">
+    <state width="1238" height="406" key="GridCell.Tab.0.right" timestamp="1600170421472">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="237" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1600088978225" />
+    <state width="1238" height="406" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
     <state width="1238" height="310" key="GridCell.Tab.0.right/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="180" key="GridCell.Tab.1.bottom" timestamp="1600084828946">
+    <state width="1238" height="187" key="GridCell.Tab.1.bottom" timestamp="1600167105848">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600084828946" />
-    <state width="1238" height="180" key="GridCell.Tab.1.center" timestamp="1600084828945">
+    <state width="1238" height="187" key="GridCell.Tab.1.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600167105848" />
+    <state width="1238" height="187" key="GridCell.Tab.1.center" timestamp="1600167105847">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1600084828945" />
-    <state width="1238" height="180" key="GridCell.Tab.1.left" timestamp="1600084828945">
+    <state width="1238" height="187" key="GridCell.Tab.1.center/0.23.1280.701@0.23.1280.701" timestamp="1600167105847" />
+    <state width="1238" height="187" key="GridCell.Tab.1.left" timestamp="1600167105847">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1600084828944" />
-    <state width="1238" height="180" key="GridCell.Tab.1.right" timestamp="1600084828946">
+    <state width="1238" height="187" key="GridCell.Tab.1.left/0.23.1280.701@0.23.1280.701" timestamp="1600167105847" />
+    <state width="1238" height="187" key="GridCell.Tab.1.right" timestamp="1600167105847">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="180" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1600084828946" />
+    <state width="1238" height="187" key="GridCell.Tab.1.right/0.23.1280.701@0.23.1280.701" timestamp="1600167105847" />
     <state x="228" y="123" key="IDE.errors.dialog" timestamp="1599731845258">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
@@ -440,18 +418,18 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="350" y="96" key="MultipleFileMergeDialog/0.23.1280.701@0.23.1280.701" timestamp="1599719401029" />
-    <state x="182" y="91" key="RollbackChangesDialog" timestamp="1599732403933">
+    <state x="182" y="91" key="RollbackChangesDialog" timestamp="1600163170295">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="182" y="91" key="RollbackChangesDialog/0.23.1280.701@0.23.1280.701" timestamp="1599732403933" />
-    <state x="141" y="23" width="997" height="701" key="SettingsEditor" timestamp="1599734609386">
+    <state x="182" y="91" key="RollbackChangesDialog/0.23.1280.701@0.23.1280.701" timestamp="1600163170295" />
+    <state x="141" y="23" width="997" height="701" key="SettingsEditor" timestamp="1600166667889">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="141" y="23" width="997" height="701" key="SettingsEditor/0.23.1280.701@0.23.1280.701" timestamp="1599734609386" />
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1599661774093">
+    <state x="141" y="23" width="997" height="701" key="SettingsEditor/0.23.1280.701@0.23.1280.701" timestamp="1600166667889" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1600089439703">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1599661774093" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1600089439703" />
     <state x="420" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599717724807">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
@@ -480,6 +458,10 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="368" y="107" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.23.1280.701@0.23.1280.701" timestamp="1598332542299" />
+    <state x="365" y="23" key="refactoring.ChangeSignatureDialog" timestamp="1600169409629">
+      <screen x="0" y="23" width="1280" height="701" />
+    </state>
+    <state x="365" y="23" key="refactoring.ChangeSignatureDialog/0.23.1280.701@0.23.1280.701" timestamp="1600169409629" />
     <state x="305" y="48" width="670" height="676" key="search.everywhere.popup" timestamp="1599200351852">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
