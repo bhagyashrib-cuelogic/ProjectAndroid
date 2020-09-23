@@ -117,7 +117,7 @@ class ReserveSeatRepo {
                             isDeleted
                         ) == 0
                     ) {
-                        Utils.showToast("You already booked a seat for this day", activity)
+                        Utils.showDialogBox("You already booked a seat for this day", activity)
                         isBooked = false
                         break
                     }
@@ -163,7 +163,7 @@ class ReserveSeatRepo {
                         totalSeats = item.child("total").value.toString()
                     }
                     if (totalSeats == bookedSeat) {
-                        Utils.showToast("All Seats are booked for date $dateToCome", activity)
+                        Utils.showDialogBox("All Seats are booked for date $dateToCome", activity)
                     } else {
                         reserveSeatForEmp(
                             user,
@@ -177,7 +177,7 @@ class ReserveSeatRepo {
                     }
 
                 } else {
-                    Utils.showToast("No Seats available for $dateToCome", activity)
+                    Utils.showDialogBox("No Seats available for $dateToCome", activity)
                 }
             }
         })

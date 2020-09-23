@@ -10,20 +10,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    <list default="true" id="e1b5b78b-7b3f-42e7-9024-3a5fa6efac6a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ConfigRepo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/LoginRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/LoginRepo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Repository/ReserveSeatRepo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReasonActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/activities/ReserveSeatActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/UI/fragments/SeatsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Utilities/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/Utilities/Utils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/java/com/example/adminmodule/ViewModels/LoginViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adminmodule/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +51,9 @@
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../../../SeatBooking" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
@@ -70,6 +63,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="17bd9543-3a8c-4d53-8410-b21cc8f868fe" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -94,6 +90,9 @@
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_29" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-28T04:34:36.190Z" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/Adminmodule" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
@@ -101,7 +100,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -313,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600089437251</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.&#10;- Shown Progressbar in network operation">
+      <created>1600175304824</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1600175304824</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -327,7 +333,8 @@
     <MESSAGE value="Implemented reserve seat for selected employee and completed functionality." />
     <MESSAGE value="-Fetched all data from booked seats showed on list&#10;-Canceled booking implementation." />
     <MESSAGE value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state." />
-    <option name="LAST_COMMIT_MESSAGE" value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state." />
+    <MESSAGE value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.&#10;- Shown Progressbar in network operation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feedback points changes&#10;- Restricted UI to portrait mode&#10;- added code for internet connection&#10;- launcher image added&#10;- managed login state.&#10;- Shown Progressbar in network operation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="39" key="#Auto_Import" timestamp="1598589840363">
@@ -370,29 +377,29 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="496" y="146" key="AndroidProcessChooserDialog/0.23.1280.701@0.23.1280.701" timestamp="1598509279213" />
-    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1600163445213">
+    <state x="46" y="23" key="CommitChangelistDialog2" timestamp="1600175303429">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1600163445213" />
-    <state width="1238" height="406" key="GridCell.Tab.0.bottom" timestamp="1600170421473">
+    <state x="46" y="23" key="CommitChangelistDialog2/0.23.1280.701@0.23.1280.701" timestamp="1600175303429" />
+    <state width="1238" height="196" key="GridCell.Tab.0.bottom" timestamp="1600230802240">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="406" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600170421473" />
+    <state width="1238" height="196" key="GridCell.Tab.0.bottom/0.23.1280.701@0.23.1280.701" timestamp="1600230802240" />
     <state width="1238" height="310" key="GridCell.Tab.0.bottom/0.23.1280.703@0.23.1280.703" timestamp="1596607802012" />
-    <state width="1238" height="406" key="GridCell.Tab.0.center" timestamp="1600170421472">
+    <state width="1238" height="196" key="GridCell.Tab.0.center" timestamp="1600230802233">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="406" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
+    <state width="1238" height="196" key="GridCell.Tab.0.center/0.23.1280.701@0.23.1280.701" timestamp="1600230802233" />
     <state width="1238" height="310" key="GridCell.Tab.0.center/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
-    <state width="1238" height="406" key="GridCell.Tab.0.left" timestamp="1600170421472">
+    <state width="1238" height="196" key="GridCell.Tab.0.left" timestamp="1600230802228">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="406" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
+    <state width="1238" height="196" key="GridCell.Tab.0.left/0.23.1280.701@0.23.1280.701" timestamp="1600230802228" />
     <state width="1238" height="310" key="GridCell.Tab.0.left/0.23.1280.703@0.23.1280.703" timestamp="1596607802010" />
-    <state width="1238" height="406" key="GridCell.Tab.0.right" timestamp="1600170421472">
+    <state width="1238" height="196" key="GridCell.Tab.0.right" timestamp="1600230802234">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state width="1238" height="406" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1600170421472" />
+    <state width="1238" height="196" key="GridCell.Tab.0.right/0.23.1280.701@0.23.1280.701" timestamp="1600230802234" />
     <state width="1238" height="310" key="GridCell.Tab.0.right/0.23.1280.703@0.23.1280.703" timestamp="1596607802011" />
     <state width="1238" height="187" key="GridCell.Tab.1.bottom" timestamp="1600167105848">
       <screen x="0" y="23" width="1280" height="701" />
@@ -422,14 +429,14 @@
       <screen x="0" y="23" width="1280" height="701" />
     </state>
     <state x="182" y="91" key="RollbackChangesDialog/0.23.1280.701@0.23.1280.701" timestamp="1600163170295" />
-    <state x="141" y="23" width="997" height="701" key="SettingsEditor" timestamp="1600166667889">
+    <state x="141" y="23" width="997" height="701" key="SettingsEditor" timestamp="1600750731786">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="141" y="23" width="997" height="701" key="SettingsEditor/0.23.1280.701@0.23.1280.701" timestamp="1600166667889" />
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1600089439703">
+    <state x="141" y="23" width="997" height="701" key="SettingsEditor/0.23.1280.701@0.23.1280.701" timestamp="1600750731786" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2" timestamp="1600175308031">
       <screen x="0" y="23" width="1280" height="701" />
     </state>
-    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1600089439703" />
+    <state x="240" y="102" key="Vcs.Push.Dialog.v2/0.23.1280.701@0.23.1280.701" timestamp="1600175308031" />
     <state x="420" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599717724807">
       <screen x="0" y="23" width="1280" height="701" />
     </state>

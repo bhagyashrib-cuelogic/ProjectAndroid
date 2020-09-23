@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-
         userEmail = etEmailEditText.text.toString().trim()
         if (userEmail == "") {
             Utils.showDialogBox("Please enter email id", this)
